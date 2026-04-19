@@ -1,0 +1,15 @@
+# Visual Studio temporary files
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.user
+*.aps
+*.opendb
+*.pdb
+
+# SFML specific (if you put the SFML SDK inside your project folder)
+# Usually, you don't want to upload the entire 'SFML-3.0.0' folder
+# Just keep the necessary DLLs if you must, or ignore them too.
+SFML-3.0.2/
