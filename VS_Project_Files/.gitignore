@@ -9,6 +9,8 @@ x86/
 *.opendb
 *.pdb
 
+!VS_Project_Files/bin/*.dll
+
 # SFML specific (if you put the SFML SDK inside your project folder)
 # Usually, you don't want to upload the entire 'SFML-3.0.0' folder
 # Just keep the necessary DLLs if you must, or ignore them too.
