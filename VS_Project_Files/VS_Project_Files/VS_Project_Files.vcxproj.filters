@@ -13,10 +13,39 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Student-B">
+      <UniqueIdentifier>{fe67fd37-8ed7-4fe5-a90c-33dcd82053c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Student-A">
+      <UniqueIdentifier>{293a78bc-ee93-4d4c-95b1-5317a316597a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shared">
+      <UniqueIdentifier>{33aefd38-4db9-4c89-a8dc-50b1f0dcdeb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Student-A">
+      <UniqueIdentifier>{2478c794-ce1b-4763-9196-8d066e79217a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Student-B">
+      <UniqueIdentifier>{77171ab9-a2aa-42cd-8f3d-fa5f7068cde6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shared">
+      <UniqueIdentifier>{c5a0fa86-6cb1-4312-90f3-ed6d3252ab22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Enemies.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundEnemy.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Shared</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
