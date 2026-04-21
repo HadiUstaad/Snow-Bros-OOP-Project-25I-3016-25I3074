@@ -1,5 +1,6 @@
 #pragma once
 #include"Input.h"
+#include"Platform.h"
 #include<SFML/Graphics.hpp>
 class Player {
 
@@ -17,6 +18,6 @@ private:
 public:
 	Player();
 	//Inputmanager remaining
-	void update(Input& input);
+	void update(Input& input, platform& ground);
 	void draw(sf::RenderWindow& window);
 };

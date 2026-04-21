@@ -1,14 +1,16 @@
 #pragma once
 #include"Game.h"
 #include<SFML/Graphics.hpp>
+#include "MenuDisplay.h"
 
 
 
 game::game()
-    : window(sf::VideoMode({ 800, 600 }), "Snow Bros")   
+    : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , ground(0,550, 800, 50)
 {
     currentState = MENU;
 }
+
 
 void game::Run() {
 
@@ -16,38 +18,47 @@ void game::Run() {
     shape.setFillColor(sf::Color::Green);
     shape.setPosition({ 375.f, 275.f });
 
+    Menu mainMenu(window);
+
     while (window.isOpen()) {
 
-        // 🔹 Handle events
         while (const std::optional event = window.pollEvent()) {
 
             if (event->is<sf::Event::Closed>())
                 window.close();
 
-            if (currentState == MENU) {
-                if (event->is<sf::Event::KeyPressed>()) {
+            if (currentState == MENU && event->is<sf::Event::KeyPressed>()) {
 
-                    auto key = event->getIf<sf::Event::KeyPressed>();
+                auto key = event->getIf<sf::Event::KeyPressed>();
 
-                    if (key->code == sf::Keyboard::Key::Enter) {
+                if (key && key->code == sf::Keyboard::Key::Enter) {
+
+                    int selected = mainMenu.getSelectedIndex();
+
+                    if (selected == 0)
                         currentState = PLAYING;
-                    }
+
+                    else if (selected == 3)
+                        window.close();
                 }
             }
         }
 
-        // RUN EVERY FRAME
-        input.update();   
-        update();         
+        input.update();
+
+        if (currentState == MENU)
+            mainMenu.handleInput();
+
+        update();   // ONLY call here
 
         window.clear();
 
         if (currentState == MENU) {
-            // menu later
+            mainMenu.draw();
         }
         else if (currentState == PLAYING) {
-            window.draw(shape);
-            player.draw(window); // (when added)
+            ground.draw(window);
+            player.draw(window);
         }
 
         window.display();
@@ -56,7 +67,7 @@ void game::Run() {
 
 void game::update() {
     if (currentState == PLAYING) {
-        player.update(input);
+        player.update(input,ground);
     }
 }
 
