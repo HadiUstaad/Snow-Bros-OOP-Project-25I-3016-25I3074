@@ -141,8 +141,10 @@
   <ItemGroup>
     <ClCompile Include="Bottom.cpp" />
     <ClCompile Include="code.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="MenuDisplay.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +171,9 @@
     <ClInclude Include="Mogera_child.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tornado.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="RussoOne-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

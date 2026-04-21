@@ -97,10 +97,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Display.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Student-B</Filter>
     </ClInclude>
     <ClInclude Include="MenuDisplay.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Student-B</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,5 +119,16 @@
     <ClCompile Include="Bottom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuDisplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="RussoOne-Regular.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>
