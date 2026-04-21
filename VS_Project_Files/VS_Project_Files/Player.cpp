@@ -7,7 +7,7 @@ Player::Player() {
 	vx = 0;
 	vy = 0;
 
-	speed = 2;
+	speed = 1.5;
 	gravity = 0.5f;
 	jumpforce = -5;
 

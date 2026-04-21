@@ -36,9 +36,9 @@ void game::Run() {
             }
         }
 
-        // 🔥 ALWAYS RUN EVERY FRAME
-        input.update();   // ✅ moved outside
-        update();         // ✅ moved outside
+        // RUN EVERY FRAME
+        input.update();   
+        update();         
 
         window.clear();
 

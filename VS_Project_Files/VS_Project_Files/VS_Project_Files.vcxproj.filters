@@ -42,49 +42,49 @@
     <ClInclude Include="GroundEnemy.h">
       <Filter>Header Files\Student-B</Filter>
     </ClInclude>
-    <ClInclude Include="Tornado.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelManager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Student-A</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Student-A</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\Student-A</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyingEnemy.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Student-A</Filter>
     </ClInclude>
     <ClInclude Include="Bottom.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Student-A</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyingEnemy.h">
+      <Filter>Header Files\Student-A</Filter>
+    </ClInclude>
+    <ClInclude Include="Tornado.h">
+      <Filter>Header Files\Student-A</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelManager.h">
+      <Filter>Header Files\Student-A</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Student-A</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code.cpp">
       <Filter>Source Files\Shared</Filter>
     </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Student-A</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Student-A</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Student-A</Filter>
     </ClCompile>
     <ClCompile Include="Bottom.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Student-A</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
