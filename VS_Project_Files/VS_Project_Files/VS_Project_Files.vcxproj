@@ -146,16 +146,27 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Bottom.h" />
     <ClInclude Include="Collision.h" />
-    <ClInclude Include="Enemies.h" />
+    <ClInclude Include="Display.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_factory.h" />
     <ClInclude Include="FlyingEnemy.h" />
+    <ClInclude Include="Flying_Enemy.h" />
+    <ClInclude Include="Fooga.h" />
+    <ClInclude Include="Gamakichi.h" />
+    <ClInclude Include="Gamakichi_rocket.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GroundEnemy.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Knife.h" />
+    <ClInclude Include="LevelConfig.h" />
     <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="MenuDisplay.h" />
+    <ClInclude Include="Mogera.h" />
+    <ClInclude Include="Mogera_child.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tornado.h" />
   </ItemGroup>
