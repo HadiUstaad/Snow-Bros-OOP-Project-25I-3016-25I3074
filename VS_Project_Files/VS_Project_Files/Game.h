@@ -21,7 +21,10 @@ private:
     //objects of player and input manager
     Player player;
     Input input;
-    platform ground;
+
+    //multiple platforms a
+    static const int MAX_PLATFORMS = 5;
+    platform platforms[MAX_PLATFORMS];
 
 public:
     game();

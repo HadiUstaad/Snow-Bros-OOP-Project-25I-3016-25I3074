@@ -6,9 +6,15 @@
 
 
 game::game()
-    : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , ground(0,550, 800, 50)
+    : window(sf::VideoMode({ 800, 600 }), "Snow Bros")
 {
     currentState = MENU;
+platforms[0] = platform(0, 550, 800, 50);   // ground
+platforms[1] = platform(100, 450, 200, 20);
+platforms[2] = platform(400, 350, 200, 20);
+platforms[3] = platform(150, 250, 150, 20);
+platforms[4] = platform(500, 150, 150, 20);
+
 }
 
 
@@ -57,7 +63,9 @@ void game::Run() {
             mainMenu.draw();
         }
         else if (currentState == PLAYING) {
-            ground.draw(window);
+            for (int i = 0; i < MAX_PLATFORMS; i++) {
+                platforms[i].draw(window);
+            }
             player.draw(window);
         }
 
@@ -67,7 +75,7 @@ void game::Run() {
 
 void game::update() {
     if (currentState == PLAYING) {
-        player.update(input,ground);
+        player.update(input, platforms, MAX_PLATFORMS);
     }
 }
 

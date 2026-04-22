@@ -10,6 +10,7 @@ private:
 	float speed;
 	float gravity;
 	float jumpforce;
+	int jumpBuffer;
 
 	bool onground;
 	
@@ -18,6 +19,6 @@ private:
 public:
 	Player();
 	//Inputmanager remaining
-	void update(Input& input, platform& ground);
+	void update(Input& input, platform platforms[], int count);
 	void draw(sf::RenderWindow& window);
 };

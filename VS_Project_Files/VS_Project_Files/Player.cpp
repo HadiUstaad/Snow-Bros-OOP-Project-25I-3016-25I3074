@@ -9,9 +9,10 @@ Player::Player() {
 	vx = 0;
 	vy = 0;
 
-	speed = 1.5;
+	speed = 0.5;
 	gravity = 0.1f;
 	jumpforce = -5;
+	jumpBuffer = 0;
 
 	onground = false;
 
@@ -19,7 +20,7 @@ Player::Player() {
 	Body.setFillColor(sf::Color::Blue);
 }
 
-void Player::update(Input& input , platform& ground) {
+void Player::update(Input& input, platform platforms[], int count) {
 
 	vx = 0;
 
@@ -33,12 +34,21 @@ void Player::update(Input& input , platform& ground) {
 	}
 	//jump move
 
-	if (input.jump && onground) {
+	if (input.jumppressed) {
+		jumpBuffer = 8;   // buffer for few frames
+	}
+	if (jumpBuffer > 0 && onground) {
 		vy = jumpforce;
 		onground = false;
+		jumpBuffer = 0;
 	}
+
+	if (jumpBuffer > 0)
+		jumpBuffer--;
 	//gravity
-	vy += gravity;
+	if (!onground) {
+		vy += gravity;
+	}
 
 	//movement
 	x += vx;
@@ -79,17 +89,50 @@ void Player::update(Input& input , platform& ground) {
 
 	onground = false;
 	sf::FloatRect playerBounds = Body.getGlobalBounds();
-	sf::FloatRect groundBounds = ground.getbody().getGlobalBounds();
 
-	if (playerBounds.findIntersection(groundBounds)) {
 
-		if (vy > 0) {
+	//	if (playerBounds.findIntersection(groundBounds)) {
+	//
+	//		if (vy > 0) {
+	//
+	//			float previousBottom = playerBounds.position.y + playerBounds.size.y - vy;
+	//
+	//			if (previousBottom <= groundBounds.position.y + 2) { 
+	//
+	//				y = groundBounds.position.y - playerBounds.size.y;
+	//				vy = 0;
+	//				onground = true;
+	//
+	//				Body.setPosition({ x, y });
+	//			}
+	//		}
+	//	}
+	//
+	//}
 
-			float previousBottom = playerBounds.position.y + playerBounds.size.y - vy;
+	onground = false;
 
-			if (previousBottom <= groundBounds.position.y + 2) { 
+	for (int i = 0; i < count; i++) {
 
-				y = groundBounds.position.y - playerBounds.size.y;
+		sf::Vector2f pPos = Body.getPosition();
+		sf::Vector2f pSize = Body.getSize();
+
+		sf::Vector2f gPos = platforms[i].getBody().getPosition();
+		sf::Vector2f gSize = platforms[i].getBody().getSize();
+
+		bool collision =
+			pPos.x < gPos.x + gSize.x &&
+			pPos.x + pSize.x > gPos.x &&
+			pPos.y < gPos.y + gSize.y &&
+			pPos.y + pSize.y > gPos.y;
+
+		if (collision && vy >= 0) {
+
+			float previousBottom = pPos.y + pSize.y - vy;
+
+			if (previousBottom <= gPos.y + 2) {
+
+				y = gPos.y - pSize.y;
 				vy = 0;
 				onground = true;
 
@@ -98,6 +141,9 @@ void Player::update(Input& input , platform& ground) {
 		}
 	}
 
+	if (onground) {
+		vy = 0;
+	}
 }
 
 
