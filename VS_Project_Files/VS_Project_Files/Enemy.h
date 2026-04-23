@@ -9,7 +9,7 @@ class Enemies : public GameObject
     int damage;	// how much damage it will do to player
     float movespeed;
     int scoreValue;
-    float gemChance;	// how many chanves to drop a gem
+    float gemChance;	// how much chances to drop a gem
     bool isSnowballed; // is completely covered up by snow ball
 
 public:
@@ -30,12 +30,11 @@ public:
 
     virtual void draw() = 0;
 
-    // Getters
+    
     int getHealth();
     bool getSnowball();
     int getScore();
 
-    // Setters
     void takeDamage(int damage);
     void setSnowball(bool snowball);
 
