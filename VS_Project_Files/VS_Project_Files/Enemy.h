@@ -27,16 +27,18 @@ public:
 
     virtual void onDeath();
 
-
     virtual void draw() = 0;
 
     
     int getHealth();
     bool getSnowball();
     int getScore();
-
+    float getSpeed();
+        
     void takeDamage(int damage);
     void setSnowball(bool snowball);
+    
+
 
 
 };

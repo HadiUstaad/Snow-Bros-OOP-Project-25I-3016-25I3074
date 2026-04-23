@@ -10,15 +10,13 @@ protected:
     bool isGrounded;   // To check if they are standing on a floor
 
 public:
-    // Constructor chaining to Enemies
     GroundEnemy(float x, float y, float w, float h, int hp, int speed, int score);
 
+    // default is used bcz we have no pointers to delete. it is like making an empty destructor body
     virtual ~GroundEnemy() = default;
 
-    // Abstract methods inherited from Enemies are left unimplemented here, 
-    // ensuring GroundEnemy remains an abstract class.
-
-    // A specific virtual method for ground enemies
     virtual void applyGravity(float deltaTime);
+
+    // Enemy functions ara not overwritten so class is abstract
 
 };

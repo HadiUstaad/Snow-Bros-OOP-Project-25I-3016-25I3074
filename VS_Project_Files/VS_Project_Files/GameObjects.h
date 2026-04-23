@@ -20,7 +20,7 @@ public:
 	float getHeight();
 	bool getActive();
 
-	void setPositiion(float x, float y);
+	void setPosition(float x, float y);
 	void setColliders(float x, float y);
 	void setActive(bool active);
 
