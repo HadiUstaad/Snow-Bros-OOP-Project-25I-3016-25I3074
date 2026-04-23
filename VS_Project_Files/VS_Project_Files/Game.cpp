@@ -6,10 +6,17 @@
 
 
 game::game()
-    : window(sf::VideoMode({ 800, 600 }), "Snow Bros")   
+    : window(sf::VideoMode({ 800, 600 }), "Snow Bros")
 {
     currentState = MENU;
+platforms[0] = platform(0, 550, 800, 50);   // ground
+platforms[1] = platform(100, 450, 200, 20);
+platforms[2] = platform(400, 350, 200, 20);
+platforms[3] = platform(150, 250, 150, 20);
+platforms[4] = platform(500, 150, 150, 20);
+
 }
+
 
 void game::Run() {
 
@@ -21,51 +28,45 @@ void game::Run() {
 
     while (window.isOpen()) {
 
-        // Handle events
         while (const std::optional event = window.pollEvent()) {
 
             if (event->is<sf::Event::Closed>())
                 window.close();
 
-            if (currentState == MENU) {
-                if (event->is<sf::Event::KeyPressed>()) {
+            if (currentState == MENU && event->is<sf::Event::KeyPressed>()) {
 
-                    auto key = event->getIf<sf::Event::KeyPressed>();
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Enter))
-                    {
+                auto key = event->getIf<sf::Event::KeyPressed>();
 
-                        int selected = mainMenu.getSelectedIndex();
+                if (key && key->code == sf::Keyboard::Key::Enter) {
 
-                        if (selected == 0) {         // 0 = "New Game"
-                            currentState = PLAYING;
-                        }
-                        else if (selected == 4) {    // 4 = "Exit"
-                            window.close();
-                        }
-                    }
+                    int selected = mainMenu.getSelectedIndex();
+
+                    if (selected == 0)
+                        currentState = PLAYING;
+
+                    else if (selected == 3)
+                        window.close();
                 }
             }
         }
 
-        //  ALWAYS RUN EVERY FRAME
-        input.update();   // moved outside
-        update();         // moved outside
+        input.update();
 
-        // handling input is also updating it
-        if (currentState == MENU) 
-        {
+        if (currentState == MENU)
             mainMenu.handleInput();
-        }
+
+        update();   // ONLY call here
 
         window.clear();
 
-        if (currentState == MENU) 
-        {
+        if (currentState == MENU) {
             mainMenu.draw();
         }
         else if (currentState == PLAYING) {
-            window.draw(shape);
-            player.draw(window); // (when added)
+            for (int i = 0; i < MAX_PLATFORMS; i++) {
+                platforms[i].draw(window);
+            }
+            player.draw(window);
         }
 
         window.display();
@@ -74,7 +75,7 @@ void game::Run() {
 
 void game::update() {
     if (currentState == PLAYING) {
-        player.update(input);
+        player.update(input, platforms, MAX_PLATFORMS);
     }
 }
 

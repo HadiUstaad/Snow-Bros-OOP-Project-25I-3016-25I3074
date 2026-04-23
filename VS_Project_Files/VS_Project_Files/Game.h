@@ -1,6 +1,7 @@
 #pragma once
 #include"Player.h"
 #include"Input.h"
+#include"Platform.h"
 #include<iostream>
 using namespace std;
 
@@ -20,6 +21,10 @@ private:
     //objects of player and input manager
     Player player;
     Input input;
+
+    //multiple platforms a
+    static const int MAX_PLATFORMS = 5;
+    platform platforms[MAX_PLATFORMS];
 
 public:
     game();
