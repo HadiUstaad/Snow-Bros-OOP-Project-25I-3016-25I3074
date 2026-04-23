@@ -1,5 +1,6 @@
 #pragma once
 #include"Input.h"
+#include"Platform.h"
 #include<SFML/Graphics.hpp>
 class Player {
 
@@ -9,6 +10,7 @@ private:
 	float speed;
 	float gravity;
 	float jumpforce;
+	int jumpBuffer;
 
 	bool onground;
 	
@@ -17,6 +19,6 @@ private:
 public:
 	Player();
 	//Inputmanager remaining
-	void update(Input& input);
+	void update(Input& input, platform platforms[], int count);
 	void draw(sf::RenderWindow& window);
 };
