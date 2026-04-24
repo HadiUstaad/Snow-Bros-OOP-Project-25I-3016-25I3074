@@ -1,5 +1,6 @@
 #pragma once
 #include"GameObjects.h"
+#include "Platform.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
     virtual ~Enemies();
 
 
-    virtual void updateMovement(float deltaTime) = 0;
+    virtual void updateMovement(float deltaTime,platform platform[],int count) = 0;
 
     virtual void onHitBySnowball();
 

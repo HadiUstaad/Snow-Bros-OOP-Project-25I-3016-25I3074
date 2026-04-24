@@ -1,5 +1,6 @@
 #pragma once
 #include "Enemy.h"
+#include "Platform.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ public:
     // default is used bcz we have no pointers to delete. it is like making an empty destructor body
     virtual ~GroundEnemy() = default;
 
-    virtual void applyGravity(float deltaTime);
+    virtual void applyGravity(float deltaTime, platform platform[],int count);
 
     // Enemy functions ara not overwritten so class is abstract
 

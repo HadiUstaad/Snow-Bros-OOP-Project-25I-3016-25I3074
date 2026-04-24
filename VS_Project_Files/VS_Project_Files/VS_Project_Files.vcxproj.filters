@@ -51,9 +51,6 @@
     <ClInclude Include="Enemy.h">
       <Filter>Header Files\Student-A</Filter>
     </ClInclude>
-    <ClInclude Include="Bottom.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
     <ClInclude Include="FlyingEnemy.h">
       <Filter>Header Files\Student-A</Filter>
     </ClInclude>
@@ -66,36 +63,6 @@
     <ClInclude Include="Collision.h">
       <Filter>Header Files\Student-A</Filter>
     </ClInclude>
-    <ClInclude Include="Flying_Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fooga.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mogera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gamakichi.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Knife.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mogera_child.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gamakichi_rocket.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_factory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Display.h">
       <Filter>Header Files\Student-B</Filter>
     </ClInclude>
@@ -104,6 +71,39 @@
     </ClInclude>
     <ClInclude Include="Platform.h">
       <Filter>Header Files\Student-A</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Botom.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_factory.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Flying_Enemy.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Fooga.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamakichi.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Gamakichi_rocket.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Knife.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelConfig.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Mogera.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Mogera_child.h">
+      <Filter>Header Files\Student-B</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,17 +119,26 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Student-A</Filter>
     </ClCompile>
-    <ClCompile Include="Bottom.cpp">
-      <Filter>Source Files\Student-A</Filter>
-    </ClCompile>
-    <ClCompile Include="Display.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuDisplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files\Student-A</Filter>
+    </ClCompile>
+    <ClCompile Include="Botom.cpp">
+      <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies.cpp">
+      <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects.cpp">
+      <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundEnemy.cpp">
+      <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuDisplay.cpp">
+      <Filter>Source Files\Student-B</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
