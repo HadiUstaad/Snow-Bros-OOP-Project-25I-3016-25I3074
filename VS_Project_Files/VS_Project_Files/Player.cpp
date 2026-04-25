@@ -84,10 +84,6 @@ void Player::update(Input& input, platform platforms[], int count) {
 	// apply corrected position
 	Body.setPosition({ x, y });
 
-	//on ground logic
-	Body.setPosition({ x,y });
-
-	onground = false;
 	sf::FloatRect playerBounds = Body.getGlobalBounds();
 
 
@@ -150,4 +146,18 @@ void Player::update(Input& input, platform platforms[], int count) {
 //character draw
 void Player::draw(sf::RenderWindow& window) {
 	window.draw(Body);
+}
+
+
+
+//Hit boxes
+void Player::drawHitbox(sf::RenderWindow& window) {
+	sf::RectangleShape box;
+	box.setSize(Body.getSize());
+	box.setPosition(Body.getPosition());
+	box.setFillColor(sf::Color::Transparent);
+	box.setOutlineColor(sf::Color::Green);
+	box.setOutlineThickness(3);
+
+	window.draw(box);
 }
