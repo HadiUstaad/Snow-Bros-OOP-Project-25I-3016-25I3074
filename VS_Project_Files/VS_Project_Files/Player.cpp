@@ -161,3 +161,17 @@ void Player::drawHitbox(sf::RenderWindow& window) {
 
 	window.draw(box);
 }
+
+
+sf::FloatRect Player::getBounds() {
+	return Body.getGlobalBounds();
+}
+
+void Player::Reset() {
+	x = 100;
+	y = 300;
+	vx = 0;
+	vy = 0;
+
+	Body.setPosition({ x, y });
+}
