@@ -32,6 +32,9 @@ private:
 
     sf::Clock clock;
 
+    //Hit box
+    bool Hitbox;
+
 public:
     game();
     void Run();
