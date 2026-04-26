@@ -8,7 +8,7 @@
 
 
 game::game()
-    : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) 
+    : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180)
 {
     currentState = MENU;
 platforms[0] = platform(0, 550, 800, 50);   // ground
@@ -52,7 +52,7 @@ void game::Run() {
                     if (selected == 0)
                         currentState = PLAYING;
 
-                    else if (selected == 3)
+                    else if (selected == 4)
                         window.close();
                 }
             }
@@ -87,6 +87,7 @@ void game::Run() {
             }
             player.draw(window);
             boton.draw(window);
+            fooga.draw(window);
 
             player.draw(window);
 
@@ -104,7 +105,8 @@ void game::update() {
     if (currentState == PLAYING) {
         float deltaTime = clock.restart().asSeconds(); // resets clock every frame so that movement is same in all FPS
         player.update(input, platforms, MAX_PLATFORMS);
-        boton.updateMovement(0.002f,platforms,MAX_PLATFORMS);
+        boton.updateMovement(0.002f, platforms, MAX_PLATFORMS);
+        fooga.updateMovement(0.002f,platforms,MAX_PLATFORMS);
     }
 }
 

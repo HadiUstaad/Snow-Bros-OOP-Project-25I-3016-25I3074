@@ -6,8 +6,8 @@
 FlyEnemy::FlyEnemy(float x, float y, float w, float h, int hp, int speed, int score)
     : Enemies(x, y, w, h, hp, speed, score)
 {
-    amplitude = 30;      // moves 30 pixels up and down
-    frequency = 1.5f;       // completes 2 oscillations per second
+    amplitude = 80;      // moves 30 pixels up and down
+    frequency = 0.005f;       // completes 2 oscillations per second
     timeCounter = 0;     // starts at 0 time
     hoverHeight = y;        // the starting y value is the center of oscillation
 }
@@ -41,4 +41,5 @@ void FlyEnemy::updateMovement(float deltaTime, platform platforms[], int count)
     // Apply new position of X,  Y is updated by adding offset into the fixed initial (hoverheight)
     setPosition(newX, hoverHeight + offset);
 }
+
 

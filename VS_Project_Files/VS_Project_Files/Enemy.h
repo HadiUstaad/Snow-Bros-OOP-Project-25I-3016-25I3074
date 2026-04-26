@@ -1,6 +1,7 @@
 #pragma once
 #include"GameObjects.h"
 #include "Platform.h"
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -28,7 +29,7 @@ public:
 
     virtual void onDeath();
 
-    virtual void draw() = 0;
+    virtual void draw(sf::RenderWindow & window) = 0;
 
     
     int getHealth();

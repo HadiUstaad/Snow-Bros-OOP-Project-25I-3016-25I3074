@@ -23,7 +23,7 @@ public:
 
     // If we don't override these, Boton remains abstract and we can't spawn it
     void updateMovement(float deltaTime,platform platform[], int count) override; // From Enemies
-    void draw() override;                          // From GameObject
+    
     void draw(sf::RenderWindow& window);
 
 };

@@ -4,8 +4,6 @@
 
 using namespace std;
 
-// Base class for all enemies that can fly in the air
-// Inherits from Enemies (Level 3 in hierarchy)
 class FlyEnemy : public Enemies
 {
 protected:
@@ -13,6 +11,8 @@ protected:
     float frequency;        // how fast they oscillate up down
     float timeCounter;      // keeps track of time for sine wave movement
     float hoverHeight;      // the base height where enemy hovers around
+
+    
 
 public:
     
@@ -25,6 +25,8 @@ public:
     virtual void updateMovement(float deltaTime, platform platform[], int count);
 
     
-    virtual void draw() = 0;
+    virtual void draw(sf::RenderWindow& window) = 0;
+
+    
 
 };

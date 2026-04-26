@@ -39,22 +39,10 @@
     <ClInclude Include="GroundEnemy.h">
       <Filter>Header Files\Student-B</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\Student-A</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyingEnemy.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="Tornado.h">
       <Filter>Header Files\Student-A</Filter>
     </ClInclude>
     <ClInclude Include="LevelManager.h">
@@ -105,6 +93,18 @@
     <ClInclude Include="Mogera_child.h">
       <Filter>Header Files\Student-B</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyingEnemy.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Tornado.h">
+      <Filter>Header Files\Student-B</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Shared</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code.cpp">
@@ -139,6 +139,12 @@
     </ClCompile>
     <ClCompile Include="MenuDisplay.cpp">
       <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="Flying_Enemy.cpp">
+      <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="Fooga.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
