@@ -3,7 +3,6 @@
 #include"Input.h"
 #include"Platform.h"
 #include "Botom.h"
-#include "Ball.h"
 #include "Fooga.h"
 #include<iostream>
 using namespace std;
@@ -28,9 +27,6 @@ private:
     //Enemy
     Boton boton;
     Fooga fooga;
-
-    //Ball
-    Ball B;
 
     //multiple platforms a
     static const int MAX_PLATFORMS = 5;
