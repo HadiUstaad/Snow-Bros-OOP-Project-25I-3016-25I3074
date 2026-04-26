@@ -4,11 +4,11 @@
 
 
 
-Enemies::Enemies() : GameObject(0.0f, 0.0f, false, 0.0f, 0.0f)
+Enemies::Enemies() : GameObject(0, 0, false, 0, 0)
 {
     health = 6;
     damage = 1;
-    movespeed = 50;
+    movespeed = 30;
     scoreValue = 100;
     gemChance = 0.2f;
     isSnowballed = false;
@@ -75,4 +75,9 @@ void Enemies::setSnowball(bool snowball)
 float Enemies::getSpeed()
 {
     return movespeed;
+}
+
+void Enemies::setSpeed(float s)
+{
+    movespeed = s;
 }

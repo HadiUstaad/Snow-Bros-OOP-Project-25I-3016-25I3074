@@ -1,5 +1,5 @@
 #pragma once
-
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 class GameObject
@@ -24,7 +24,7 @@ public:
 	void setColliders(float x, float y);
 	void setActive(bool active);
 
-	virtual void draw() = 0; // draws the object on the screen. it is differnt for each object
+	virtual void draw(sf::RenderWindow& window) = 0;// draws the object on the screen. it is differnt for each object
 	// therefore is abstract
 
 };

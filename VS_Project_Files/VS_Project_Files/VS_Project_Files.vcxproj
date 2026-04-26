@@ -144,6 +144,8 @@
     <ClCompile Include="code.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="Flying_Enemy.cpp" />
+    <ClCompile Include="Fooga.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GroundEnemy.cpp" />

@@ -107,13 +107,6 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
     shape.setPosition(sf::Vector2f(getX(), getY()));
 }
 
-// cant override as no window parameter
-void Boton::draw()
-{
-  
-}
-
-
 void Boton::draw(sf::RenderWindow& window)
 {
     // Only draw if the enemy is active/alive

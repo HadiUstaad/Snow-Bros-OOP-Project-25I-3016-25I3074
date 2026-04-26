@@ -4,6 +4,7 @@
 #include"Platform.h"
 #include "Botom.h"
 #include "Ball.h"
+#include "Fooga.h"
 #include<iostream>
 using namespace std;
 
@@ -26,6 +27,7 @@ private:
 
     //Enemy
     Boton boton;
+    Fooga fooga;
 
     //Ball
     Ball B;

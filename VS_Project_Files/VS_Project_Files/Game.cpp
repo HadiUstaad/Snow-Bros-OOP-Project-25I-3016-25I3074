@@ -143,7 +143,7 @@
 #include "Ball.h"
 
 game::game()
-    : window(sf::VideoMode({ 800, 600 }), "Snow Bros"), boton(520, 100)
+    : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180)
 {
     currentState = MENU;
 
@@ -190,18 +190,8 @@ void game::Run()
                     Hitbox = !Hitbox;
                 }
 
-                // 🔥 MENU ENTER
-                if (key && key->code == sf::Keyboard::Key::Enter)
-                {
-                    if (currentState == MENU)
-                    {
-                        int selected = mainMenu.getSelectedIndex();
-
-                        if (selected == 0)
-                            currentState = PLAYING;
-                        else if (selected == 3)
-                            window.close();
-                    }
+                    else if (selected == 4)
+                        window.close();
                 }
             }
         }
@@ -242,10 +232,13 @@ void game::Run()
                     window.draw(box);
                 }
             }
+            
+            
 
             // objects
             player.draw(window);
             boton.draw(window);
+            fooga.draw(window);
             B.draw(window);
 
             // player hitbox
@@ -271,6 +264,10 @@ void game::update()
         {
             player.Reset();
         }
+        
+        fooga.updateMovement(0.002f,platforms,MAX_PLATFORMS);
+    }
+}
 
         // 🔥 SNOWBALL vs ENEMY
         if (B.checkactive() && B.getbounds().findIntersection(boton.getBounds()))
