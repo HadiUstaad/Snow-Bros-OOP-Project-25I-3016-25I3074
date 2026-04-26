@@ -22,4 +22,6 @@ public:
 	void update(Input& input, platform platforms[], int count);
 	void draw(sf::RenderWindow& window);
 	void drawHitbox(sf::RenderWindow& window);
+	sf::FloatRect getBounds();
+	void Reset();
 };
