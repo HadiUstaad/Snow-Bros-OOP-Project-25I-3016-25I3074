@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Botom.cpp" />
     <ClCompile Include="code.cpp" />
     <ClCompile Include="Display.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="Botom.h" />
     <ClInclude Include="Collision.h" />

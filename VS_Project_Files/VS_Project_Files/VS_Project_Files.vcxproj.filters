@@ -105,6 +105,9 @@
     <ClInclude Include="Mogera_child.h">
       <Filter>Header Files\Student-B</Filter>
     </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Header Files\Student-A</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code.cpp">
@@ -139,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="MenuDisplay.cpp">
       <Filter>Source Files\Student-B</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Source Files\Student-A</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
