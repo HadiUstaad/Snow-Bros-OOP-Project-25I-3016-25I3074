@@ -9,16 +9,13 @@ using namespace std;
 
 class Boton : public GroundEnemy
 {
-    private:
+private:
     int moveDirection; // 1 for right, -1 for left
     sf::RectangleShape shape; 
-    bool froze;
-    bool alive;
 
 public:
     
-   
-    sf::FloatRect getBounds();
+
     Boton(float x, float y);
 
     ~Boton() override = default;
@@ -29,6 +26,4 @@ public:
     
     void draw(sf::RenderWindow& window);
 
-    void freeze();
-    bool checkfreeze();
 };

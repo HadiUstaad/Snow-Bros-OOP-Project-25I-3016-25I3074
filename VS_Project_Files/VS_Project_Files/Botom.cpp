@@ -1,14 +1,11 @@
 #include "Botom.h"
-#include "Ball.h"
 #include <ctime>
 
 //Modify add texture
 
 
-Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 6, 50, 100) 
+Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 6, 50, 100)
 {
-
-    froze = false;
     moveDirection = 1;
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
     shape.setFillColor(sf::Color::Yellow); // Make the Boton yellow for visibility until graphics is added
@@ -21,10 +18,6 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
     if (getSnowball())
         return;
 
-    //check frozen
-    if (froze) {
-        return;
-    }
     // checks if it is in air and then pulls it down until it reaches a ground
     applyGravity(deltaTime, platforms, count);
 
@@ -114,21 +107,4 @@ void Boton::draw(sf::RenderWindow& window)
     {
         window.draw(shape);
     }
-}
-
-sf::FloatRect Boton::getBounds() {
-    return shape.getGlobalBounds();
-}
-
-
-//freezing functions
-
-void Boton::freeze() {
-
-    froze = true;
-    shape.setFillColor(sf::Color::Cyan);
-}
-
-bool Boton::checkfreeze() {
-    return froze;
 }
