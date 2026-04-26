@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\MenuDisplay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\MenuDisplay.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Botom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Enemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Enemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Botom.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -15,24 +39,8 @@
       "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\GroundEnemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Botom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\code.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\code.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Enemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Enemies.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Enemy_factory.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -58,21 +66,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Botom.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\Botom.h",
               "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.h",
               "RelativeToolTip": "VS_Project_Files\\Botom.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABwAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-04-21T19:40:50.797Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -84,7 +91,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Player.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Player.cpp",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-24T18:55:10.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Enemies.cpp",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Enemies.cpp",
               "RelativeDocumentMoniker": "VS_Project_Files\\Enemies.cpp",
@@ -92,12 +112,11 @@
               "RelativeToolTip": "VS_Project_Files\\Enemies.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-21T19:46:39.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T19:46:39.763Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "Botom.cpp",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.cpp",
               "RelativeDocumentMoniker": "VS_Project_Files\\Botom.cpp",
@@ -105,12 +124,11 @@
               "RelativeToolTip": "VS_Project_Files\\Botom.cpp",
               "ViewState": "AgIAADwAAAAAAAAAAAAAAEIAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-23T01:18:55.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-23T01:18:55.472Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "GroundEnemy.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\GroundEnemy.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\GroundEnemy.h",
@@ -118,12 +136,11 @@
               "RelativeToolTip": "VS_Project_Files\\GroundEnemy.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-21T19:38:46.467Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T19:38:46.467Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Enemy_factory.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Enemy_factory.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\Enemy_factory.h",
@@ -131,25 +148,49 @@
               "RelativeToolTip": "VS_Project_Files\\Enemy_factory.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-24T18:12:41.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-24T18:12:41.361Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Game.cpp",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp",
               "RelativeDocumentMoniker": "VS_Project_Files\\Game.cpp",
               "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp",
               "RelativeToolTip": "VS_Project_Files\\Game.cpp",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAApwGoAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-04-23T06:28:31.778Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Game.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Game.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h",
+              "RelativeToolTip": "VS_Project_Files\\Game.h",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-23T06:29:32.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MenuDisplay.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\MenuDisplay.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\MenuDisplay.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\MenuDisplay.cpp",
+              "RelativeToolTip": "VS_Project_Files\\MenuDisplay.cpp",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAACoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-25T17:40:56.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "GroundEnemy.cpp",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\GroundEnemy.cpp",
               "RelativeDocumentMoniker": "VS_Project_Files\\GroundEnemy.cpp",
@@ -157,12 +198,11 @@
               "RelativeToolTip": "VS_Project_Files\\GroundEnemy.cpp",
               "ViewState": "AgIAABsAAAAAAAAAAAAAABMAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-21T19:46:55.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T19:46:55.523Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "code.cpp",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\code.cpp",
               "RelativeDocumentMoniker": "VS_Project_Files\\code.cpp",
@@ -170,25 +210,11 @@
               "RelativeToolTip": "VS_Project_Files\\code.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-24T18:36:17.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-24T18:36:17.086Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Game.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Game.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h",
-              "RelativeToolTip": "VS_Project_Files\\Game.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-23T06:29:32.864Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Enemy.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Enemy.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\Enemy.h",
@@ -196,12 +222,11 @@
               "RelativeToolTip": "VS_Project_Files\\Enemy.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-21T19:38:04.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T19:38:04.757Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "Platform.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Platform.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\Platform.h",
@@ -213,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "GameObjects.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\GameObjects.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\GameObjects.h",

@@ -38,6 +38,7 @@ public:
         
     void takeDamage(int damage);
     void setSnowball(bool snowball);
+    void setSpeed(float s);
     
 
 

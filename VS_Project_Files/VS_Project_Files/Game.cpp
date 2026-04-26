@@ -104,7 +104,7 @@ void game::update() {
     if (currentState == PLAYING) {
         float deltaTime = clock.restart().asSeconds(); // resets clock every frame so that movement is same in all FPS
         player.update(input, platforms, MAX_PLATFORMS);
-        boton.updateMovement(0.003f,platforms,MAX_PLATFORMS);
+        boton.updateMovement(0.002f,platforms,MAX_PLATFORMS);
     }
 }
 

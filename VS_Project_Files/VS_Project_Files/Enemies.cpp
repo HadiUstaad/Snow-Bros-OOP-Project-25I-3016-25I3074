@@ -76,3 +76,8 @@ float Enemies::getSpeed()
 {
     return movespeed;
 }
+
+void Enemies::setSpeed(float s)
+{
+    movespeed = s;
+}
