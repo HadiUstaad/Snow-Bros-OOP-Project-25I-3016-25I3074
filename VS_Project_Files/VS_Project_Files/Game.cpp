@@ -141,6 +141,8 @@
 #include <SFML/Graphics.hpp>
 #include "MenuDisplay.h"
 #include "Ball.h"
+#include"FlyingEnemy.h"
+#include"Fooga.h"
 
 game::game()
     : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180)
@@ -282,9 +284,15 @@ void game::update()
         {
             if (B.checkactive() && B.getbounds().findIntersection(boton.getBounds())) {
 
-                boton.freeze();   // ❄️ freeze enemy
+                boton.onHit();  // ❄️ freeze enemy
                 B = Ball();       // remove snowball
             }  // reset snowball
+        }
+
+        if (boton.isAlive() &&
+            player.getBounds().findIntersection(boton.getBounds()))
+        {
+            player.Reset();
         }
     }
 }

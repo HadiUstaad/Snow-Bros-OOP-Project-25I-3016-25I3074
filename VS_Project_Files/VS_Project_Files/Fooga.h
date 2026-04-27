@@ -22,10 +22,13 @@ public:
 
     // overriding to add landing behaviour
     void updateMovement(float deltaTime, platform platform[], int count) override;
-    void applygravity(float deltaTime, platform platform[], int count);
+    void applygravity(float deltaTime, platform platform[], int count) ;
 
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) override;
     
     void attemptLanding();      // tries to land on platform
-    void takeoff();             // takes off from ground
+    void takeoff();      // takes off from ground
+
+    void onHit() override;
+    bool isAlive() override;
 };

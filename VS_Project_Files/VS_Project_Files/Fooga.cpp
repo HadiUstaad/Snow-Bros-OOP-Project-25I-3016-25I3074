@@ -149,3 +149,13 @@ void Fooga::applygravity(float deltaTime, platform platforms[], int count)
 
     }
 }
+
+void Fooga::onHit()
+{
+    health -= 1;   // or your logic
+}
+
+bool Fooga::isAlive()
+{
+    return health > 0;
+}

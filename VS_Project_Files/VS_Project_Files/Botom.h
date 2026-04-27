@@ -31,4 +31,8 @@ public:
 
     void freeze();
     bool checkfreeze();
+
+    //Enemy eliminating logic
+    void onHit() override ;
+    bool isAlive() override ;
 };

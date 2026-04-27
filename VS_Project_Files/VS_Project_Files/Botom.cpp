@@ -9,7 +9,9 @@ Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 6, 50, 100)
 {
 
     froze = false;
+    alive = true;
     moveDirection = 1;
+
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
     shape.setFillColor(sf::Color::Yellow); // Make the Boton yellow for visibility until graphics is added
     shape.setPosition(sf::Vector2f(getX(), getY()));
@@ -25,6 +27,10 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
     if (froze) {
         return;
     }
+    //check dead
+    if (!alive){
+        return;
+        }
     // checks if it is in air and then pulls it down until it reaches a ground
     applyGravity(deltaTime, platforms, count);
 
@@ -107,14 +113,14 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
     shape.setPosition(sf::Vector2f(getX(), getY()));
 }
 
-void Boton::draw(sf::RenderWindow& window)
-{
-    // Only draw if the enemy is active/alive
-    if (getActive())
-    {
-        window.draw(shape);
-    }
-}
+//void Boton::draw(sf::RenderWindow& window)
+//{
+//    // Only draw if the enemy is active/alive
+//    if (getActive())
+//    {
+//        window.draw(shape);
+//    }
+//}
 
 sf::FloatRect Boton::getBounds() {
     return shape.getGlobalBounds();
@@ -132,3 +138,29 @@ void Boton::freeze() {
 bool Boton::checkfreeze() {
     return froze;
 }
+
+
+//Eliminating functions
+void Boton::onHit() {
+
+    if (!froze) {
+        freeze();
+    }
+    else {
+        alive = false;
+        setActive(false);
+    }
+}
+
+bool Boton::isAlive() {
+    return alive;
+}
+
+void Boton::draw(sf::RenderWindow& window)
+{
+    if (alive && getActive())
+    {
+        window.draw(shape);
+    }
+}
+
