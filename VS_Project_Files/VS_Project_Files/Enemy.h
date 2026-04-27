@@ -7,6 +7,7 @@ using namespace std;
 
 class Enemies : public GameObject
 {
+protected:
     int health;
     int damage;	// how much damage it will do to player
     float movespeed;
@@ -24,10 +25,9 @@ public:
 
     virtual void updateMovement(float deltaTime,platform platform[],int count) = 0;
 
-    virtual void onHitBySnowball();
-
-
-    virtual void onDeath();
+    //virtual void onHitBySnowball();
+    //virtual void onDeath();
+    //void takeDamage(int damage);
 
     virtual void draw(sf::RenderWindow & window) = 0;
 
@@ -37,11 +37,12 @@ public:
     int getScore();
     float getSpeed();
         
-    void takeDamage(int damage);
+   
     void setSnowball(bool snowball);
     void setSpeed(float s);
     
-
-
+    //Eliminating logic functions
+    virtual void onHit() = 0;
+    virtual bool isAlive() = 0;
 
 };
