@@ -5,7 +5,8 @@ Tornado::Tornado(float x, float y) : FlyEnemy(x, y, 45, 45, 5, 70, 200)
 {
     throwTimer = 2;          
     throwCooldown = 3;       
-
+    froze = false;
+    alive = true;
 
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
     shape.setFillColor(sf::Color::Magenta);     
@@ -17,7 +18,15 @@ void Tornado::updateMovement(float deltaTime, platform platforms[], int count)
 {
     // If snowballed dont move or throw
     if (getSnowball())
+    {
+        updateHitboxPosition();
         return;
+    }
+
+    if (!alive)
+    {
+        return;
+    }
 
     // flying movement is same as flying enemy
     FlyEnemy::updateMovement(deltaTime, platforms, count);
@@ -74,4 +83,25 @@ void Tornado::drawHitbox(sf::RenderWindow& window)
 bool Tornado::isAlive()
 {
     return alive;
+}
+
+void Tornado::onHit() {
+
+    if (!froze) {
+        freeze();
+    }
+    else {
+        alive = false;
+        setActive(false);
+    }
+}
+
+void Tornado::freeze() {
+
+    froze = true;
+    shape.setFillColor(sf::Color::Cyan);
+}
+
+bool Tornado::checkfreeze() {
+    return froze;
 }

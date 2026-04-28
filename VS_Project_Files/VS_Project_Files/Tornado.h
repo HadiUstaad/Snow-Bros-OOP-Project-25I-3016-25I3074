@@ -13,6 +13,7 @@ private:
     float throwTimer;               // counting time so we can throw
     float throwCooldown;            // no infinite knife throwing
     bool alive;
+    bool froze;
 
 public:
 
@@ -27,9 +28,15 @@ public:
 
     void draw(sf::RenderWindow& window);
 
+    void freeze();
+    bool checkfreeze();
+    sf::FloatRect getBounds();
+
     
     bool canThrow();                    // checks if ready to throw
     Knife* createKnife(float playerX, float playerY);  // creates new knife aimed at player
 
+    // elimination logic
+    void onHit() override;
     bool isAlive() override;
 };

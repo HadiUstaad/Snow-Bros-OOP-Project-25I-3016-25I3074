@@ -42,5 +42,8 @@ public:
     void setPhaseTimer(float time);
     void setCanSpawnChild(bool spawn);
 
+    virtual void onHit() = 0;
+    virtual bool isAlive() = 0;
+
 
 };

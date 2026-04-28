@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+// modify to add snowball damage
 
 class Mogera : public Boss
 {
@@ -31,6 +31,9 @@ public:
 
     void drawHitbox(sf::RenderWindow& window) override;
 
-    bool isAlive();
+    virtual void updateMovement(float deltaTime, platform platform[], int count);
 
+    
+    virtual void onHit();
+    virtual bool isAlive();
 };

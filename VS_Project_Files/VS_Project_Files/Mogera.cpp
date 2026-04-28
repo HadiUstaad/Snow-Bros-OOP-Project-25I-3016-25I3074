@@ -14,6 +14,16 @@ Mogera::Mogera(float x, float y) : Boss(x, y, 80, 80, 30, 1000)
     shape.setPosition(sf::Vector2f(getX(), getY()));
 }
 
+void Mogera::updateMovement(float deltaTime, platform platform[], int count)
+{
+    if (!alive)
+    {
+        return;
+    }
+    updateHitboxPosition();
+}
+
+
 void Mogera::updatePhase(float deltaTime)
 {
     if (getSnowball())
@@ -93,4 +103,9 @@ void Mogera::drawHitbox(sf::RenderWindow& window)
 bool Mogera::isAlive()
 {
     return alive;
+}
+
+void Mogera::onHit()
+{
+
 }
