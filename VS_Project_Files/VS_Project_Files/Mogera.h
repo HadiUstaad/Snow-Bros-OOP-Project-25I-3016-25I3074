@@ -14,6 +14,8 @@ private:
     int maxChildPerPhase;       
     float spawnTimer;               //interval after they will spawn
 
+    bool alive;
+
 public:
     
     Mogera(float x, float y);
@@ -26,5 +28,9 @@ public:
     void spawnMinions() override;
 
     void draw(sf::RenderWindow&window) override;
+
+    void drawHitbox(sf::RenderWindow& window) override;
+
+    bool isAlive();
 
 };

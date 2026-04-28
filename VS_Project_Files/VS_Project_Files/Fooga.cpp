@@ -6,6 +6,8 @@ Fooga::Fooga(float x, float y) : FlyEnemy(x, y, 40, 40, 4, 60, 150)
 {
     isFlying = true; // starts in air
     landTimer = 25; // will attempt landing after 3 seconds
+    alive = true;
+    froze = false;
 
     setSpeed(15);
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
@@ -19,6 +21,11 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
     // If snowballed dont move
     if (getSnowball())
         return;
+
+    if (froze)
+    {
+        return;
+    }
 
     // decrease timer until it will be 0
     landTimer -= deltaTime;
@@ -61,8 +68,17 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
 
     // Update visual position
     shape.setPosition(sf::Vector2f(getX(), getY()));
+    updateHitboxPosition();
 }
 
+void Fooga::drawHitbox(sf::RenderWindow& window)
+{
+    
+    if (alive && getActive())
+    {
+        window.draw(hitbox);
+    }
+}
 
 
 void Fooga::draw(sf::RenderWindow& window)
@@ -148,14 +164,36 @@ void Fooga::applygravity(float deltaTime, platform platforms[], int count)
         velocityY = 0;
 
     }
+    
 }
+
+void Fooga::freeze() {
+
+    froze = true;
+    shape.setFillColor(sf::Color::Cyan);
+}
+
+bool Fooga::checkfreeze() {
+    return froze;
+}
+
 
 void Fooga::onHit()
 {
-    health -= 1;   // or your logic
+    if (!froze) {
+        freeze();
+    }
+    else {
+        alive = false;
+        setActive(false);
+    }
 }
 
 bool Fooga::isAlive()
 {
-    return health > 0;
+    return alive;
+}
+
+sf::FloatRect Fooga::getBounds() {
+    return shape.getGlobalBounds();
 }

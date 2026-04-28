@@ -1,159 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\Student-B">
-      <UniqueIdentifier>{fe67fd37-8ed7-4fe5-a90c-33dcd82053c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Student-A">
-      <UniqueIdentifier>{293a78bc-ee93-4d4c-95b1-5317a316597a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Shared">
-      <UniqueIdentifier>{33aefd38-4db9-4c89-a8dc-50b1f0dcdeb5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Student-A">
-      <UniqueIdentifier>{2478c794-ce1b-4763-9196-8d066e79217a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Student-B">
-      <UniqueIdentifier>{77171ab9-a2aa-42cd-8f3d-fa5f7068cde6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Shared">
-      <UniqueIdentifier>{c5a0fa86-6cb1-4312-90f3-ed6d3252ab22}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Botom.cpp" />
+    <ClCompile Include="code.cpp" />
+    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="Flying_Enemy.cpp" />
+    <ClCompile Include="Fooga.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObjects.cpp" />
+    <ClCompile Include="GroundEnemy.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Knife.cpp" />
+    <ClCompile Include="MenuDisplay.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Tornado.cpp" />
+    <ClCompile Include="Mogera.cpp" />
+    <ClCompile Include="Boss.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObjects.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="GroundEnemy.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelManager.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="Display.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuDisplay.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Platform.h">
-      <Filter>Header Files\Student-A</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Botom.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_factory.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Flying_Enemy.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Fooga.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Gamakichi.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Gamakichi_rocket.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Knife.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelConfig.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Mogera.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Mogera_child.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>Header Files\Student-A</Filter>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyingEnemy.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Tornado.h">
-      <Filter>Header Files\Student-B</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files\Shared</Filter>
-    </ClInclude>
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="Botom.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="Display.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_factory.h" />
+    <ClInclude Include="FlyingEnemy.h" />
+    <ClInclude Include="Flying_Enemy.h" />
+    <ClInclude Include="Fooga.h" />
+    <ClInclude Include="Gamakichi.h" />
+    <ClInclude Include="Gamakichi_rocket.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="GroundEnemy.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Knife.h" />
+    <ClInclude Include="LevelConfig.h" />
+    <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="MenuDisplay.h" />
+    <ClInclude Include="Mogera.h" />
+    <ClInclude Include="Mogera_child.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Tornado.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="code.cpp">
-      <Filter>Source Files\Shared</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files\Student-A</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Student-A</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files\Student-A</Filter>
-    </ClCompile>
-    <ClCompile Include="Platform.cpp">
-      <Filter>Source Files\Student-A</Filter>
-    </ClCompile>
-    <ClCompile Include="Botom.cpp">
-      <Filter>Source Files\Student-B</Filter>
-    </ClCompile>
-    <ClCompile Include="Display.cpp">
-      <Filter>Source Files\Student-B</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemies.cpp">
-      <Filter>Source Files\Student-B</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjects.cpp">
-      <Filter>Source Files\Student-B</Filter>
-    </ClCompile>
-    <ClCompile Include="GroundEnemy.cpp">
-      <Filter>Source Files\Student-B</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuDisplay.cpp">
-      <Filter>Source Files\Student-B</Filter>
-    </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>Source Files\Student-A</Filter>
-    <ClCompile Include="Flying_Enemy.cpp">
-      <Filter>Source Files\Student-B</Filter>
-    </ClCompile>
-    <ClCompile Include="Fooga.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="RussoOne-Regular.ttf">
-      <Filter>Resource Files</Filter>
-    </Font>
+    <Font Include="RussoOne-Regular.ttf" />
   </ItemGroup>
 </Project>

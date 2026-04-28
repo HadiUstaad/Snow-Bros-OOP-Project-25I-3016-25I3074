@@ -15,6 +15,8 @@ protected:
     float gemChance;	// how much chances to drop a gem
     bool isSnowballed; // is completely covered up by snow ball
 
+    sf::RectangleShape hitbox;
+
 public:
 
     Enemies();
@@ -30,6 +32,10 @@ public:
     //void takeDamage(int damage);
 
     virtual void draw(sf::RenderWindow & window) = 0;
+
+    virtual void drawHitbox(sf::RenderWindow& window);
+    
+    virtual void updateHitboxPosition();
 
     
     int getHealth();

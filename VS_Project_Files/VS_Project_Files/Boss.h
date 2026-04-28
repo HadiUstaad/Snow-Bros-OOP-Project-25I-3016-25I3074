@@ -28,6 +28,7 @@ public:
 
     virtual void draw(sf::RenderWindow& window) = 0;
 
+    virtual void drawHitbox(sf::RenderWindow& window);
 
     void takeDamage(int damage);        // this can change the phases
 

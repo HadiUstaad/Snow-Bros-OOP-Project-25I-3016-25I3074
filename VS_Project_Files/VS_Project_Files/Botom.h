@@ -18,7 +18,6 @@ class Boton : public GroundEnemy
 public:
     
    
-    sf::FloatRect getBounds();
     Boton(float x, float y);
 
     ~Boton() override = default;
@@ -27,10 +26,13 @@ public:
     // If we don't override these, Boton remains abstract and we can't spawn it
     void updateMovement(float deltaTime,platform platform[], int count) override; // From Enemies
     
+    void drawHitbox(sf::RenderWindow& window) override;
+
     void draw(sf::RenderWindow& window);
 
     void freeze();
     bool checkfreeze();
+    sf::FloatRect getBounds();
 
     //Enemy eliminating logic
     void onHit() override ;

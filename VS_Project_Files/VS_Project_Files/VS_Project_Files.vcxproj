@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Botom.cpp" />
     <ClCompile Include="code.cpp" />
     <ClCompile Include="Display.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Knife.cpp" />
     <ClCompile Include="MenuDisplay.cpp" />
+    <ClCompile Include="Mogera.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />

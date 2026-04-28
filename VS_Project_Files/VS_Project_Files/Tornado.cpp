@@ -25,6 +25,7 @@ void Tornado::updateMovement(float deltaTime, platform platforms[], int count)
     throwTimer -= deltaTime *10;
 
     shape.setPosition(sf::Vector2f(getX(), getY()));
+    updateHitboxPosition();
 }
 
 
@@ -59,4 +60,18 @@ void Tornado::draw(sf::RenderWindow& window)
     {
         window.draw(shape);
     }
+}
+
+void Tornado::drawHitbox(sf::RenderWindow& window)
+{
+    
+    if (alive && getActive())
+    {
+        window.draw(hitbox);
+    }
+}
+
+bool Tornado::isAlive()
+{
+    return alive;
 }

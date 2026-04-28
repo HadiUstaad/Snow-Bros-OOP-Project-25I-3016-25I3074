@@ -81,3 +81,16 @@ void Mogera::draw(sf::RenderWindow& window)
         window.draw(shape);
     }
 }
+
+void Mogera::drawHitbox(sf::RenderWindow& window)
+{
+    if (alive && getActive())
+    {
+        window.draw(hitbox);
+    }
+}
+
+bool Mogera::isAlive()
+{
+    return alive;
+}

@@ -156,6 +156,7 @@ game::game()
     platforms[4] = platform(400, 120, 400, 20);
 
     Hitbox = false;
+    EnemyHitbox = false;
 }
 
 void game::Run()
@@ -192,6 +193,11 @@ void game::Run()
                     Hitbox = !Hitbox;
                 }
 
+                if (key && key->code == sf::Keyboard::Key::J)
+                {
+                    EnemyHitbox = !EnemyHitbox;
+                }
+
                 if (key && key->code == sf::Keyboard::Key::Enter) {
                     
                     int selected = mainMenu.getSelectedIndex();
@@ -199,7 +205,7 @@ void game::Run()
                     if (selected == 0)
                         currentState = PLAYING;
                     
-                    else if (selected == 3)
+                    else if (selected == 4)
                         window.close();
                 }
                 
@@ -254,6 +260,11 @@ void game::Run()
             // player hitbox
             if (Hitbox)
                 player.drawHitbox(window);
+            if (EnemyHitbox)
+            {
+                boton.drawHitbox(window);
+                fooga.drawHitbox(window);
+            }
         }
 
         window.display();
@@ -267,26 +278,37 @@ void game::update()
         float deltaTime = clock.restart().asSeconds();
 
         player.update(input, platforms, MAX_PLATFORMS);
-        boton.updateMovement(0.003f, platforms, MAX_PLATFORMS);
+        boton.updateMovement(0.002f, platforms, MAX_PLATFORMS);
+        fooga.updateMovement(0.002f,platforms,MAX_PLATFORMS);
 
         // 🔥 PLAYER vs ENEMY
-        if (player.getBounds().findIntersection(boton.getBounds()))
+        if (boton.isAlive() && player.getBounds().findIntersection(boton.getBounds()))
         {
             player.Reset();
         }
-        
-        fooga.updateMovement(0.002f,platforms,MAX_PLATFORMS);
+        // player vs fooga
+        if (fooga.isAlive() && player.getBounds().findIntersection(fooga.getBounds()))
+        {
+            player.Reset();   // Kill player
+        }
 
 
 
         // 🔥 SNOWBALL vs ENEMY
-        if (B.checkactive() && B.getbounds().findIntersection(boton.getBounds()))
+        if (boton.isAlive() && B.checkactive() && B.getbounds().findIntersection(boton.getBounds()))
         {
+            
             if (B.checkactive() && B.getbounds().findIntersection(boton.getBounds())) {
 
                 boton.onHit();  // ❄️ freeze enemy
                 B = Ball();       // remove snowball
             }  // reset snowball
+        }
+
+        if (B.checkactive() && fooga.isAlive() && B.getbounds().findIntersection(fooga.getBounds()))
+        {
+            fooga.onHit();     // Hit Fooga with snowball
+            B = Ball();        // Reset snowball
         }
 
         if (boton.isAlive() &&

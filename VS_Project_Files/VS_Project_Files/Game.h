@@ -40,6 +40,7 @@ private:
 
     //Hit box
     bool Hitbox;
+    bool EnemyHitbox;
 
 public:
     game();

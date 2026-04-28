@@ -108,19 +108,15 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
             }
             
         }
+
     }
    
     shape.setPosition(sf::Vector2f(getX(), getY()));
+    // makes hitbox at the same positon as sprite
+    updateHitboxPosition();
 }
 
-//void Boton::draw(sf::RenderWindow& window)
-//{
-//    // Only draw if the enemy is active/alive
-//    if (getActive())
-//    {
-//        window.draw(shape);
-//    }
-//}
+
 
 sf::FloatRect Boton::getBounds() {
     return shape.getGlobalBounds();
@@ -161,6 +157,16 @@ void Boton::draw(sf::RenderWindow& window)
     if (alive && getActive())
     {
         window.draw(shape);
+    }
+}
+
+void Boton::drawHitbox(sf::RenderWindow& window)
+{
+    // only draws hitbox when enemy is alive and active
+    // this prevents the bug when hitbox was remaining after object destroyed
+    if (alive && getActive())
+    {
+        window.draw(hitbox);
     }
 }
 

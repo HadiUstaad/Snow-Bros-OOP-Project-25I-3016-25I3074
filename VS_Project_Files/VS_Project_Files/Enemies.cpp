@@ -12,6 +12,11 @@ Enemies::Enemies() : GameObject(0, 0, false, 0, 0)
     scoreValue = 100;
     gemChance = 0.2f;
     isSnowballed = false;
+
+    hitbox.setSize(sf::Vector2f(0, 0));
+    hitbox.setFillColor(sf::Color::Transparent);
+    hitbox.setOutlineColor(sf::Color::White);  
+    hitbox.setOutlineThickness(2);
 }
 
 Enemies::Enemies(float x, float y, float w, float h, int hp, int speed, int score)
@@ -24,6 +29,12 @@ Enemies::Enemies(float x, float y, float w, float h, int hp, int speed, int scor
     scoreValue = score;
     gemChance = 0.2f;
     isSnowballed = false;
+
+    hitbox.setSize(sf::Vector2f(w, h));          // same size as enemy 
+    hitbox.setPosition(sf::Vector2f(x, y));      // same enemy position
+    hitbox.setFillColor(sf::Color::Transparent);
+    hitbox.setOutlineColor(sf::Color::White);
+    hitbox.setOutlineThickness(2);
 }
 
 Enemies::~Enemies()
@@ -43,6 +54,24 @@ Enemies::~Enemies()
 //
 //    // Modify Gem drop logic will go here later
 //}
+
+
+void Enemies::drawHitbox(sf::RenderWindow& window)
+{
+    // Only draw hitbox if enemy is active (alive)
+    if (getActive())
+    {
+        window.draw(hitbox);
+    }
+}
+
+// update hitbox to follow enemy's current position
+// whwnever enemy moves we call this function too
+void Enemies::updateHitboxPosition()
+{
+    
+    hitbox.setPosition(sf::Vector2f(getX(), getY()));
+}
 
 int Enemies::getHealth() 
 { 
