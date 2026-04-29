@@ -7,5 +7,10 @@ public:
 	
 	bool jump;
 	bool jumppressed;
-	void update();
+
+	bool left1;
+	bool right1;
+	bool jump1;
+	void updatePlayer1();
+	void updatePlayer2();
 };
