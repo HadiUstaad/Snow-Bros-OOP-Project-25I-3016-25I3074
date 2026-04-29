@@ -20,6 +20,7 @@
     <ClCompile Include="Tornado.cpp" />
     <ClCompile Include="Mogera.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Enemy_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Tornado.h" />
+    <ClInclude Include="DatabaseManagement.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="RussoOne-Regular.ttf" />
