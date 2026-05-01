@@ -51,4 +51,5 @@ public:
     virtual void onHit() = 0;
     virtual bool isAlive() = 0;
 
+    sf::FloatRect getBounds();
 };

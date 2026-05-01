@@ -6,13 +6,15 @@
 #include "Ball.h"
 #include "Fooga.h"
 #include<iostream>
+#include<SFML/Graphics.hpp>
 using namespace std;
 
 
 //enum variables
 enum GameState {
     MENU,
-    PLAYING
+    PLAYING,
+    GAME_OVER
 };
 
 
@@ -45,10 +47,43 @@ private:
     bool Hitbox;
     bool EnemyHitbox;
 
+
+    int score1;
+    int score2;
+
+    sf::Font font;
+    sf::Text scoreText1;
+    sf::Text scoreText2;
+
+    int currentLevel;
+    Enemies* enemies[15];   // max enemies per level
+    int enemyCount;
+    bool AllDead();
+    //sf::Text wintext;
+
+    sf::Text levelText;
+    float levelDisplayTimer;
+    bool showLevelText;
+
+    //lives system
+    int lives1;
+    int lives2;
+
+    sf::Text livesText1;
+    sf::Text livesText2;
+
+    //Game over
+    bool gameOverPrinted;
+    sf::Text gameOverText;
+    //sf::Texture heartTexture;
+    //sf::Sprite heartSprite1[3]; // player 1
+    //sf::Sprite heartSprite2[3]; // player 2
 public:
     game();
     void Run();
     void update();
+    void UpdatescoreUI();
+    void loadLevel(int level);
 };
 
 
