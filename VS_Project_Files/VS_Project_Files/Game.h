@@ -18,6 +18,7 @@ enum GameState {
     MENU,
     PLAYING,
     LEADER_BOARD,
+    LEVEL_COMPLETE,
     GAME_OVER
 
 };
@@ -66,9 +67,14 @@ private:
     bool AllDead();
     //sf::Text wintext;
 
+    //Level system
     sf::Text levelText;
     float levelDisplayTimer;
     bool showLevelText;
+    sf::Text levelCompleteText;
+    sf::Text levelCompleteText2;
+    float invincibleTimer1;
+    float invincibleTimer2;
 
     //lives system
     int lives1;
@@ -90,6 +96,16 @@ private:
     LeaderboardScreen* leaderboard;    
     string playerName1;              
     string playerName2;
+
+
+    //Bonuses 
+    //coins
+    sf::CircleShape coins[10];
+    bool coinActive[10];
+    int coinCount;
+
+    //PLatform
+    int platformCount;
 
 public:
     game();
