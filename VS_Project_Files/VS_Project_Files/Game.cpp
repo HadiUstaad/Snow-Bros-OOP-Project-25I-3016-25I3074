@@ -5,13 +5,19 @@
 #include "Ball.h"
 #include"FlyingEnemy.h"
 #include"Fooga.h"
+#include <cstdlib>
+#include <ctime>
 
 
 game::game()
     : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180) ,scoreText1(font, "P1: 0", 20),
-    scoreText2(font, "P2: 0", 20) , levelText(font, "Level 1", 30) , livesText1(font, "Lives: 3", 20), livesText2(font, "Lives: 3", 20)
-    , gameOverText(font, "GAME OVER", 50) 
+    scoreText2(font, "P2: 0", 20) , levelText(font, "Level 1", 40) , livesText1(font, "Lives: 3", 20), livesText2(font, "Lives: 3", 20)
+    , gameOverText(font, "GAME OVER", 50) , 
+    levelCompleteText(font, "LEVEL COMPLETE", 50) , levelCompleteText2(font,"Press Enter to continue",20)
 {
+
+    srand(time(0));// for random generation
+
     currentState = MENU;
 
     font.openFromFile("RussoOne-Regular.ttf");
@@ -69,10 +75,18 @@ game::game()
 
 
     levelText.setFillColor(sf::Color::Yellow);
-    levelText.setPosition({ 300, 50 });
+    levelText.setPosition({ 320, 50 });
 
     levelDisplayTimer = 2.0f;   // show for 2 seconds
     showLevelText = true;
+
+    levelCompleteText.setFillColor(sf::Color::Green);
+    levelCompleteText.setPosition({ 190, 250 });
+    levelCompleteText2.setFillColor(sf::Color::Green);
+    levelCompleteText2.setPosition({ 280,330});
+
+    invincibleTimer1 = 0;
+    invincibleTimer2 = 0;
 
 
     //lives
@@ -198,8 +212,19 @@ void game::Run()
                     else if (selected == 4)
                         window.close();
                 }
+                if (currentState == LEVEL_COMPLETE && key && key->code == sf::Keyboard::Key::Enter)
+                {
+                    currentLevel++;
+
+                    if (currentLevel <= 10)
+                    {
+                        loadLevel(currentLevel);
+                        currentState = PLAYING;
+                    }
+                }
                 
             }
+
         }
 
         // 🔥 INPUT UPDATE
@@ -212,7 +237,7 @@ void game::Run()
             leaderboard->handleInput();
         }
 
-        // 🔥 GAME UPDATE
+       
         update();
         B1.update();
         B2.update();// Snowball update MUST be before rendering
@@ -229,7 +254,7 @@ void game::Run()
 
             float deltaTime = clock.restart().asSeconds();
 
-            // 🔥 ADD HERE
+      
             if (showLevelText)
             {
                 levelDisplayTimer -= deltaTime;
@@ -256,14 +281,20 @@ void game::Run()
                     window.draw(box);
                 }
             }
+
+            //coins spawn
+            for (int i = 0; i < coinCount; i++)
+            {
+                if (coinActive[i])
+                    window.draw(coins[i]);
+            }
             
             
 
             // objects
             player1.draw(window);
             player2.draw(window);
-            //boton.draw(window);
-            //fooga.draw(window);
+            
 
             for (int i = 0; i < enemyCount; i++)
             {
@@ -291,17 +322,7 @@ void game::Run()
             window.draw(livesText1);
             window.draw(livesText2);
 
-            // Draw hearts for Player 1
-            //for (int i = 0; i < lives1; i++)
-            //{
-            //    window.draw(heartSprite1[i]);
-            //}
-
-            //// Draw hearts for Player 2
-            //for (int i = 0; i < lives2; i++)
-            //{
-            //    window.draw(heartSprite2[i]);
-            //}
+          
         }
         else if (currentState == LEADER_BOARD)
         {
@@ -313,6 +334,11 @@ void game::Run()
                 currentState = MENU;  // Return to menu
                 leaderboard->show();  // Reset visibility of menu
             }
+        }
+        else if (currentState == LEVEL_COMPLETE)
+        {
+            window.draw(levelCompleteText);
+            window.draw(levelCompleteText2);
         }
         else if (currentState == GAME_OVER)
         {
@@ -336,6 +362,13 @@ void game::update()
     {
         float deltaTime = clock.restart().asSeconds();
 
+        if (invincibleTimer1 > 0)
+            invincibleTimer1 -= deltaTime;
+    
+        if (invincibleTimer2 > 0) 
+            invincibleTimer2 -= deltaTime;
+        
+
         player1.update(input1, platforms, MAX_PLATFORMS);
         player2.update(input2, platforms, MAX_PLATFORMS);
         //boton.updateMovement(0.002f, platforms, MAX_PLATFORMS);
@@ -351,9 +384,10 @@ void game::update()
         {
             // modify add clock for collision spaces 
             if (enemies[i]->isAlive() && lives1 > 0 &&
-                player1.getBounds().findIntersection(enemies[i]->getBounds()))
+                player1.getBounds().findIntersection(enemies[i]->getBounds()) && invincibleTimer1 <= 0)
             {
                 lives1--;
+                invincibleTimer1 = 1.0f;
 
                 if (lives1 > 0)
                 {
@@ -362,9 +396,10 @@ void game::update()
             }
 
             if (enemies[i]->isAlive() && lives2 > 0 &&
-                player2.getBounds().findIntersection(enemies[i]->getBounds()))
+                player2.getBounds().findIntersection(enemies[i]->getBounds()) && invincibleTimer2 <= 0)
             {
                 lives2--;
+                invincibleTimer2 = 1.0f;
 
                 if (lives2 > 0)
                 {
@@ -418,6 +453,10 @@ void game::update()
     if (AllDead() && !winPrinted)
     {
         currentLevel++;
+        if (AllDead())
+        {
+            currentState = LEVEL_COMPLETE;   // pause game
+        }
 
         if (currentLevel <= 10)
         {
@@ -442,14 +481,31 @@ void game::update()
         return;
     }
 
+    //coins
+    for (int i = 0; i < coinCount; i++)
+    {
+        if (coinActive[i] &&
+            player1.getBounds().findIntersection(coins[i].getGlobalBounds()))
+        {
+            coinActive[i] = false;
+            score1 += 50;
+        }
+
+        if (coinActive[i] &&
+            player2.getBounds().findIntersection(coins[i].getGlobalBounds()))
+        {
+            coinActive[i] = false;
+            score2 += 50;
+        }
+    }
+
     UpdatescoreUI();
 }
 
 void game::UpdatescoreUI() {
     scoreText1.setString("P1: " + std::to_string(score1));
     scoreText2.setString("P2: " + std::to_string(score2));
-    //livesText1.setString("P1 Lives: " + std::to_string(lives1));
-    //livesText2.setString("P2 Lives: " + std::to_string(lives2));
+
 }
 
 //level functions
@@ -458,11 +514,37 @@ void game::loadLevel(int level)
 {
     // clear previous enemies (optional for now)
 
+    //if (level == 4 || level == 9)
+    //{
+    //    enemyCount = 0;//no enemies
+
+    //    coinCount = 5;
+
+    //    for (int i = 0; i < coinCount; i++)
+    //    {
+    //        coins[i].setRadius(30);
+    //        coins[i].setFillColor(sf::Color::Yellow);
+
+    //        coins[i].setPosition({ float(100 + i * 120), 200 });
+
+    //        coinActive[i] = true;
+    //    }
+
+    //    // later we spawn coins here
+    //    return;
+    //}
+
     if (level == 1)
     {
         enemyCount = 2;
         enemies[0] = new Boton(520, 100);
         enemies[1] = new Fooga(20, 180);
+
+        platformCount = 3;
+
+        platforms[0] = platform(0, 550, 800, 50);
+        platforms[1] = platform(100, 400, 200, 20);
+        platforms[2] = platform(400, 300, 200, 20);
     }
     else if (level == 2)
     {
@@ -470,6 +552,13 @@ void game::loadLevel(int level)
         enemies[0] = new Boton(100, 300);
         enemies[1] = new Boton(400, 200);
         enemies[2] = new Fooga(200, 100);
+
+        platformCount = 4;
+
+        platforms[0] = platform(0, 550, 800, 50);
+        platforms[1] = platform(0, 450, 300, 20);
+        platforms[2] = platform(500, 350, 300, 20);
+        platforms[3] = platform(200, 250, 200, 20);
     }
     else if (level == 3)
     {
@@ -478,9 +567,100 @@ void game::loadLevel(int level)
         enemies[1] = new Boton(300, 300);
         enemies[2] = new Fooga(200, 150);
         enemies[3] = new Fooga(500, 150);
+
+        platformCount = 5;
+
+        platforms[0] = platform(0, 550, 800, 50);
+        platforms[1] = platform(100, 450, 200, 20);
+        platforms[2] = platform(400, 450, 200, 20);
+        platforms[3] = platform(250, 300, 200, 20);
+        platforms[4] = platform(150, 150, 150, 20);
     }
 
-    // continue up to level 10
+    else
+    {
+        platformCount = 5;
+
+        platforms[0] = platform(0, 550, 800, 50);
+        platforms[1] = platform(50, 450, 200, 20);
+        platforms[2] = platform(550, 400, 200, 20);
+        platforms[3] = platform(250, 300, 300, 20);
+        platforms[4] = platform(150, 180, 200, 20);
+    }
+
+    //// continue up to level 10
+
+    //levelText.setString("Level " + std::to_string(level));
+    //levelDisplayTimer = 2.0f;
+    //showLevelText = true;
+
+    coinCount = 0; // reset coins
+
+    // BONUS LEVEL
+    if (level == 4 || level == 9)
+    {
+        enemyCount = 0;
+
+        coinCount = 5;
+
+        for (int i = 0; i < coinCount; i++)
+        {
+            coins[i].setRadius(30);
+            coins[i].setFillColor(sf::Color::Yellow);
+            coins[i].setPosition({ float(100 + i * 120), 200 });
+            coinActive[i] = true;
+        }
+
+        levelText.setString("BONUS LEVEL");
+        levelDisplayTimer = 2.0f;
+        showLevelText = true;
+
+        return;
+    }
+
+    // NORMAL LEVELS
+    enemyCount = level + 1;
+    if (enemyCount > 10) enemyCount = 10;
+
+    for (int i = 0; i < enemyCount; i++)
+    {
+        int pIndex = (platformCount > 1) ? (i % (platformCount - 1)) + 1 : 0;
+
+        sf::Vector2f pPos = platforms[pIndex].getBody().getPosition();
+        sf::Vector2f pSize = platforms[pIndex].getBody().getSize();
+
+        float x = pPos.x + (i * 40) % int(pSize.x - 40);
+        float y = pPos.y - 40;
+
+        if (i % 2 == 0)
+            enemies[i] = new Boton(x, y);
+        else
+            enemies[i] = new Fooga(x, y);
+
+        float speedBoost = 0.001f * level;
+        enemies[i]->setSpeed(enemies[i]->getSpeed() + speedBoost);
+    }
+
+    //for (int i = 0; i < enemyCount; i++)
+    //{
+    //    // pick a platform (skip ground → start from 1 if possible)
+    //    int pIndex = (i % (platformCount - 1)) + 1;
+
+    //    sf::Vector2f pPos = platforms[pIndex].getBody().getPosition();
+    //    sf::Vector2f pSize = platforms[pIndex].getBody().getSize();
+
+    //    float x = pPos.x + (rand() % int(pSize.x - 40)); // inside platform
+    //    float y = pPos.y - 40; // on top of platform
+
+    //    if (i % 2 == 0)
+    //        enemies[i] = new Boton(x, y);
+    //    else
+    //        enemies[i] = new Fooga(x, y);
+
+    //    // 🔥 difficulty scaling
+    //    float speedBoost = 0.001f * level;
+    //    enemies[i]->setSpeed(enemies[i]->getSpeed() + speedBoost);
+    //}
 
     levelText.setString("Level " + std::to_string(level));
     levelDisplayTimer = 2.0f;
@@ -491,11 +671,24 @@ void game::loadLevel(int level)
 //Check whether all enemies are dead or not
 bool game::AllDead()
 {
+   
+    if (currentLevel == 4 || currentLevel == 9)
+    {
+        for (int i = 0; i < coinCount; i++)
+        {
+            if (coinActive[i])
+                return false;
+        }
+        return true;
+    }
+
+    // normal enemy check
     for (int i = 0; i < enemyCount; i++)
     {
         if (enemies[i]->isAlive())
             return false;
     }
+
     return true;
 }
 
