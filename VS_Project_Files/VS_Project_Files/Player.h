@@ -12,7 +12,9 @@ private:
 	float jumpforce;
 	int jumpBuffer;
 
+	int direction;
 	bool onground;
+
 	
 	sf::RectangleShape Body;
 
@@ -24,4 +26,6 @@ public:
 	void drawHitbox(sf::RenderWindow& window);
 	sf::FloatRect getBounds();
 	void Reset();
+	void setPosition(float x, float y);
+	int getDirection();
 };

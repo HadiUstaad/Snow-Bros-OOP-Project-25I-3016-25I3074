@@ -145,15 +145,21 @@
 #include"Fooga.h"
 
 game::game()
-    : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180)
+    : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180) 
 {
     currentState = MENU;
+
+    
 
     platforms[0] = platform(0, 550, 800, 50);
     platforms[1] = platform(0, 425, 400, 20);
     platforms[2] = platform(400, 320, 400, 20);
     platforms[3] = platform(0, 220, 350, 20);
     platforms[4] = platform(400, 120, 400, 20);
+
+
+    player1.setPosition(100,300);
+    player2.setPosition(300,100);
 
     Hitbox = false;
     EnemyHitbox = false;
@@ -178,12 +184,22 @@ void game::Run()
                 // 🔥 SHOOT
                 if (key && key->code == sf::Keyboard::Key::F)
                 {
-                    int direction = 1;
+                    //int direction = 1;
 
-                    B.shoot(
-                        player.getBounds().position.x,
-                        player.getBounds().position.y,
-                        direction
+                    B1.shoot(
+                        player1.getBounds().position.x,
+                        player1.getBounds().position.y,
+                        player1.getDirection()
+                    );
+                }
+                if (key && key->code == sf::Keyboard::Key::RShift)
+                {
+                    //int direction = 1;
+
+                    B2.shoot(
+                        player2.getBounds().position.x,
+                        player2.getBounds().position.y,
+                        player2.getDirection()
                     );
                 }
 
@@ -213,14 +229,15 @@ void game::Run()
         }
 
         // 🔥 INPUT UPDATE
-        input.update();
-
+        input1.updatePlayer1();
+        input2.updatePlayer2();
         if (currentState == MENU)
             mainMenu.handleInput();
 
         // 🔥 GAME UPDATE
         update();
-        B.update();   // Snowball update MUST be before rendering
+        B1.update();
+        B2.update();// Snowball update MUST be before rendering
 
         // 🔥 RENDER
         window.clear();
@@ -252,14 +269,16 @@ void game::Run()
             
 
             // objects
-            player.draw(window);
+            player1.draw(window);
+            player2.draw(window);
             boton.draw(window);
             fooga.draw(window);
-            B.draw(window);
-
+            B1.draw(window);
+            B2.draw(window);
             // player hitbox
             if (Hitbox)
-                player.drawHitbox(window);
+                player1.drawHitbox(window);
+            player2.drawHitbox(window);
             if (EnemyHitbox)
             {
                 boton.drawHitbox(window);
@@ -277,44 +296,68 @@ void game::update()
     {
         float deltaTime = clock.restart().asSeconds();
 
-        player.update(input, platforms, MAX_PLATFORMS);
+        player1.update(input1, platforms, MAX_PLATFORMS);
+        player2.update(input2, platforms, MAX_PLATFORMS);
         boton.updateMovement(0.002f, platforms, MAX_PLATFORMS);
         fooga.updateMovement(0.002f,platforms,MAX_PLATFORMS);
 
         // 🔥 PLAYER vs ENEMY
-        if (boton.isAlive() && player.getBounds().findIntersection(boton.getBounds()))
+        if (boton.isAlive() && player1.getBounds().findIntersection(boton.getBounds()))
         {
-            player.Reset();
+            player1.Reset();
+        }
+        if (boton.isAlive() && player2.getBounds().findIntersection(boton.getBounds()))
+        {
+            player2.Reset();
         }
         // player vs fooga
-        if (fooga.isAlive() && player.getBounds().findIntersection(fooga.getBounds()))
+        if (fooga.isAlive() && player1.getBounds().findIntersection(fooga.getBounds()))
         {
-            player.Reset();   // Kill player
+            player1.Reset();   // Kill player
         }
-
+        if (fooga.isAlive() && player2.getBounds().findIntersection(fooga.getBounds()))
+        {
+            player2.Reset();   // Kill player
+        }
 
 
         // 🔥 SNOWBALL vs ENEMY
-        if (boton.isAlive() && B.checkactive() && B.getbounds().findIntersection(boton.getBounds()))
+        if (boton.isAlive() && B1.checkactive() && B1.getbounds().findIntersection(boton.getBounds()))
         {
             
-            if (B.checkactive() && B.getbounds().findIntersection(boton.getBounds())) {
+            if (B1.checkactive() && B1.getbounds().findIntersection(boton.getBounds())) {
 
                 boton.onHit();  // ❄️ freeze enemy
-                B = Ball();       // remove snowball
+                B1 = Ball();       // remove snowball
             }  // reset snowball
         }
 
-        if (B.checkactive() && fooga.isAlive() && B.getbounds().findIntersection(fooga.getBounds()))
+        if (B1.checkactive() && fooga.isAlive() && B1.getbounds().findIntersection(fooga.getBounds()))
         {
             fooga.onHit();     // Hit Fooga with snowball
-            B = Ball();        // Reset snowball
+            B1 = Ball();        // Reset snowball
         }
 
-        if (boton.isAlive() &&
-            player.getBounds().findIntersection(boton.getBounds()))
+        if (boton.isAlive() && B2.checkactive() && B2.getbounds().findIntersection(boton.getBounds()))
         {
-            player.Reset();
+
+            if (B2.checkactive() && B2.getbounds().findIntersection(boton.getBounds())) {
+
+                boton.onHit();  // ❄️ freeze enemy
+                B2 = Ball();       // remove snowball
+            }  // reset snowball
         }
+
+        if (B2.checkactive() && fooga.isAlive() && B2.getbounds().findIntersection(fooga.getBounds()))
+        {
+            fooga.onHit();     // Hit Fooga with snowball
+            B2 = Ball();        // Reset snowball
+        }
+
+        //if (boton.isAlive() &&
+        //    player.getBounds().findIntersection(boton.getBounds()))
+        //{
+        //    player.Reset();
+        //}
     }
 }

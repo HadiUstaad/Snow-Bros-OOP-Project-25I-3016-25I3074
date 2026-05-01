@@ -10,9 +10,11 @@ Player::Player() {
 	vy = 0;
 
 	speed = 0.5;
-	gravity = 0.1f;
-	jumpforce = -5;
+	gravity = 0.12f;
+	jumpforce = -7.0f;
 	jumpBuffer = 0;
+
+	direction = 1;
 
 	onground = false;
 
@@ -27,10 +29,12 @@ void Player::update(Input& input, platform platforms[], int count) {
 	//left movement
 	if (input.left) {
 		vx = -speed;
+		direction = -1;
 	}
 	//right movement
 	if (input.right) {
 		vx = speed;
+		direction = 1;
 	}
 	//jump move
 
@@ -174,4 +178,16 @@ void Player::Reset() {
 	vy = 0;
 
 	Body.setPosition({ x, y });
+}
+
+void Player::setPosition(float x, float y)
+{
+	this->x = x;
+	this->y = y;
+	Body.setPosition({ x, y });
+}
+
+
+int Player::getDirection() {
+	return direction;
 }
