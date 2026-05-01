@@ -9,13 +9,29 @@ PowerUp::PowerUp(float x, float y, int duration, int cost, int type)
     effectDuration = duration;      
     gemCost = cost;                 
     isDroppedFromEnemy = false;     
-    powerType = type;               
+    powerType = type;          
+
+    shape.setSize(sf::Vector2f(getWidth(), getHeight()));
+    shape.setFillColor(sf::Color::White);       
+    shape.setPosition(sf::Vector2f(getX(), getY()));
 }
 
 
 PowerUp::~PowerUp()
 {
 
+}
+void PowerUp::draw(sf::RenderWindow& window)
+{
+    if (getActive())
+    {
+        window.draw(shape);
+    }
+}
+
+void PowerUp::applyEffect()
+{
+    setActive(false);
 }
 
 int PowerUp::getDuration()

@@ -6,6 +6,7 @@ using namespace std;
 class PowerUp : public GameObject
 {
 protected:
+    sf::RectangleShape shape;
     int effectDuration;        
     int gemCost;               
     bool isDroppedFromEnemy;    
@@ -16,9 +17,9 @@ public:
 
     virtual ~PowerUp();
 
-    virtual void applyEffect() = 0;
+    virtual void applyEffect();
 
-    virtual void draw(sf::RenderWindow& window) =0;
+    virtual void draw(sf::RenderWindow& window);
 
     int getDuration();            
     int getCost();                

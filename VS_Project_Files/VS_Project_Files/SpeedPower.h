@@ -6,18 +6,13 @@ using namespace std;
 
 class SpeedPowerUp : public PowerUp
 {
-private:
-    sf::RectangleShape shape;      
+private:  
     float speedMultiplier;          
 
 public:
     SpeedPowerUp(float x, float y, bool dropped);
 
     ~SpeedPowerUp() override = default;
-
-    void applyEffect() override;
     
-    void draw(sf::RenderWindow& window);
-
     float getSpeedMultiplier();
 };
