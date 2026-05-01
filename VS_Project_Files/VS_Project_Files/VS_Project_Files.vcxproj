@@ -139,10 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Authenticate.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Botom.cpp" />
     <ClCompile Include="code.cpp" />
+    <ClCompile Include="DataBaseManagement.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="Enemies.cpp" />
     <ClCompile Include="Enemy_factory.cpp" />
@@ -153,14 +155,19 @@
     <ClCompile Include="GroundEnemy.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Knife.cpp" />
+    <ClCompile Include="LeaderBoard.cpp" />
+    <ClCompile Include="Login.cpp" />
     <ClCompile Include="MenuDisplay.cpp" />
     <ClCompile Include="Mogera.cpp" />
+    <ClCompile Include="Password.cpp" />
+    <ClCompile Include="Password.h" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Tornado.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Authenticate.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="Botom.h" />
@@ -179,8 +186,10 @@
     <ClInclude Include="GroundEnemy.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Knife.h" />
+    <ClInclude Include="LeaderBoard.h" />
     <ClInclude Include="LevelConfig.h" />
     <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="Login.h" />
     <ClInclude Include="MenuDisplay.h" />
     <ClInclude Include="Mogera.h" />
     <ClInclude Include="Mogera_child.h" />

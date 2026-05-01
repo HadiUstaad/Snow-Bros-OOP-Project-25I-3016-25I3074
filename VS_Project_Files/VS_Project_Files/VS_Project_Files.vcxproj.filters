@@ -21,6 +21,12 @@
     <ClCompile Include="Mogera.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Enemy_factory.cpp" />
+    <ClCompile Include="DataBaseManagement.cpp" />
+    <ClCompile Include="Password.cpp" />
+    <ClCompile Include="Password.h" />
+    <ClCompile Include="Authenticate.cpp" />
+    <ClCompile Include="Login.cpp" />
+    <ClCompile Include="LeaderBoard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -50,6 +56,9 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Tornado.h" />
     <ClInclude Include="DatabaseManagement.h" />
+    <ClInclude Include="Authenticate.h" />
+    <ClInclude Include="Login.h" />
+    <ClInclude Include="LeaderBoard.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="RussoOne-Regular.ttf" />
