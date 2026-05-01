@@ -110,3 +110,7 @@ void Enemies::setSpeed(float s)
 {
     movespeed = s;
 }
+
+sf::FloatRect Enemies::getBounds() {
+    return hitbox.getGlobalBounds();
+}
