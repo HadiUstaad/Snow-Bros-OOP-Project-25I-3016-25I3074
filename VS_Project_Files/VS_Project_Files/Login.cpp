@@ -1,4 +1,5 @@
 #include "Login.h"
+#include <iostream>
 using namespace std;
 
 
@@ -9,6 +10,11 @@ LoginScreen::LoginScreen(sf::RenderWindow& gameWindow, Authenticate* auth)
     usernameField(font), passwordField(font),
     errorText(font), loginButton(font), registerButton(font)
 {
+    if (!font.openFromFile("RussoOne-Regular.ttf"))
+    {
+        cout << "Error: Can not load font 'RussoOne-Regular.ttf'\n";
+    }
+
     authManager = auth;
     selectedField = 0;
     showError = false;

@@ -6,6 +6,9 @@
 #include "Ball.h"
 #include "Fooga.h"
 #include<iostream>
+#include<string>
+#include"LeaderBoard.h"
+#include "DatabaseManagement.h"
 #include<SFML/Graphics.hpp>
 using namespace std;
 
@@ -14,7 +17,9 @@ using namespace std;
 enum GameState {
     MENU,
     PLAYING,
+    LEADER_BOARD,
     GAME_OVER
+
 };
 
 
@@ -74,16 +79,29 @@ private:
 
     //Game over
     bool gameOverPrinted;
+    bool winPrinted;
     sf::Text gameOverText;
     //sf::Texture heartTexture;
     //sf::Sprite heartSprite1[3]; // player 1
     //sf::Sprite heartSprite2[3]; // player 2
+
+    // Database and Leaderboard system
+    FileManage* fileManager;           
+    LeaderboardScreen* leaderboard;    
+    string playerName1;              
+    string playerName2;
+
 public:
     game();
     void Run();
     void update();
     void UpdatescoreUI();
     void loadLevel(int level);
+
+    ~game();                  
+    void submitScores();      
+    void showLeaderboard();    
+    void hideLeaderboard(); 
 };
 
 

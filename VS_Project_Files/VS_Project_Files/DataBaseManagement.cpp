@@ -100,10 +100,9 @@ void SaveData::RemoveSeperator(const string& input)
         characterSelected = stringToInt(data[5]);
     }
 
-    for (int i = 0; count>=6 && count<=15; i++)
+    for (int i = 0, count = 6; count <= 15; i++, count++)
     {
-        levelsCompleted[i] = stringToInt(data[count]);  //check logiv
-        count++;
+        levelsCompleted[i] = stringToInt(data[count]);
     }
 }
 
@@ -135,7 +134,7 @@ int SaveData::stringToInt(const string& input)
     int result = 0;
     for (int i = 0; i < input.size(); i++)
     {
-        result *= 10;   // shigts units tens hundreds
+        result *= 10;   // shifts units tens hundreds
         result += input[i] - '0';       // adds the number by subtracting ASCII value
        
     }
@@ -331,10 +330,22 @@ void FileManage::getTopScores(string names[10], int scores[10])
             {
                 // move all things below this spot down by one
                 // start from k and m+1 becomes m bcz original m was ffilled by k
-                for (int m = k; m < 10; m++)
+                int tempScore = scores[k];
+                string tempName = names[k];
+
+                for (int m = k; m < 9; m++)
                 {
-                    scores[m+1] = scores[m];
-                    names[m+1] = names[m];
+                    // 1. Save the person currently sitting in the next seat
+                    int nextScore = scores[m + 1];
+                    string nextName = names[m + 1];
+
+                    // 2. Put our held person into that next seat
+                    scores[m + 1] = tempScore;
+                    names[m + 1] = tempName;
+
+                    // 3. The person we just kicked out is now the one we are holding
+                    tempScore = nextScore;
+                    tempName = nextName;
                 }
                 
                 // insert the new high score in the empty spot or k
@@ -406,6 +417,14 @@ bool FileManage::writeLine(const string& filename, int lineNumber, const string&
     {
         outFile << lines[i] << endl;
     }
+
+    // if save file is missing lines or has empty line 
+    // then add empty lines. 
+    // before this the files loaded were empty due to file being ovverwritten by nothing
+    for (int i = existingLines;i < lineNumber;i++)
+    {
+        outFile << endl;
+    }
     // we re write the modified line with data 
     outFile << data << endl;
     // now we right the next lines aafter
@@ -460,7 +479,7 @@ int FileManage::findName(const string& username)
             {
                 break;
             }
-            current += line[i];
+            current += line[j];
         }
 
         if (current == username)

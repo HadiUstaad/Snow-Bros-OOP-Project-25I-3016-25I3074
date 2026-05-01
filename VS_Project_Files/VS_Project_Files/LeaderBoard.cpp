@@ -1,5 +1,6 @@
 #include "LeaderBoard.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
 LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* fm)
@@ -7,7 +8,11 @@ LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* f
 {
     fileManager = fm;
 
-
+    // this loads the font and checks if it is loaded
+    if (!font.openFromFile("RussoOne-Regular.ttf"))
+    {
+        cout << "Error: Can not load font 'RussoOne-Regular.ttf'\n";
+    }
     for (int i = 0; i < 10; i++)
     {
         RanksTexts[i] = new sf::Text(font);

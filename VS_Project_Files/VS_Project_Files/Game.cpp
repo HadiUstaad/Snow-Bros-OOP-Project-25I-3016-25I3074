@@ -1,3 +1,4 @@
+#pragma once
 #include "Game.h"
 #include <SFML/Graphics.hpp>
 #include "MenuDisplay.h"
@@ -82,9 +83,35 @@ game::game()
     livesText2.setPosition({ 650, 40 });
 
     //Gameover
+    winPrinted = false;
     gameOverPrinted = false;
     gameOverText.setFillColor(sf::Color::Red);
     gameOverText.setPosition({ 200, 250 });
+
+    //LeaderBoard
+   
+    fileManager = new FileManage("snowbros_Hazai.db");   // db is extension of data base files.
+    leaderboard = new LeaderboardScreen(window, fileManager);
+    playerName1 = "P3";         // Modify these later when taken from login.
+    playerName2 = "P1";
+    fileManager->addUser(playerName1, "000000000");
+    fileManager->addUser(playerName2, "000000000");
+
+}
+
+game::~game()
+{
+    // check to see ke leaderboard exist karta bhi hai ya nhi. 
+    // if not exist avoid error by deleting
+    if (leaderboard != 0)   
+    {
+        delete leaderboard;
+    }
+
+    if (fileManager != 0)
+    {
+        delete fileManager;
+    }
 }
 
 void game::Run()
@@ -102,6 +129,7 @@ void game::Run()
             if (event->is<sf::Event::KeyPressed>())
             {
                 auto key = event->getIf<sf::Event::KeyPressed>();
+
 
                 // 🔥 SHOOT
                 if (key && key->code == sf::Keyboard::Key::F)
@@ -136,12 +164,36 @@ void game::Run()
                     EnemyHitbox = !EnemyHitbox;
                 }
 
+                if (key && key->code == sf::Keyboard::Key::Escape)
+                {
+                    if (currentState == GAME_OVER)
+                    {
+                        // Reset game variables so for next play
+                        lives1 = 3;
+                        lives2 = 3;
+                        score1 = 0;
+                        score2 = 0;
+                        currentLevel = 1;
+                        gameOverPrinted = false;
+                        loadLevel(1);
+
+                        currentState = MENU; 
+                    }
+                   
+                }
+
                 if (key && key->code == sf::Keyboard::Key::Enter) {
                     
                     int selected = mainMenu.getSelectedIndex();
                     
                     if (selected == 0)
                         currentState = PLAYING;
+
+                    else if (selected == 2)
+                    {
+                        currentState = LEADER_BOARD;
+                        showLeaderboard();
+                    }
                     
                     else if (selected == 4)
                         window.close();
@@ -155,6 +207,10 @@ void game::Run()
         input2.updatePlayer2();
         if (currentState == MENU)
             mainMenu.handleInput();
+        else if (currentState == LEADER_BOARD)
+        {
+            leaderboard->handleInput();
+        }
 
         // 🔥 GAME UPDATE
         update();
@@ -247,6 +303,17 @@ void game::Run()
             //    window.draw(heartSprite2[i]);
             //}
         }
+        else if (currentState == LEADER_BOARD)
+        {
+            leaderboard->draw();  
+
+            // Check if user pressed ESC
+            if (leaderboard->getIsVisible() == false)
+            {
+                currentState = MENU;  // Return to menu
+                leaderboard->show();  // Reset visibility of menu
+            }
+        }
         else if (currentState == GAME_OVER)
         {
             if (!gameOverPrinted)
@@ -282,6 +349,7 @@ void game::update()
        
         for (int i = 0; i < enemyCount; i++)
         {
+            // modify add clock for collision spaces 
             if (enemies[i]->isAlive() && lives1 > 0 &&
                 player1.getBounds().findIntersection(enemies[i]->getBounds()))
             {
@@ -347,7 +415,7 @@ void game::update()
         livesText2.setString("P2 Lives: " + std::to_string(lives2));
     }
 
-    if (AllDead())
+    if (AllDead() && !winPrinted)
     {
         currentLevel++;
 
@@ -358,12 +426,18 @@ void game::update()
         else
         {
             cout << "YOU WIN!" << endl;
+            winPrinted = 1;
         }
     }
 
     //game over condition
     if (lives1 <= 0 && lives2 <= 0)
     {
+        // this submits scores before showing game over screen
+        if (gameOverPrinted == false)
+        {
+            submitScores();
+        }
         currentState = GAME_OVER;
         return;
     }
@@ -423,4 +497,43 @@ bool game::AllDead()
             return false;
     }
     return true;
+}
+
+
+// Submit both player scores to the database when both players die
+void game::submitScores()
+{
+    
+    if (playerName1.empty())  // only submit if name exists
+    {
+    }
+    else
+    {
+        fileManager->addScore(playerName1, score1);
+    }
+ 
+    if (!playerName2.empty())  
+    {
+        fileManager->addScore(playerName2, score2);
+    }
+
+    // Update leaderboard display with new scores
+    leaderboard->updateLeaderboard();
+}
+
+// change gamestae to leaderboard
+void game::showLeaderboard()
+{
+    // refresh before showing
+    leaderboard->updateLeaderboard();
+    leaderboard->show();
+
+    currentState = LEADER_BOARD;
+}
+
+// return to menu
+void game::hideLeaderboard()
+{
+    leaderboard->hide();
+    currentState = MENU;
 }
