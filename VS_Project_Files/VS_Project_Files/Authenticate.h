@@ -4,40 +4,34 @@
 #include "Password.h"
 using namespace std;
 
-// Manages user authentication: login and registration
-class AuthManager
+// Manages all of the user authentication which means it includes login and registration
+class Authenticate
 {
 private:
-    FileManage* database;       // pointer to file database (not owned)
-    string currentUser;         // username of the currently logged-in user
+    FileManage* database;       // pointer to file but the file isnt owned aggregation
+    string username;         // username of the currently logged-in user
     bool isLoggedIn;            // is someone logged in right now
 
 public:
-    // Constructor takes database reference
-    AuthManager(FileManage* db);
 
-    // Destructor (does not delete database)
-    ~AuthManager();
+    Authenticate(FileManage* db);
+    ~Authenticate();
 
-    // Register a new user — returns true on success
+    // Register a new user if done then output 1 else 0
     bool registerUser(const string& username, const string& password);
 
-    // Login an existing user — returns true on success
+    // true on success
     bool loginUser(const string& username, const string& password);
 
-    // Logout current user
     void logout();
 
-    // Get the username of the logged-in user
-    string getCurrentUser() const;
+    string getUsername() const;
 
-    // Returns true if someone is currently logged in
-    bool isUserLoggedIn() const;
+    bool isloggedin() const;
 
-private:
-    // Validates username: 3-20 alphanumeric/_  characters
+    // 3- 20 charachter are valid
     bool isValidUsername(const string& username) const;
 
-    // Validates password: minimum 6 characters
+    //6-8 chars
     bool isValidPassword(const string& password) const;
 };

@@ -10,7 +10,7 @@ class LoginScreen : public Display
 {
 private:
     sf::RenderWindow& window;       // reference to game window
-    AuthManager* authManager;       // reference to auth system (not owned)
+    Authenticate* authManager;       // reference to auth system (not owned)
 
     sf::Font font;
     sf::Text titleText;
@@ -22,14 +22,14 @@ private:
     sf::Text loginButton;
     sf::Text registerButton;
 
-    string usernameBuffer;          // typed username
-    string passwordBuffer;          // typed password (plain, never displayed)
+    string enteredName;             // typed username
+    string enteredPassword;          // typed password. it is .....
     int selectedField;              // 0=username 1=password 2=login 3=register
     bool showError;
     string errorMessage;
 
 public:
-    LoginScreen(sf::RenderWindow& gameWindow, AuthManager* auth);
+    LoginScreen(sf::RenderWindow& gameWindow, Authenticate* auth);
     ~LoginScreen() override;
 
     void draw() override;
@@ -38,7 +38,6 @@ public:
     // Returns true if a user is currently logged in
     bool wasLoginSuccessful() const;
 
-private:
     void submitLogin();
     void switchToRegister();
     void appendCharacter(char c);

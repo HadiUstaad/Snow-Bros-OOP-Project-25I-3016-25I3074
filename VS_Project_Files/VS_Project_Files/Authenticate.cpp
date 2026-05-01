@@ -1,82 +1,99 @@
 #include "Authenticate.h"
 using namespace std;
 
-AuthManager::AuthManager(FileManage* db)
+Authenticate::Authenticate(FileManage* db)
 {
     database = db;
     isLoggedIn = false;
-    currentUser = "";
+    username = "";
 }
 
-AuthManager::~AuthManager()
+Authenticate::~Authenticate()
 {
-    // database is not owned — do not delete
+    // database is not owned so it will not be deleted
 }
 
-bool AuthManager::registerUser(const string& username, const string& password)
+bool Authenticate::registerUser(const string& username, const string& password)
 {
     if (!isValidUsername(username))
+    {
         return false;
+    }
 
     if (!isValidPassword(password))
+    {
         return false;
+    }
 
     if (database->userExists(username))
+    {
         return false;
+    }
 
-    string hashedPassword = Password::hashPassword(password);
-    return database->addUser(username, hashedPassword);
+    // if user is really a new user and passes all checks then the password is hased and a new user is added
+    string hash = Password::hashPassword(password);
+    return database->addUser(username, hash);
 }
 
-bool AuthManager::loginUser(const string& username, const string& password)
+bool Authenticate::loginUser(const string& username, const string& password)
 {
-    string hashedPassword = Password::hashPassword(password);
+    // we store the incoming password and convert it into hash.
+    // then compare the hash with the og  password
+    string hash = Password::hashPassword(password);
 
-    if (!database->verifyPassword(username, hashedPassword))
+    if (!database->verifyPassword(username, hash))
+    {
         return false;
+    }
 
-    currentUser = username;
+    this->username = username;
     isLoggedIn = true;
     return true;
 }
 
-void AuthManager::logout()
+void Authenticate::logout()
 {
     isLoggedIn = false;
-    currentUser = "";
+    username = "";
 }
 
-string AuthManager::getCurrentUser() const
+string Authenticate::getUsername() const
 {
-    return currentUser;
+    return username;
 }
 
-bool AuthManager::isUserLoggedIn() const
+bool Authenticate::isloggedin() const
 {
     return isLoggedIn;
 }
 
-bool AuthManager::isValidUsername(const string& username) const
+bool Authenticate::isValidUsername(const string& username) const
 {
-    int len = (int)username.size();
-    if (len < 3 || len > 20)
-        return false;
-
-    for (int i = 0; i < len; i++)
+    int len = username.size();
+    if (len < 3 || len > 20) // length check
     {
-        char c = username[i];
-        bool valid = (c >= 'a' && c <= 'z') ||
-            (c >= 'A' && c <= 'Z') ||
-            (c >= '0' && c <= '9') ||
-            (c == '_');
-        if (!valid)
-            return false;
+        return false;
     }
 
+    for (int i = 0; i < len; i++) // valid charachter check
+    {
+        char c = username[i];
+        
+        if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
+            (c >= '0' && c <= '9') || (c == '_')))
+        {
+            return false;
+        }
+
+    }
     return true;
 }
 
-bool AuthManager::isValidPassword(const string& password) const
+bool Authenticate::isValidPassword(const string& password) const
 {
-    return (int)password.size() >= 6;
+    if (password.size() >= 6 && password.size() <= 8)
+    {
+        return 1;
+    }
+    return 0;
 }

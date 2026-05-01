@@ -1,35 +1,112 @@
-#pragma once
+#include "LeaderBoard.h"
 #include <string>
-#include "Display.h"
-#include "DatabaseManagement.h"
-#include <SFML/Graphics.hpp>
 using namespace std;
 
-// Leaderboard screen — displays top 10 scores
-class LeaderboardScreen : public Display
+LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* fm)
+    : Display(true), window(gameWindow), titleText(font), back(font)
 {
-private:
-    sf::RenderWindow& window;       // reference to game window
-    FileManage* fileManager;        // reference to file/score system (not owned)
+    fileManager = fm;
 
-    sf::Font font;
-    sf::Text titleText;
-    sf::Text entryTexts[10];        // one text per leaderboard entry
-    sf::Text backButton;
 
-    string leaderboardNames[10];    // top-10 usernames
-    int    leaderboardScores[10];   // top-10 scores
+    for (int i = 0; i < 10; i++)
+    {
+        RanksTexts[i] = new sf::Text(font);
+        leaderboardUserNames[i] = "";
+        leaderboardScores[i] = 0;
+    }
 
-public:
-    LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* fm);
-    ~LeaderboardScreen() override;
+    // Title
+    titleText.setFont(font);
+    titleText.setString("LEADERBOARD");
+    titleText.setCharacterSize(36);
+    titleText.setFillColor(sf::Color::White);
+    titleText.setPosition(sf::Vector2f(260, 30));
 
-    void draw() override;
-    void handleInput() override;
+    // Entry texts
+    for (int i = 0; i < 10; i++)
+    {
+        RanksTexts[i]->setFont(font);
+        RanksTexts[i]->setCharacterSize(18);
+        RanksTexts[i]->setFillColor(sf::Color::Yellow);
+        RanksTexts[i]->setPosition(sf::Vector2f(150, 100 + i * 40));
+    }
 
-    // Reload data from database and refresh display
-    void refreshLeaderboard();
+    // Back button hint
+    back.setFont(font);
+    back.setString("Press ESC to go back");
+    back.setCharacterSize(20);
+    back.setFillColor(sf::Color::White);
+    back.setPosition(sf::Vector2f(250, 540));
 
-private:
-    void updateDisplay();
-};
+   updateLeaderboard();
+}
+
+LeaderboardScreen::~LeaderboardScreen()
+{
+}
+
+void LeaderboardScreen::draw()
+{
+    // if visibility is off no point to display
+    if (!isVisible)
+    {
+        return;
+    }
+
+    window.draw(titleText);
+
+    for (int i = 0; i < 10; i++)
+    {
+        window.draw(*RanksTexts[i]);
+    }
+
+    window.draw(back);
+}
+
+void LeaderboardScreen::handleInput()
+{
+    if (!isVisible)
+    {
+        return;
+    }
+
+    static sf::Clock inputTimer; // static so clock keeps ticking
+    if (inputTimer.getElapsedTime().asMilliseconds() < 300)
+    {
+        return;
+    }
+
+    // agar escape kardiya to ye menu hide hojai ga
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+    {
+        isVisible = false;
+        inputTimer.restart();
+    }
+}
+
+void LeaderboardScreen::updateLeaderboard()
+{
+    fileManager->getTopScores(leaderboardUserNames, leaderboardScores);
+
+
+    for (int i = 0; i < 10; i++)
+    {
+        
+        string rank = to_string(i + 1);
+        string name; 
+        if (leaderboardUserNames[i].empty() == true)
+        {
+            name = "--- N/L ---";
+        }
+        else
+        {
+            name = leaderboardUserNames[i];
+        }
+        string score = to_string(leaderboardScores[i]);
+
+        // modifiy to look better later
+        string display = rank + ".  " + name + "   | " + score;
+        RanksTexts[i]->setString(display);
+    }
+}
+

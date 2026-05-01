@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Password.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Password.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Authenticate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Authenticate.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\password.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\password.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Login.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Login.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\DatabaseManagement.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\DatabaseManagement.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Login.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\LeaderBoard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\LeaderBoard.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\LeaderBoard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\LeaderBoard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Authenticate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Authenticate.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,40 +47,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Password.cpp",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Password.cpp",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Password.cpp",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Password.cpp",
-              "RelativeToolTip": "VS_Project_Files\\Password.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-29T19:44:53.673Z",
+              "Title": "Authenticate.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Authenticate.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Authenticate.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Authenticate.h",
+              "RelativeToolTip": "VS_Project_Files\\Authenticate.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACoAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-01T01:49:25.228Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Password.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Password.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Password.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Password.h",
-              "RelativeToolTip": "VS_Project_Files\\Password.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "Authenticate.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Authenticate.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Authenticate.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Authenticate.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Authenticate.cpp",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAABoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-01T01:49:37.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LeaderBoard.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\LeaderBoard.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\LeaderBoard.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\LeaderBoard.cpp",
+              "RelativeToolTip": "VS_Project_Files\\LeaderBoard.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-01T01:50:42.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LeaderBoard.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\LeaderBoard.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\LeaderBoard.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\LeaderBoard.h",
+              "RelativeToolTip": "VS_Project_Files\\LeaderBoard.h",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-29T19:44:52.745Z",
+              "WhenOpened": "2026-05-01T01:50:32.711Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DatabaseManagement.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\DatabaseManagement.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\DatabaseManagement.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\DatabaseManagement.h",
-              "RelativeToolTip": "VS_Project_Files\\DatabaseManagement.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAACAAAAAAAAAA==",
+              "Title": "Login.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Login.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Login.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Login.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Login.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-01T01:49:55.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Login.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Login.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Login.h",
+              "RelativeToolTip": "VS_Project_Files\\Login.h",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAC8AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-29T14:47:47.669Z",
+              "WhenOpened": "2026-05-01T01:49:54.769Z",
               "EditorCaption": ""
             }
           ]

@@ -5,19 +5,19 @@
 #include <SFML/Graphics.hpp>
 using namespace std;
 
-// Leaderboard screen — displays top 10 scores
+// display top 10 scores
 class LeaderboardScreen : public Display
 {
 private:
     sf::RenderWindow& window;       // reference to game window
-    FileManage* fileManager;        // reference to file/score system (not owned)
+    FileManage* fileManager;        // aggregation
 
     sf::Font font;
     sf::Text titleText;
-    sf::Text entryTexts[10];        // one text per leaderboard entry
-    sf::Text backButton;
+    sf::Text* RanksTexts[10];        // one text per leaderboard entry
+    sf::Text back;
 
-    string leaderboardNames[10];    // top-10 usernames
+    string leaderboardUserNames[10];    // usernames of the top 10 scorers
     int    leaderboardScores[10];   // top-10 scores
 
 public:
@@ -28,8 +28,7 @@ public:
     void handleInput() override;
 
     // Reload data from database and refresh display
-    void refreshLeaderboard();
+    void updateLeaderboard();  
+    
 
-private:
-    void updateDisplay();
 };
