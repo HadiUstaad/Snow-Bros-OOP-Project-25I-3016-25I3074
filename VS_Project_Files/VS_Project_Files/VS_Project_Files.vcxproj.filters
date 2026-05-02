@@ -35,6 +35,7 @@
     <ClCompile Include="Mogera_child.cpp" />
     <ClCompile Include="GamaKichi.cpp" />
     <ClCompile Include="Gamakichi_rocket.cpp" />
+    <ClCompile Include="Shop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />

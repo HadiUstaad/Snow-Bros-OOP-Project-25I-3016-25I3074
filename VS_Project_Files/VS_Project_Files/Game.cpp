@@ -13,7 +13,9 @@ game::game()
     : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180) ,scoreText1(font, "P1: 0", 20),
     scoreText2(font, "P2: 0", 20) , levelText(font, "Level 1", 40) , livesText1(font, "Lives: 3", 20), livesText2(font, "Lives: 3", 20)
     , gameOverText(font, "GAME OVER", 50) , 
-    levelCompleteText(font, "LEVEL COMPLETE", 50) , levelCompleteText2(font,"Press Enter to continue",20)
+    levelCompleteText(font, "LEVEL COMPLETE", 50) , levelCompleteText2(font,"Press Enter to continue",20),
+    gemText1(font, "P1 Gems: 0", 18),gemText2(font, "P2 Gems: 0", 18),
+    bossHealthText(font, "BOSS HP", 14)
 {
 
     srand(time(0));// for random generation
@@ -69,6 +71,14 @@ game::game()
     score1 = 0;
     score2 = 0;
 
+    CointoGemValue = 10;
+
+    // null enemy pointer
+    enemyCount = 0;
+    for (int i = 0; i < 15; i++)
+    {
+        enemies[i] = nullptr;
+    }
     //level system
     currentLevel = 1;
     loadLevel(currentLevel);
@@ -93,8 +103,8 @@ game::game()
     lives1 = 3;
     lives2 = 3;
 
-    livesText1.setPosition({ 10, 40 });
-    livesText2.setPosition({ 650, 40 });
+    livesText1.setPosition({ 10, 58 });
+    livesText2.setPosition({ 620, 58 });
 
     //Gameover
     winPrinted = false;
@@ -111,12 +121,48 @@ game::game()
     fileManager->addUser(playerName1, "000000000");
     fileManager->addUser(playerName2, "000000000");
 
+    // pause screen
+    pauseScreen = new PauseScreen(window);
+
+    //currency gem
+    gemText1.setFillColor(sf::Color::Yellow);
+    gemText1.setPosition({ 10, 35 });
+    gemText2.setFillColor(sf::Color::Yellow);
+    gemText2.setPosition({ 620, 35 });
+
+
+    // Boss settings
+    isBossLevel = false;
+
+    bossHealthBarBg.setSize(sf::Vector2f(306, 24));
+    bossHealthBarBg.setFillColor(sf::Color(80, 0, 0));
+    bossHealthBarBg.setPosition({ 247, 11 });
+
+    bossHealthBarFill.setSize(sf::Vector2f(300, 18));
+    bossHealthBarFill.setFillColor(sf::Color::Red);
+    bossHealthBarFill.setPosition({ 250, 8 });
+
+    bossHealthText.setCharacterSize(13);
+    bossHealthText.setFillColor(sf::Color::White);
+    bossHealthText.setPosition({ 375, 10 });
+
 }
 
 game::~game()
 {
     // check to see ke leaderboard exist karta bhi hai ya nhi. 
     // if not exist avoid error by deleting
+    
+    for (int i = 0; i < 15; i++)
+    {
+        if (enemies[i] != nullptr)
+        {
+            delete enemies[i];
+            enemies[i] = nullptr;
+        }
+    }
+    enemyCount = 0;
+
     if (leaderboard != 0)   
     {
         delete leaderboard;
@@ -126,6 +172,10 @@ game::~game()
     {
         delete fileManager;
     }
+    if (pauseScreen != 0)
+    {
+        delete pauseScreen;
+    }
 }
 
 void game::Run()
@@ -134,6 +184,8 @@ void game::Run()
 
     while (window.isOpen())
     {
+
+        float deltaTime = clock.restart().asSeconds();
         // 🔥 EVENT LOOP (SFML 3)
         while (const std::optional event = window.pollEvent())
         {
@@ -178,6 +230,9 @@ void game::Run()
                     EnemyHitbox = !EnemyHitbox;
                 }
 
+             
+
+
                 if (key && key->code == sf::Keyboard::Key::Escape)
                 {
                     if (currentState == GAME_OVER)
@@ -187,12 +242,25 @@ void game::Run()
                         lives2 = 3;
                         score1 = 0;
                         score2 = 0;
+
+                        // as gems buy powerups.so the need not be stored after gameover or wins
+                        gems1.reset();
+                        gems2.reset();
+
                         currentLevel = 1;
                         gameOverPrinted = false;
                         loadLevel(1);
 
                         currentState = MENU; 
                     }
+                    else if (currentState == PLAYING)
+                    {
+                        // shows pause sccreen and resets bools resume and quit
+                        currentState = PAUSED;
+                        pauseScreen->show();
+                        pauseScreen->resetBool();
+                    }
+
                    
                 }
 
@@ -236,9 +304,12 @@ void game::Run()
         {
             leaderboard->handleInput();
         }
-
+        else if (currentState == PAUSED)
+        {
+            pauseScreen->handleInput();
+        }
        
-        update();
+        update(deltaTime);
         B1.update();
         B2.update();// Snowball update MUST be before rendering
 
@@ -252,9 +323,7 @@ void game::Run()
         else if (currentState == PLAYING)
         {
 
-            float deltaTime = clock.restart().asSeconds();
-
-      
+                  
             if (showLevelText)
             {
                 levelDisplayTimer -= deltaTime;
@@ -295,34 +364,86 @@ void game::Run()
             player1.draw(window);
             player2.draw(window);
             
-
             for (int i = 0; i < enemyCount; i++)
             {
-                enemies[i]->draw(window);//for multiple enemies
+                if (enemies[i] != nullptr && enemies[i]->isAlive())
+                {
+                    enemies[i]->draw(window);//for multiple enemies
+                }
             }
+            
             B1.draw(window);
             B2.draw(window);
             window.draw(scoreText1);
             window.draw(scoreText2);
+
+            window.draw(gemText1);
+            window.draw(gemText2);
             // player hitbox
             if (Hitbox)
-                player1.drawHitbox(window);
-            player2.drawHitbox(window);
-            player2.drawHitbox(window);
-            if (EnemyHitbox)
             {
-                boton.drawHitbox(window);
-                fooga.drawHitbox(window);
+                player1.drawHitbox(window);
+                player2.drawHitbox(window);
             }
 
-            if (showLevelText)
+            if (EnemyHitbox)
+            {
+                
+                for (int i = 0; i < enemyCount; i++)
+                {
+                    if (enemies[i] != nullptr)
+                    {
+                        enemies[i]->drawHitbox(window);
+                    }
+                }
+            }
+
+           /* if (showLevelText)
             {
                 window.draw(levelText);
-            }
+            }*/
             window.draw(livesText1);
             window.draw(livesText2);
 
+            if (isBossLevel)
+            {
+                window.draw(bossHealthBarBg);
+                window.draw(bossHealthBarFill);
+                window.draw(bossHealthText);
+            }
           
+        }
+
+        else if (currentState == PAUSED)
+        {
+            // draw game world behind so you can still see the level while paused
+            for (int i = 0; i < MAX_PLATFORMS; i++)
+            {
+                platforms[i].draw(window);
+            }
+
+            player1.draw(window);
+            player2.draw(window);
+
+            for (int i = 0; i < enemyCount; i++)
+            {
+                if(enemies[i]!= nullptr)
+                {
+                    enemies[i]->draw(window);
+                }
+            }
+
+            B1.draw(window);
+            B2.draw(window);
+
+            window.draw(scoreText1);
+            window.draw(scoreText2);
+            window.draw(livesText1);
+            window.draw(livesText2);
+            window.draw(gemText1);     
+            window.draw(gemText2);
+
+            pauseScreen->draw();
         }
         else if (currentState == LEADER_BOARD)
         {
@@ -356,12 +477,35 @@ void game::Run()
     }
 }
 
-void game::update()
+void game::update(float deltaTime)
 {
+    if (currentState == PAUSED)
+    {
+        if (pauseScreen->Resume() == true)
+        {
+           
+            currentState = PLAYING;
+            pauseScreen->resetBool();
+            clock.restart();
+        }
+        else if (pauseScreen->Quit() == true)
+        {
+            
+            currentState = MENU;
+            pauseScreen->resetBool();
+            clock.restart();
+        }
+        // return so no other logicc hapens at pause. this stops objects from moving
+        return;     
+    }
     if (currentState == PLAYING)
     {
-        float deltaTime = clock.restart().asSeconds();
-
+        
+        // prevents too much lag at explosion and many enemies
+        if (deltaTime > 0.1f)
+        {
+            deltaTime = 0.1f;
+        }
         if (invincibleTimer1 > 0)
             invincibleTimer1 -= deltaTime;
     
@@ -376,13 +520,45 @@ void game::update()
 
         for (int i = 0; i < enemyCount; i++)
         {
-            enemies[i]->updateMovement(0.002f, platforms, MAX_PLATFORMS);
+          
+            if (enemies[i] != nullptr)
+            {
+                enemies[i]->updateMovement(0.002f, platforms, MAX_PLATFORMS);
+               
+            }
+        }
+
+        // if level is 5 then we start updating mogera
+        // modify understand this
+        if (currentLevel == 5)
+        {
+            for (int i = 0; i < enemyCount; i++)
+            {
+                if (enemies[i] == nullptr)
+                {
+                    continue;
+                }
+
+                Mogera* mogera = dynamic_cast<Mogera*>(enemies[i]);
+                if (mogera != nullptr && mogera->isAlive())
+                {
+                    // begin spawning enmey etc
+                    mogera->updatePhase(deltaTime);
+                }
+            }
+                spawnMogeraChildren();
+                updateBossHealthBar();
         }
 
        
         for (int i = 0; i < enemyCount; i++)
         {
-            // modify add clock for collision spaces 
+            if (enemies[i] == nullptr || !enemies[i]->isAlive())
+            {
+                continue;
+            }
+
+            // modify add clock to prevent multiple collision at an instance 
             if (enemies[i]->isAlive() && lives1 > 0 &&
                 player1.getBounds().findIntersection(enemies[i]->getBounds()) && invincibleTimer1 <= 0)
             {
@@ -413,6 +589,10 @@ void game::update()
 
         for (int i = 0; i < enemyCount; i++)
         {
+            if (enemies[i] == nullptr || !enemies[i]->isAlive())
+            {
+                continue;
+            }
             if (enemies[i]->isAlive() &&
                 B1.checkactive() &&
                 B1.getbounds().findIntersection(enemies[i]->getBounds()))
@@ -420,7 +600,13 @@ void game::update()
                 enemies[i]->onHit();
 
                 if (!enemies[i]->isAlive())
+                {
+                    // modify create enemy . get score and return rand values
                     score1 += 100;
+                    // give gem
+                    int gemDrop = 1 + rand() % 5;
+                    gems1.addGems(gemDrop);
+                }
 
                 B1 = Ball();
             }
@@ -430,6 +616,10 @@ void game::update()
 
         for (int i = 0; i < enemyCount; i++)
         {
+            if (enemies[i] == nullptr || !enemies[i]->isAlive())
+            {
+                continue;
+            }
             if (enemies[i]->isAlive() &&
                 B2.checkactive() &&
                 B2.getbounds().findIntersection(enemies[i]->getBounds()))
@@ -437,7 +627,12 @@ void game::update()
                 enemies[i]->onHit();
 
                 if (!enemies[i]->isAlive())
+                {
+                    // modify getrand score
                     score2 += 100;
+               
+                    gems2.addGems(1 + rand() % 5);
+                }
 
                 B2 = Ball();
             }
@@ -489,6 +684,7 @@ void game::update()
         {
             coinActive[i] = false;
             score1 += 50;
+            gems1.addGems(CointoGemValue);
         }
 
         if (coinActive[i] &&
@@ -496,6 +692,7 @@ void game::update()
         {
             coinActive[i] = false;
             score2 += 50;
+            gems2.addGems(CointoGemValue);
         }
     }
 
@@ -505,6 +702,9 @@ void game::update()
 void game::UpdatescoreUI() {
     scoreText1.setString("P1: " + std::to_string(score1));
     scoreText2.setString("P2: " + std::to_string(score2));
+
+    gemText1.setString("Gems: " + std::to_string(gems1.getGems()));
+    gemText2.setString("Gems: " + std::to_string(gems2.getGems()));
 
 }
 
@@ -533,6 +733,25 @@ void game::loadLevel(int level)
     //    // later we spawn coins here
     //    return;
     //}
+    
+    // clean enemy pointer before each level
+    for (int i = 0; i < 15; i++)
+    {
+        //error
+        if (enemies[i] != nullptr)
+        {
+            delete enemies[i];
+            enemies[i] = nullptr;
+        }
+    }
+    enemyCount = 0;
+
+    isBossLevel = false;
+    
+    if (level == 5)
+    {
+        isBossLevel = true;
+    }
 
     if (level == 1)
     {
@@ -576,7 +795,22 @@ void game::loadLevel(int level)
         platforms[3] = platform(250, 300, 200, 20);
         platforms[4] = platform(150, 150, 150, 20);
     }
+    else if (level == 5)
+    {
+        enemies[0] = new Mogera(360, 200);
+        enemyCount = 1;
 
+        platformCount = 3;
+        platforms[0] = platform(0, 550, 800, 50);
+        platforms[1] = platform(50, 380, 300, 20);
+        platforms[2] = platform(450, 380, 300, 20);
+
+        coinCount = 0;
+        levelText.setString("LEVEL 5: MOGERA BOSS!");
+        levelDisplayTimer = 2.0f;
+        showLevelText = true;
+        return;
+    }
     else
     {
         platformCount = 5;
@@ -685,8 +919,10 @@ bool game::AllDead()
     // normal enemy check
     for (int i = 0; i < enemyCount; i++)
     {
-        if (enemies[i]->isAlive())
+        if (enemies[i] != nullptr && enemies[i]->isAlive())
+        {
             return false;
+        }
     }
 
     return true;
@@ -729,4 +965,76 @@ void game::hideLeaderboard()
 {
     leaderboard->hide();
     currentState = MENU;
+}
+
+
+void game::spawnMogeraChildren()
+{
+    for (int i = 0; i < enemyCount; i++)
+    {
+        if (enemies[i] == nullptr)
+        {
+            continue;
+        }
+
+        Mogera* mogera = dynamic_cast<Mogera* > (enemies[i]);
+
+        if (mogera != nullptr && mogera->getCanSpawnChild() && mogera->isAlive())
+        {
+            // find free slot in the child reserved zone
+            for (int slot = 10; slot < 15; slot++)
+            {
+                if (enemies[slot] == nullptr || !enemies[slot]->isAlive())
+                {
+                    delete enemies[slot];
+
+                    // alternate left and right spawn direction
+                    int dir = (rand() % 2 == 0) ? 1 : -1;
+                    float cx = mogera->getX() + (dir > 0 ? mogera->getWidth() + 5 : -30);
+                    float cy = mogera->getY();
+
+                    enemies[slot] = new MogeraChild(cx, cy, dir);
+
+                    if (slot >= enemyCount)
+                        enemyCount = slot + 1;
+
+                    break;
+                }
+            }
+
+            // Altered: clear the flag so we wait for next spawnMinions call
+            mogera->setCanSpawnChild(false);
+        }
+    }
+}
+
+void game::updateBossHealthBar()
+{
+    if (!isBossLevel)
+        return;
+
+    for (int i = 0; i < enemyCount; i++)
+    {
+        if (enemies[i] == nullptr)
+            continue;
+
+        // always use dynamic cast. 
+        // basically agar to enemy boss ban sakta hai then ban jai warna na banay
+        Boss* boss = dynamic_cast<Boss*>(enemies[i]);
+
+        if (boss != nullptr && boss->isAlive())
+        {
+            int maxHp = 30;     // Mogera has 30 HP
+            float fraction = (float)boss->getHealth() / (float)maxHp;
+
+            if (fraction < 0)
+                fraction = 0;
+
+            bossHealthBarFill.setSize(sf::Vector2f(300.f * fraction, 18));
+            return;
+        }
+    }
+
+    // Altered: boss is dead - shrink bar to zero
+    bossHealthBarFill.setSize(sf::Vector2f(0, 18));
 }

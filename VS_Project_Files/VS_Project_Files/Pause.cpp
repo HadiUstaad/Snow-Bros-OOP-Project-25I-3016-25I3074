@@ -8,15 +8,15 @@ PauseScreen::PauseScreen(sf::RenderWindow& gameWindow)
     shouldResume = false;
     shouldQuit = false;
 
+    font.openFromFile("RussoOne-Regular.ttf");
     
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
         menuItems[i] = new sf::Text(font);
         menuItems[i]->setFont(font);
     }
 
    
-    font.openFromFile("RussoOne-Regular.ttf");
     
     // Setup title
     titleText.setFont(font);
@@ -41,7 +41,7 @@ PauseScreen::PauseScreen(sf::RenderWindow& gameWindow)
 
 PauseScreen::~PauseScreen()
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 5; i++)
     {
        delete menuItems[i];
     }
@@ -135,7 +135,7 @@ void PauseScreen::handleInput()
         {
             // modify Logout
         }
-        else if (selected == 3)
+        else if (selected == 4)
         {
             // Quit to menu
             shouldQuit = true;
@@ -145,13 +145,6 @@ void PauseScreen::handleInput()
         inputTimer.restart();
     }
 
-    // ESC to resume
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
-    {
-        shouldResume = true;
-        hide();
-        inputTimer.restart();
-    }
 }
 
 // Returns whether resume was selected
