@@ -502,9 +502,9 @@ void game::update(float deltaTime)
     {
         
         // prevents too much lag at explosion and many enemies
-        if (deltaTime > 0.1f)
+        if (deltaTime > 0.5f)
         {
-            deltaTime = 0.1f;
+            deltaTime = 0.5f;
         }
         if (invincibleTimer1 > 0)
             invincibleTimer1 -= deltaTime;
@@ -523,7 +523,7 @@ void game::update(float deltaTime)
           
             if (enemies[i] != nullptr)
             {
-                enemies[i]->updateMovement(0.002f, platforms, MAX_PLATFORMS);
+                enemies[i]->updateMovement(deltaTime, platforms, MAX_PLATFORMS);
                
             }
         }
@@ -539,15 +539,15 @@ void game::update(float deltaTime)
                     continue;
                 }
 
-                Mogera* mogera = dynamic_cast<Mogera*>(enemies[i]);
-                if (mogera != nullptr && mogera->isAlive())
+                if (currentLevel == 5 && BossMogera != nullptr && BossMogera->isAlive())
                 {
-                    // begin spawning enmey etc
-                    mogera->updatePhase(deltaTime);
+                    BossMogera->updatePhase(deltaTime);
+                    spawnMogeraChildren();
+                    updateBossHealthBar();
                 }
+                
             }
-                spawnMogeraChildren();
-                updateBossHealthBar();
+                
         }
 
        
@@ -745,6 +745,7 @@ void game::loadLevel(int level)
         }
     }
     enemyCount = 0;
+    BossMogera = nullptr;
 
     isBossLevel = false;
     
@@ -797,7 +798,8 @@ void game::loadLevel(int level)
     }
     else if (level == 5)
     {
-        enemies[0] = new Mogera(360, 200);
+        BossMogera = new Mogera(360, 200);
+        enemies[0] = BossMogera;
         enemyCount = 1;
 
         platformCount = 3;
@@ -970,71 +972,74 @@ void game::hideLeaderboard()
 
 void game::spawnMogeraChildren()
 {
-    for (int i = 0; i < enemyCount; i++)
+    if (BossMogera != nullptr && BossMogera->getCanSpawnChild() && BossMogera->isAlive())
     {
-        if (enemies[i] == nullptr)
+        // modify so that when moger child goes off screen or is hit by a ball it is destroyed and new mob spawn
+        // find free slot in the child reserved zone
+        for (int slot = 8; slot < 15; slot++)
         {
-            continue;
-        }
-
-        Mogera* mogera = dynamic_cast<Mogera* > (enemies[i]);
-
-        if (mogera != nullptr && mogera->getCanSpawnChild() && mogera->isAlive())
-        {
-            // find free slot in the child reserved zone
-            for (int slot = 10; slot < 15; slot++)
+            if (enemies[slot] == nullptr || !enemies[slot]->isAlive())
             {
-                if (enemies[slot] == nullptr || !enemies[slot]->isAlive())
+                
+                if (enemies[slot] != nullptr) 
                 {
                     delete enemies[slot];
-
-                    // alternate left and right spawn direction
-                    int dir = (rand() % 2 == 0) ? 1 : -1;
-                    float cx = mogera->getX() + (dir > 0 ? mogera->getWidth() + 5 : -30);
-                    float cy = mogera->getY();
-
-                    enemies[slot] = new MogeraChild(cx, cy, dir);
-
-                    if (slot >= enemyCount)
-                        enemyCount = slot + 1;
-
-                    break;
                 }
-            }
 
-            // Altered: clear the flag so we wait for next spawnMinions call
-            mogera->setCanSpawnChild(false);
+                int dir = -1;
+                if (rand() % 2 == 0)
+                {
+                    dir = 1;
+                }
+
+                float cx = BossMogera->getX();
+                if (dir == 1)
+                {
+                    cx += BossMogera->getWidth() + 5;
+                }
+                else
+                {
+                    cx -= 30;
+                }
+                float cy = BossMogera->getY();
+
+                enemies[slot] = new MogeraChild(cx, cy, dir);
+
+                if (slot >= enemyCount)
+                {
+                    enemyCount = slot + 1;
+                }
+
+                break;
+            }
         }
+        BossMogera->setCanSpawnChild(false);
     }
 }
 
 void game::updateBossHealthBar()
 {
-    if (!isBossLevel)
-        return;
-
-    for (int i = 0; i < enemyCount; i++)
+    if (!isBossLevel || BossMogera == nullptr)
     {
-        if (enemies[i] == nullptr)
-            continue;
-
-        // always use dynamic cast. 
-        // basically agar to enemy boss ban sakta hai then ban jai warna na banay
-        Boss* boss = dynamic_cast<Boss*>(enemies[i]);
-
-        if (boss != nullptr && boss->isAlive())
-        {
-            int maxHp = 30;     // Mogera has 30 HP
-            float fraction = (float)boss->getHealth() / (float)maxHp;
-
-            if (fraction < 0)
-                fraction = 0;
-
-            bossHealthBarFill.setSize(sf::Vector2f(300.f * fraction, 18));
-            return;
-        }
+        return;
     }
 
-    // Altered: boss is dead - shrink bar to zero
-    bossHealthBarFill.setSize(sf::Vector2f(0, 18));
+    if (BossMogera->isAlive())
+    {
+        int maxHp = 30;
+        // type cast to float bcz reounding off to int produce uneven fractiion
+        float fraction = (float)BossMogera->getHealth() / (float)maxHp;
+
+        if (fraction < 0)
+        {
+            fraction = 0;
+        }
+
+        bossHealthBarFill.setSize(sf::Vector2f(300.f * fraction, 18)); // X size will reduce
+    }
+    else
+    {
+        // boss dead then no health
+        bossHealthBarFill.setSize(sf::Vector2f(0, 18));
+    }
 }
