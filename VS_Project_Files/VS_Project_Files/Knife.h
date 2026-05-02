@@ -21,4 +21,6 @@ public:
     void updatePosition(float deltaTime) override;
 
     void draw(sf::RenderWindow& window);
+
+    sf::FloatRect getBounds();
 };

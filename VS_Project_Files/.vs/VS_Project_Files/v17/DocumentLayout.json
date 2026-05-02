@@ -3,44 +3,44 @@
   "WorkspaceRootPath": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Knife.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Knife.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Knife.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Knife.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi_rocket.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Gamakichi_rocket.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Currency.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\GamaKichi.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\GamaKichi.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Gamakichi.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi_rocket.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Gamakichi_rocket.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Currency.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Extra_Life.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Extra_Life.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\SpeedPower.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\SpeedPower.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\SpeedPower.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\SpeedPower.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Extra_life.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Extra_life.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\PowerUP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\PowerUP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\PowerUp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\PowerUp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Pause.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Pause.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Pause.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Pause.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,131 +55,55 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Currency.cpp",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.cpp",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Currency.cpp",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.cpp",
-              "RelativeToolTip": "VS_Project_Files\\Currency.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-01T12:45:18.406Z",
+              "Title": "Game.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Game.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h",
+              "RelativeToolTip": "VS_Project_Files\\Game.h",
+              "ViewState": "AgIAABwBAAAAAAAAAAAAACIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-02T03:26:41.17Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Currency.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Currency.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.h",
-              "RelativeToolTip": "VS_Project_Files\\Currency.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-01T12:45:11.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Extra_life.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Extra_life.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Extra_life.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Extra_life.h",
-              "RelativeToolTip": "VS_Project_Files\\Extra_life.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-01T12:37:46.79Z",
+              "Title": "Game.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Game.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Game.cpp",
+              "ViewState": "AgIAAD8GAAAAAAAAAABIPT8GAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-02T04:51:50.188Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Extra_Life.cpp",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Extra_Life.cpp",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Extra_Life.cpp",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Extra_Life.cpp",
-              "RelativeToolTip": "VS_Project_Files\\Extra_Life.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Title": "Knife.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Knife.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Knife.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Knife.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Knife.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-01T12:37:38.774Z",
+              "WhenOpened": "2026-05-02T05:02:28.334Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "SpeedPower.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\SpeedPower.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\SpeedPower.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\SpeedPower.h",
-              "RelativeToolTip": "VS_Project_Files\\SpeedPower.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
+              "Title": "Knife.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Knife.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Knife.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Knife.h",
+              "RelativeToolTip": "VS_Project_Files\\Knife.h",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-01T11:44:55.279Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SpeedPower.cpp",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\SpeedPower.cpp",
-              "RelativeDocumentMoniker": "VS_Project_Files\\SpeedPower.cpp",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\SpeedPower.cpp",
-              "RelativeToolTip": "VS_Project_Files\\SpeedPower.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-01T11:44:47.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PowerUp.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\PowerUp.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\PowerUp.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\PowerUp.h",
-              "RelativeToolTip": "VS_Project_Files\\PowerUp.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-01T11:39:43.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PowerUp.cpp",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\PowerUp.cpp",
-              "RelativeDocumentMoniker": "VS_Project_Files\\PowerUp.cpp",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\PowerUp.cpp",
-              "RelativeToolTip": "VS_Project_Files\\PowerUp.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-01T11:39:34.998Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Pause.h",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Pause.h",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Pause.h",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Pause.h",
-              "RelativeToolTip": "VS_Project_Files\\Pause.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-01T10:19:39.161Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Pause.cpp",
-              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Pause.cpp",
-              "RelativeDocumentMoniker": "VS_Project_Files\\Pause.cpp",
-              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Pause.cpp",
-              "RelativeToolTip": "VS_Project_Files\\Pause.cpp",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAtwBIAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-01T10:19:33.88Z",
+              "WhenOpened": "2026-05-02T05:02:01.05Z",
               "EditorCaption": ""
             },
             {
@@ -189,6 +113,84 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Gamakichi_rocket.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi_rocket.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Gamakichi_rocket.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi_rocket.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Gamakichi_rocket.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-02T04:53:50.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Gamakichi.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Gamakichi.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi.h",
+              "RelativeToolTip": "VS_Project_Files\\Gamakichi.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-02T04:53:26.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Gamakichi_rocket.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi_rocket.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Gamakichi_rocket.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Gamakichi_rocket.h",
+              "RelativeToolTip": "VS_Project_Files\\Gamakichi_rocket.h",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAswCEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-02T04:53:25.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GamaKichi.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\GamaKichi.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\GamaKichi.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\GamaKichi.cpp",
+              "RelativeToolTip": "VS_Project_Files\\GamaKichi.cpp",
+              "ViewState": "AgIAANAAAAAAAAAAAAAswOwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-02T04:53:05.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Currency.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Currency.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Currency.cpp",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-02T03:38:58.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Currency.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Currency.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Currency.h",
+              "RelativeToolTip": "VS_Project_Files\\Currency.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-01T12:45:11.558Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -32,6 +32,9 @@
     <ClCompile Include="SpeedPower.cpp" />
     <ClCompile Include="Extra_Life.cpp" />
     <ClCompile Include="Currency.cpp" />
+    <ClCompile Include="Mogera_child.cpp" />
+    <ClCompile Include="GamaKichi.cpp" />
+    <ClCompile Include="Gamakichi_rocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
