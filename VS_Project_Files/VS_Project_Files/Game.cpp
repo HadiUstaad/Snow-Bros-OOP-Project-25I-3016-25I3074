@@ -14,8 +14,7 @@ game::game()
     scoreText2(font, "P2: 0", 20) , levelText(font, "Level 1", 40) , livesText1(font, "Lives: 3", 20), livesText2(font, "Lives: 3", 20)
     , gameOverText(font, "GAME OVER", 50) , 
     levelCompleteText(font, "LEVEL COMPLETE", 50) , levelCompleteText2(font,"Press Enter to continue",20),bgTexture(),
-    bgSprite(bgTexture)
-    levelCompleteText(font, "LEVEL COMPLETE", 50) , levelCompleteText2(font,"Press Enter to continue",20),
+    bgSprite(bgTexture),
     gemText1(font, "P1 Gems: 0", 18),gemText2(font, "P2 Gems: 0", 18),
     bossHealthText(font, "BOSS HP", 14)
 {
