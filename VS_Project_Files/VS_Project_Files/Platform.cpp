@@ -9,6 +9,8 @@ platform::platform(float x, float y, float width, float height) {
 	body.setSize({ width,height });
 	body.setPosition({ x,y });
 	body.setFillColor(sf::Color::Red);
+
+
 }
 
 

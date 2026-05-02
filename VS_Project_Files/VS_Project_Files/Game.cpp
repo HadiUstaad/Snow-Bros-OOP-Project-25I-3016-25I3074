@@ -13,7 +13,8 @@ game::game()
     : window(sf::VideoMode({ 800, 600 }), "Snow Bros") , boton(520,100) ,fooga(20,180) ,scoreText1(font, "P1: 0", 20),
     scoreText2(font, "P2: 0", 20) , levelText(font, "Level 1", 40) , livesText1(font, "Lives: 3", 20), livesText2(font, "Lives: 3", 20)
     , gameOverText(font, "GAME OVER", 50) , 
-    levelCompleteText(font, "LEVEL COMPLETE", 50) , levelCompleteText2(font,"Press Enter to continue",20)
+    levelCompleteText(font, "LEVEL COMPLETE", 50) , levelCompleteText2(font,"Press Enter to continue",20),bgTexture(),
+    bgSprite(bgTexture)
 {
 
     srand(time(0));// for random generation
@@ -289,8 +290,8 @@ void game::Run()
                     window.draw(coins[i]);
             }
             
-            
-
+            //levels
+            window.draw(bgSprite);
             // objects
             player1.draw(window);
             player2.draw(window);
@@ -306,7 +307,7 @@ void game::Run()
             window.draw(scoreText2);
             // player hitbox
             if (Hitbox)
-                player1.drawHitbox(window);
+            player1.drawHitbox(window);
             player2.drawHitbox(window);
             player2.drawHitbox(window);
             if (EnemyHitbox)
@@ -512,30 +513,21 @@ void game::UpdatescoreUI() {
 
 void game::loadLevel(int level)
 {
-    // clear previous enemies (optional for now)
-
-    //if (level == 4 || level == 9)
-    //{
-    //    enemyCount = 0;//no enemies
-
-    //    coinCount = 5;
-
-    //    for (int i = 0; i < coinCount; i++)
-    //    {
-    //        coins[i].setRadius(30);
-    //        coins[i].setFillColor(sf::Color::Yellow);
-
-    //        coins[i].setPosition({ float(100 + i * 120), 200 });
-
-    //        coinActive[i] = true;
-    //    }
-
-    //    // later we spawn coins here
-    //    return;
-    //}
+  
 
     if (level == 1)
     {
+
+        if (!bgTexture.loadFromFile("./level1.png.png"))
+        {
+            cout << "Background not loading\n";
+        }
+        else {
+            cout << "Background loaded";
+            bgSprite = sf::Sprite(bgTexture);
+        }
+        bgSprite.setTexture(bgTexture);
+        bgSprite.setScale({800.0f / bgTexture.getSize().x,600.0f / bgTexture.getSize().y});
         enemyCount = 2;
         enemies[0] = new Boton(520, 100);
         enemies[1] = new Fooga(20, 180);

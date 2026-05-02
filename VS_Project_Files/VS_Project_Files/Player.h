@@ -16,8 +16,11 @@ private:
 	bool onground;
 
 	
-	sf::RectangleShape Body;
+	//sf::RectangleShape Body;
 
+	sf::Texture texture;
+	sf::Sprite sprite;
+	sf::RectangleShape Body;
 public:
 	Player();
 	//Inputmanager remaining

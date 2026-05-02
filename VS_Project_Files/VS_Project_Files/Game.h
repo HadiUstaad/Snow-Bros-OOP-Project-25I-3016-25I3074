@@ -83,6 +83,9 @@ private:
     sf::Text livesText1;
     sf::Text livesText2;
 
+    sf::Texture bgTexture;
+    sf::Sprite bgSprite;
+
     //Game over
     bool gameOverPrinted;
     bool winPrinted;
