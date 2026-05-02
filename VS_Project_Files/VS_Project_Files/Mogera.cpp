@@ -77,6 +77,9 @@ void Mogera::spawnMinions()
     childCount++;
 
     // If reached max no minions will spawn. if it does it means next phase started so child = 0;
+
+    
+    setCanSpawnChild(true);
     if (childCount >= maxChildPerPhase)
     {
         childCount = 0;
@@ -107,5 +110,23 @@ bool Mogera::isAlive()
 
 void Mogera::onHit()
 {
+    // mogera takes damage from snowballs
+    takeDamage(5);     // each snowball hit does 5 damage. needs 6 hits to kill (30hp)
 
+    if (getHealth() <= 0)
+    {
+        alive = false;
+        setActive(false);
+        return;
+    }
+
+    
+    if (getCurrentPhase() == 2)
+    {
+        shape.setFillColor(sf::Color(180, 0, 180));   // darker magenta
+    }
+    else if (getCurrentPhase() == 3)
+    {
+        shape.setFillColor(sf::Color(100, 0, 100));   // very dark
+    }
 }

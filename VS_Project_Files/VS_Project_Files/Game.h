@@ -9,6 +9,12 @@
 #include<string>
 #include"LeaderBoard.h"
 #include "DatabaseManagement.h"
+#include "Pause.h"
+#include "Currency.h"
+#include "Mogera.h"
+#include "Mogera_child.h"
+#include "Gamakichi.h"
+#include "Gamakichi_rocket.h"
 #include<SFML/Graphics.hpp>
 using namespace std;
 
@@ -17,6 +23,7 @@ using namespace std;
 enum GameState {
     MENU,
     PLAYING,
+    PAUSED,
     LEADER_BOARD,
     LEVEL_COMPLETE,
     GAME_OVER
@@ -38,6 +45,7 @@ private:
     //Enemy
     Boton boton;
     Fooga fooga;
+    Mogera* BossMogera = nullptr;
 
     //Ball
     Ball B1;//player 1 ball
@@ -106,14 +114,35 @@ private:
     sf::CircleShape coins[10];
     bool coinActive[10];
     int coinCount;
+    int CointoGemValue;
 
     //PLatform
     int platformCount;
 
+    //pause screen added
+    PauseScreen* pauseScreen;
+
+
+    // currency gems
+    Currency gems1;
+    Currency gems2;
+    sf::Text gemText1;
+    sf::Text gemText2;
+
+   
+    sf::RectangleShape bossHealthBarBg;
+    sf::RectangleShape bossHealthBarFill;
+    sf::Text bossHealthText;
+    bool isBossLevel;       
+
+             
+    void spawnMogeraChildren();     
+    void updateBossHealthBar();    
+
 public:
     game();
     void Run();
-    void update();
+    void update(float deltatime);
     void UpdatescoreUI();
     void loadLevel(int level);
 

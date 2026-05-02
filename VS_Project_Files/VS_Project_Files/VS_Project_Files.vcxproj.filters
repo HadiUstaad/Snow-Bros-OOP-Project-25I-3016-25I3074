@@ -27,6 +27,15 @@
     <ClCompile Include="Authenticate.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="LeaderBoard.cpp" />
+    <ClCompile Include="Pause.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
+    <ClCompile Include="SpeedPower.cpp" />
+    <ClCompile Include="Extra_Life.cpp" />
+    <ClCompile Include="Currency.cpp" />
+    <ClCompile Include="Mogera_child.cpp" />
+    <ClCompile Include="GamaKichi.cpp" />
+    <ClCompile Include="Gamakichi_rocket.cpp" />
+    <ClCompile Include="Shop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -59,6 +68,11 @@
     <ClInclude Include="Authenticate.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="LeaderBoard.h" />
+    <ClInclude Include="Pause.h" />
+    <ClInclude Include="PowerUp.h" />
+    <ClInclude Include="SpeedPower.h" />
+    <ClInclude Include="Extra_life.h" />
+    <ClInclude Include="Currency.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="RussoOne-Regular.ttf" />

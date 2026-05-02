@@ -160,6 +160,7 @@ void Boton::draw(sf::RenderWindow& window)
     }
 }
 
+// modify to solve hitbox error
 void Boton::drawHitbox(sf::RenderWindow& window)
 {
     // only draws hitbox when enemy is alive and active

@@ -61,3 +61,8 @@ void Knife::draw(sf::RenderWindow& window)
         window.draw(shape);
     }
 }
+
+sf::FloatRect Knife::getBounds()
+{
+    return shape.getGlobalBounds();
+}
