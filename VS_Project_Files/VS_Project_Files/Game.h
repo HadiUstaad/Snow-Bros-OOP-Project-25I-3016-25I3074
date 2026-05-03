@@ -20,6 +20,7 @@
 #include "Knife.h"
 #include "Tornado.h"
 #include"Authenticate.h"
+#include"Shop.h"
 using namespace std;
 
 
@@ -29,6 +30,7 @@ enum GameState {
     MENU,
     PLAYING,
     PAUSED,
+    SHOP,
     LEADER_BOARD,
     LEVEL_COMPLETE,
     GAME_OVER
@@ -148,6 +150,11 @@ private:
     Authenticate* authManager;
     LoginScreen* loginScreen;
 
+
+    //shop
+    ShopScreen* shopScreen;
+    PowerUpState powerUpState;
+    int activePlayer;
     void spawnGamakichiChildren();
     void updateGamakichiBossHealthBar();
 

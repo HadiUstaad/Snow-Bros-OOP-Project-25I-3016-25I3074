@@ -133,6 +133,10 @@ game::game()
     bossHealthText.setPosition({ 375, 10 });
 
 
+
+    activePlayer = 0;
+    shopScreen = new ShopScreen(window, &gems1, &gems2, &powerUpState);
+    shopScreen->setActivePlayer(0);
     // knife for tornado
     knifeCount = 0;
     for (int i = 0; i < MAX_KNIVES; i++)
@@ -193,6 +197,10 @@ game::~game()
         delete loginScreen;
         loginScreen = nullptr;
     }
+
+    //Shop memory free
+    delete shopScreen;
+    shopScreen = nullptr;
 }
 
 void game::Run()
@@ -359,6 +367,17 @@ void game::Run()
         {
             pauseScreen->handleInput();
         }
+        else if (currentState == SHOP)
+        {
+            shopScreen->handleInput();
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+            {
+                currentState = PAUSED;
+                pauseScreen->show();
+                pauseScreen->resetBool();
+            }
+        }
         else
         {
             input1.updatePlayer1();
@@ -493,6 +512,26 @@ void game::Run()
                 leaderboard->show();
             }
         }
+        else if (currentState == SHOP)
+        {
+            window.draw(bgSprite);
+            for (int i = 0; i < MAX_PLATFORMS; i++)
+                platforms[i].draw(window);
+            player1.draw(window);
+            player2.draw(window);
+            window.draw(scoreText1);
+            window.draw(scoreText2);
+            window.draw(gemText1);
+            window.draw(gemText2);
+            window.draw(livesText1);
+            window.draw(livesText2);
+            shopScreen->draw();
+         }
+        else if (currentState == LEVEL_COMPLETE)
+        {
+            window.draw(levelCompleteText);
+            window.draw(levelCompleteText2);
+            }
         else if (currentState == LEVEL_COMPLETE)
         {
             window.draw(levelCompleteText);
@@ -515,6 +554,20 @@ void game::Run()
 void game::update(float deltaTime)
 {
    
+    if (currentState == SHOP)
+    {
+        if (shopScreen->wasPurchased())
+        {
+            int idx = shopScreen->lastPurchasedIndex();
+            if (idx == 0)  // Extra Life
+            {
+                if (activePlayer == 0) lives1++;
+                else                   lives2++;
+            }
+            shopScreen->resetPurchaseFlag();
+        }
+        return;
+    }
     if (currentState == PAUSED)
     {
         //resume
@@ -523,6 +576,13 @@ void game::update(float deltaTime)
             currentState = PLAYING;
             pauseScreen->resetBool();
             clock.restart();
+        }
+        else if (pauseScreen->Shop())
+        {
+            activePlayer = 0;  // or add logic to pick P1 vs P2
+            shopScreen->setActivePlayer(activePlayer);
+            currentState = SHOP;
+            pauseScreen->resetBool();
         }
         // quit to main menu
         else if (pauseScreen->Quit())
