@@ -5,30 +5,56 @@
 #include <SFML/Graphics.hpp>
 using namespace std;
 
-// display top 10 scores
 class LeaderboardScreen : public Display
 {
 private:
-    sf::RenderWindow& window;       // reference to game window
-    FileManage* fileManager;        // aggregation
+    sf::RenderWindow& window;
+    FileManage* fileManager;
 
+    // Fonts
     sf::Font font;
-    sf::Text titleText;
-    sf::Text* RanksTexts[10];        // one text per leaderboard entry
-    sf::Text back;
 
-    string leaderboardUserNames[10];    // usernames of the top 10 scorers
-    int    leaderboardScores[10];   // top-10 scores
+    // Background panel
+    sf::RectangleShape bgPanel;
+    sf::RectangleShape headerBar;
+
+    // Title
+    sf::Text titleText;
+
+    // Column headers
+    sf::Text colRank;
+    sf::Text colName;
+    sf::Text colScore;
+
+    // Separator lines
+    sf::RectangleShape headerSep;        // under column headers
+    sf::RectangleShape accentLine;       // decorative line under title
+
+    // Per-entry widgets (10 rows)
+    sf::Text* RanksTexts[10];       // rank number
+    sf::Text* nameTexts[10];        // player name
+    sf::Text* scoreTexts[10];       // score
+    sf::RectangleShape* rowBgs[10];           // row highlight bg
+    sf::CircleShape* rankBadges[10];       // circular badge behind rank number
+
+    // Footer
+    sf::Text back;
+    sf::RectangleShape footerLine;
+
+    // Data
+    string leaderboardUserNames[10];
+    int    leaderboardScores[10];
+
+    // Helpers
+    sf::Color getRankColor(int rank) const;      // gold/silver/bronze/normal
+    sf::Color getRankBadgeColor(int rank) const;
+    void      buildRow(int i);
 
 public:
     LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* fm);
     ~LeaderboardScreen() override;
 
-    void draw() override;
-    void handleInput() override;
-
-    // Reload data from database and refresh display
-    void updateLeaderboard();  
-    
-
+    void draw()         override;
+    void handleInput()  override;
+    void updateLeaderboard();
 };
