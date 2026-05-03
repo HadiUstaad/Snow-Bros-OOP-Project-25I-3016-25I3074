@@ -269,8 +269,34 @@ void game::Run()
                     
                     int selected = mainMenu.getSelectedIndex();
                     
-                    if (selected == 0)
+                    if (selected == 0) {
                         currentState = PLAYING;
+                    }
+                    else if (selected == 1)   // ← ADD THIS BLOCK
+                    {
+                        SaveData saveData;
+                        if (fileManager->loadGameData(playerName1, &saveData))
+                        {
+                            // Apply loaded data to game state
+                            currentLevel = saveData.currentLevel;
+                            score1 = saveData.totalScore;
+                            lives1 = saveData.livesRemaining;
+
+                            // Reset P2 fresh (save is P1-only in your current setup)
+                            score2 = 0;
+                            lives2 = 3;
+
+                            gems1.reset();
+                            gems2.reset();
+
+                            winPrinted = false;
+                            gameOverPrinted = false;
+
+                            loadLevel(currentLevel);
+                            currentState = PLAYING;
+                        }
+                        // If load fails (no save file yet), just do nothing or show a message
+                    }
 
                     else if (selected == 2)
                     {
@@ -658,6 +684,7 @@ void game::update(float deltaTime)
         if (AllDead())
         {
             currentState = LEVEL_COMPLETE;   // pause game
+            submitScores();
         }
 
         if (currentLevel <= 10)
@@ -954,20 +981,41 @@ bool game::AllDead()
 void game::submitScores()
 {
     
-    if (playerName1.empty())  // only submit if name exists
+    //if (playerName1.empty())  // only submit if name exists
+    //{
+    //}
+    //else
+    //{
+    //    fileManager->addScore(playerName1, score1);
+    //}
+ 
+    //if (!playerName2.empty())  
+    //{
+    //    fileManager->addScore(playerName2, score2);
+    //}
+
+    //// Update leaderboard display with new scores
+    //leaderboard->updateLeaderboard();
+    // Save full game state for P1
+    if (!playerName1.empty())
     {
-    }
-    else
-    {
+        SaveData data;
+        data.username = playerName1;
+        data.currentLevel = currentLevel;
+        data.totalScore = score1;
+        data.totalGems = gems1.getGems();
+        data.livesRemaining = lives1;
+        data.characterSelected = 0;
+
+        fileManager->saveGameData(playerName1, &data);
         fileManager->addScore(playerName1, score1);
     }
- 
-    if (!playerName2.empty())  
+
+    if (!playerName2.empty())
     {
         fileManager->addScore(playerName2, score2);
     }
 
-    // Update leaderboard display with new scores
     leaderboard->updateLeaderboard();
 }
 
