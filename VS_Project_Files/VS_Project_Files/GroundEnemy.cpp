@@ -17,7 +17,7 @@ void GroundEnemy::applyGravity(float deltaTime, platform platform[], int count)
     if (!isGrounded)
     {
         float max_velocity = 2500;
-        float gravity = 1000;
+        float gravity = 10;
         velocityY += gravity * deltaTime*100;
         if (velocityY > max_velocity)
         {
@@ -64,8 +64,10 @@ void GroundEnemy::applyGravity(float deltaTime, platform platform[], int count)
         }
     }
     
-    
-    //  if standing on a platform no downward speed
-    velocityY = 0;
+    if (isGrounded)
+    {
+            //  if standing on a platform no downward speed
+            velocityY = 0;
+    }
     
 }

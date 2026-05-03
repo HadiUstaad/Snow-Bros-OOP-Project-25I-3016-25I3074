@@ -1391,6 +1391,8 @@ void game::spawnMogeraChildren()
     {
         // modify so that when moger child goes off screen or is hit by a ball it is destroyed and new mob spawn
         // find free slot in the child reserved zone
+
+        BossMogera->setCanSpawnChild(false);
         for (int slot = 8; slot < 15; slot++)
         {
             if (enemies[slot] == nullptr || !enemies[slot]->isAlive())
@@ -1436,6 +1438,7 @@ void game::updateBossHealthBar()
 {
     if (!isBossLevel || BossMogera == nullptr)
     {
+        bossHealthBarFill.setSize(sf::Vector2f(0, 18));
         return;
     }
 

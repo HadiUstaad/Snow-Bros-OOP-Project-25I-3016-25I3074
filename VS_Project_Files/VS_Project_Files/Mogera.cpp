@@ -2,19 +2,19 @@
 #include <iostream>
 using namespace std;
 
-static const float ENEMY_FRAME_X = 585;
-static const float ENEMY_FRAME_Y = 5;
-static const float ENEMY_FRAME_WIDTH = 537;
-static const float ENEMY_FRAME_HEIGHT = 673;
+static const float ENEMY_FRAME_X = 176;
+static const float ENEMY_FRAME_Y = 2;
+static const float ENEMY_FRAME_WIDTH = 163;
+static const float ENEMY_FRAME_HEIGHT = 203;
 
 
-static const float SNOWBALL_FRAME_X = 970;
-static const float SNOWBALL_FRAME_Y = 1300;
-static const float SNOWBALL_FRAME_WIDTH = 783;
-static const float SNOWBALL_FRAME_HEIGHT = 335;
+static const float SNOWBALL_FRAME_X = 293;
+static const float SNOWBALL_FRAME_Y = 390;
+static const float SNOWBALL_FRAME_WIDTH = 236;
+static const float SNOWBALL_FRAME_HEIGHT = 103;
 
 
-Mogera::Mogera(float x, float y) : Boss(x, y, 150, 150, 60, 1000)
+Mogera::Mogera(float x, float y) : Boss(x, y, 200, 200, 30, 1000)
 , texture(), sprite(texture), snowball()
 {
     childCount = 0;           
@@ -61,6 +61,13 @@ void Mogera::updateMovement(float deltaTime, platform platform[], int count)
 {
     if (!alive)
     {
+        frameRect = sf::IntRect(sf::Vector2i(SNOWBALL_FRAME_X, SNOWBALL_FRAME_Y),
+            sf::Vector2i(SNOWBALL_FRAME_WIDTH, SNOWBALL_FRAME_HEIGHT));
+        sprite = sf::Sprite(snowball, frameRect);
+        float scaleX = getWidth() / SNOWBALL_FRAME_WIDTH;
+        float scaleY = getHeight() / SNOWBALL_FRAME_HEIGHT;
+        sprite.setScale({ scaleX, scaleY });
+        
         sprite.setPosition(sf::Vector2f(getX(), getY()));
         updateHitboxPosition();
         return;
@@ -74,7 +81,13 @@ void Mogera::updatePhase(float deltaTime)
 
     setPhaseTimer(getPhaseTimer() + deltaTime * 100) ;
 
-    spawnTimer -= deltaTime * 100;
+    // only count down if not already waiting to spawn
+    // this prevents the bool from getting reset before Game.cpp 
+    //can actually spawn the enmemy
+    if(!getCanSpawnChild())
+    {
+        spawnTimer -= deltaTime * 100;
+    }
 
     // Different behavior in different phase
     if (getCurrentPhase() == 1)
@@ -83,8 +96,8 @@ void Mogera::updatePhase(float deltaTime)
         if (spawnTimer <= 0 && (childCount < maxChildPerPhase))
         {
             spawnMinions();
-            spawnTimer = 4;     
-            maxChildPerPhase = 4;
+            spawnTimer = 400;     
+           
         }
     }
     else if (getCurrentPhase() == 2)
@@ -93,8 +106,7 @@ void Mogera::updatePhase(float deltaTime)
         if (spawnTimer <= 0 && (childCount < maxChildPerPhase))
         {
             spawnMinions();
-            spawnTimer = 2.5f;   
-            maxChildPerPhase = 5;
+            spawnTimer = 250;   
         }
     }
     else if (getCurrentPhase() == 3)
@@ -103,8 +115,7 @@ void Mogera::updatePhase(float deltaTime)
         if (spawnTimer <= 0 && (childCount < maxChildPerPhase))
         {
             spawnMinions();
-            spawnTimer = 1.5f;     
-            maxChildPerPhase = 6;
+            spawnTimer = 150;     
         }
     }
 }
@@ -114,17 +125,7 @@ void Mogera::updatePhase(float deltaTime)
 
 void Mogera::spawnMinions()
 {
-   
-    childCount++;
-
-    // If reached max no minions will spawn. if it does it means next phase started so child = 0;
-
-    
     setCanSpawnChild(true);
-    if (childCount >= maxChildPerPhase)
-    {
-        childCount = 0;
-    }
 }
 
 
@@ -132,8 +133,8 @@ void Mogera::draw(sf::RenderWindow& window)
 {
     if (getActive())
     {
-        window.draw(sprite);
     }
+        window.draw(sprite);
 }
 
 void Mogera::drawHitbox(sf::RenderWindow& window)

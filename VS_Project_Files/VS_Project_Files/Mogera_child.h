@@ -14,6 +14,9 @@ private:
     bool alive;
     bool froze;
 
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::IntRect frameRect;
 public:
     MogeraChild(float x, float y, int direction);
 
