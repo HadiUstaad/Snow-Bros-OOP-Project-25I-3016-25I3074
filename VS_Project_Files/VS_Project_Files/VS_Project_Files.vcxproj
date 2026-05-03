@@ -213,6 +213,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PowerUp.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Shop.h" />
     <ClInclude Include="SpeedPower.h" />
     <ClInclude Include="Tornado.h" />
   </ItemGroup>
