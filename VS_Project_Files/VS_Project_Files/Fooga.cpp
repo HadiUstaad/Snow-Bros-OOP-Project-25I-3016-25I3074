@@ -1,8 +1,22 @@
 #include "Fooga.h"
 #include "Platform.h"
 #include <ctime>
+#include<iostream>
+using namespace std;
 
-Fooga::Fooga(float x, float y) : FlyEnemy(x, y, 40, 40, 4, 60, 150)
+
+static const float ENEMY_FRAME_X = 432;
+static const float ENEMY_FRAME_Y = 24;
+static const float ENEMY_FRAME_WIDTH = 135;
+static const float ENEMY_FRAME_HEIGHT = 158;
+
+
+static const float SNOWBALL_FRAME_X = 262;
+static const float SNOWBALL_FRAME_Y = 885;
+static const float SNOWBALL_FRAME_WIDTH = 67;
+static const float SNOWBALL_FRAME_HEIGHT = 81;
+Fooga::Fooga(float x, float y) : FlyEnemy(x, y, 50, 50, 4, 60, 150),
+texture(), sprite(texture), snowball()
 {
     isFlying = true; // starts in air
     landTimer = 25; // will attempt landing after 3 seconds
@@ -13,19 +27,55 @@ Fooga::Fooga(float x, float y) : FlyEnemy(x, y, 40, 40, 4, 60, 150)
 
     setSpeed(150);
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
-    shape.setFillColor(sf::Color::Green);    
+    shape.setFillColor(sf::Color::Transparent);    
     shape.setPosition(sf::Vector2f(getX(), getY()));
+
+    if (!snowball.loadFromFile("SnowBrosAssets/Images/Player_Red.png"))
+    {
+        cout << "snowball texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else
+    {
+        cout << "snowball texture loaded\n";
+    }
+
+    if (!texture.loadFromFile("SnowBrosAssets/Images/FlyingFoogaFoog_Red.png"))
+    {
+        cout << "FOOGA texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else {
+        cout << "Fooga texture loaded\n";
+    }
+
+
+    frameRect = sf::IntRect(sf::Vector2i(ENEMY_FRAME_X, ENEMY_FRAME_Y),
+        sf::Vector2i(ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT)
+    );
+
+    sprite = sf::Sprite(texture, frameRect);
+
+
+    float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
+    float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
+    sprite.setScale({ scaleX, scaleY });
+    sprite.setPosition(sf::Vector2f(getX(), getY()));
 }
 
 
 void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
 {
-    // If snowballed dont move
-    if (getSnowball())
-        return;
-
+    
     if (froze)
     {
+        updateHitboxPosition();
+        applygravity(deltaTime, platforms, count);
+        float scaleX = getWidth() / SNOWBALL_FRAME_WIDTH;
+        float scaleY = getHeight() / SNOWBALL_FRAME_HEIGHT;
+        sprite.setScale({ scaleX, scaleY });
+        sprite.setPosition(sf::Vector2f(getX(), getY()));
+        
         return;
     }
 
@@ -93,7 +143,18 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
         }
     }
 
-    // Update visual position
+    float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
+    float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
+    if (moveDirection == 1)
+    {
+        sprite.setScale({ -scaleX, scaleY });
+        sprite.setPosition(sf::Vector2f(getX() + getWidth(), getY()));
+    }
+    else
+    {
+        sprite.setScale({ scaleX, scaleY });
+        sprite.setPosition(sf::Vector2f(getX(), getY()));
+    }
     shape.setPosition(sf::Vector2f(getX(), getY()));
     updateHitboxPosition();
 }
@@ -112,7 +173,7 @@ void Fooga::draw(sf::RenderWindow& window)
 {
     if (getActive())
     {
-        window.draw(shape);
+        window.draw(sprite);
     }
 }
 
@@ -197,7 +258,11 @@ void Fooga::applygravity(float deltaTime, platform platforms[], int count)
 void Fooga::freeze() {
 
     froze = true;
-    shape.setFillColor(sf::Color::Cyan);
+    isFlying = false;
+
+    frameRect = sf::IntRect(sf::Vector2i(SNOWBALL_FRAME_X, SNOWBALL_FRAME_Y),
+        sf::Vector2i(SNOWBALL_FRAME_WIDTH, SNOWBALL_FRAME_HEIGHT));
+    sprite = sf::Sprite(snowball, frameRect);
 }
 
 bool Fooga::checkfreeze() {
@@ -222,5 +287,5 @@ bool Fooga::isAlive()
 }
 
 sf::FloatRect Fooga::getBounds() {
-    return shape.getGlobalBounds();
+    return sprite.getGlobalBounds();
 }

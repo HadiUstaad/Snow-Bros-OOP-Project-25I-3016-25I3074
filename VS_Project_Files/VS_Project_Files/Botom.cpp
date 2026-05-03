@@ -168,7 +168,7 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
 
 
 sf::FloatRect Boton::getBounds() {
-    return shape.getGlobalBounds();
+    return sprite.getGlobalBounds();
 }
 
 

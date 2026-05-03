@@ -5,6 +5,8 @@
 using namespace std;
 
 // Fooga will hover normally and sometimes land on the ground
+
+
 class Fooga : public FlyEnemy
 {
 private:
@@ -17,6 +19,12 @@ private:
     bool froze;
     float hoverTimer = 0;
     int moveDirection = 1;
+
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::IntRect frameRect;
+
+    sf::Texture snowball;
 
 public:
  
