@@ -1106,7 +1106,7 @@ void game::loadLevel(int level)
         isBossLevel = true;
 
         // Center top of screen jese mogera tha
-        BossGamakichi = new Gamakichi(220, 100);
+        BossGamakichi = new Gamakichi(300, 100);
         enemies[0] = BossGamakichi;
         enemyCount = 1;
 
@@ -1346,7 +1346,7 @@ void game::spawnGamakichiChildren()
         BossGamakichi->setCanSpawnChild(false);
 
         // same as mogera
-        for (int slot = 8; slot < 15; slot++)
+        for (int slot = 10; slot < 15; slot++)
         {
             if (enemies[slot] == nullptr || !enemies[slot]->isAlive())
             {
