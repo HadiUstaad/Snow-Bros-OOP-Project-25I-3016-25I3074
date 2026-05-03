@@ -34,7 +34,7 @@ static const float RANK_X = PANEL_X + 20.f;
 static const float NAME_X = PANEL_X + 100.f;
 static const float SCORE_X = PANEL_X + PANEL_W - 20.f;  // right-aligned
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+//Helpers
 sf::Color LeaderboardScreen::getRankColor(int rank) const
 {
     switch (rank)
@@ -60,14 +60,14 @@ sf::Color LeaderboardScreen::getRankBadgeColor(int rank) const
 
 static string formatScore(int score)
 {
-    // insert commas: 98450 -> "98,450"
+   
     string s = to_string(score);
     int insertPos = (int)s.size() - 3;
     while (insertPos > 0) { s.insert(insertPos, ","); insertPos -= 3; }
     return s;
 }
 
-// ─── Constructor ─────────────────────────────────────────────────────────────
+
 LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* fm)
     : Display(true),
     window(gameWindow),
@@ -80,7 +80,7 @@ LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* f
     if (!font.openFromFile("RussoOne-Regular.ttf"))
         cout << "Error: Cannot load font 'RussoOne-Regular.ttf'\n";
 
-    // ── Allocate per-row objects ────────────────────────────────────────────
+    // allocate per row
     for (int i = 0; i < 10; i++)
     {
         RanksTexts[i] = new sf::Text(font);
@@ -92,25 +92,24 @@ LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* f
         leaderboardScores[i] = 0;
     }
 
-    // ── Background panel ───────────────────────────────────────────────────
+    // Background
     bgPanel.setSize(sf::Vector2f(PANEL_W, PANEL_H));
     bgPanel.setPosition(sf::Vector2f(PANEL_X, PANEL_Y));
     bgPanel.setFillColor(COL_BG_PANEL);
     bgPanel.setOutlineThickness(1.5f);
     bgPanel.setOutlineColor(COL_ACCENT);
 
-    // ── Header bar ─────────────────────────────────────────────────────────
+   //header
     headerBar.setSize(sf::Vector2f(PANEL_W, HEADER_H));
     headerBar.setPosition(sf::Vector2f(PANEL_X, PANEL_Y));
     headerBar.setFillColor(COL_HEADER_BAR);
 
-    // ── Accent line under title ─────────────────────────────────────────────
+    
     accentLine.setSize(sf::Vector2f(80.f, 3.f));
     accentLine.setFillColor(COL_ACCENT);
     accentLine.setPosition(sf::Vector2f(PANEL_X + PANEL_W / 2.f - 40.f,
         PANEL_Y + HEADER_H - 6.f));
-
-    // ── Title ───────────────────────────────────────────────────────────────
+//title
     titleText.setFont(font);
     titleText.setString("LEADERBOARD");
     titleText.setCharacterSize(30);
@@ -123,7 +122,7 @@ LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* f
             PANEL_Y + HEADER_H / 2.f - 4.f));
     }
 
-    // ── Column headers ──────────────────────────────────────────────────────
+    //coloumn header
     float colY = PANEL_Y + HEADER_H + 6.f;
 
     colRank.setFont(font);
@@ -157,7 +156,7 @@ LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* f
     headerSep.setPosition(sf::Vector2f(PANEL_X + 10.f,
         colY + 22.f));
 
-    // ── Footer ──────────────────────────────────────────────────────────────
+    //footer
     footerLine.setSize(sf::Vector2f(PANEL_W - 20.f, 1.f));
     footerLine.setFillColor(COL_SEPARATOR);
     footerLine.setPosition(sf::Vector2f(PANEL_X + 10.f,
@@ -175,14 +174,14 @@ LeaderboardScreen::LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* f
             PANEL_Y + PANEL_H - 30.f));
     }
 
-    // ── Build row visuals ───────────────────────────────────────────────────
+    // row visuals
     for (int i = 0; i < 10; i++)
         buildRow(i);
 
     updateLeaderboard();
 }
 
-// ─── buildRow ────────────────────────────────────────────────────────────────
+// row builder
 void LeaderboardScreen::buildRow(int i)
 {
     float rowY = ROWS_Y + i * ROW_H;
@@ -217,13 +216,13 @@ void LeaderboardScreen::buildRow(int i)
     nameTexts[i]->setCharacterSize(16);
     nameTexts[i]->setPosition(sf::Vector2f(NAME_X, rowY + (ROW_H - 18.f) / 2.f));
 
-    // Score text (right-aligned)
+    // Score text right aligned
     scoreTexts[i]->setFont(font);
     scoreTexts[i]->setCharacterSize(16);
     scoreTexts[i]->setPosition(sf::Vector2f(SCORE_X, rowY + (ROW_H - 18.f) / 2.f));
 }
 
-// ─── Destructor ──────────────────────────────────────────────────────────────
+
 LeaderboardScreen::~LeaderboardScreen()
 {
     for (int i = 0; i < 10; i++)
@@ -235,8 +234,7 @@ LeaderboardScreen::~LeaderboardScreen()
         delete rankBadges[i];
     }
 }
-
-// ─── draw ─────────────────────────────────────────────────────────────────────
+//draw
 void LeaderboardScreen::draw()
 {
     if (!isVisible) return;
@@ -268,7 +266,7 @@ void LeaderboardScreen::draw()
     window.draw(back);
 }
 
-// ─── handleInput ─────────────────────────────────────────────────────────────
+// input handler
 void LeaderboardScreen::handleInput()
 {
     if (!isVisible) return;
@@ -284,7 +282,7 @@ void LeaderboardScreen::handleInput()
     }
 }
 
-// ─── updateLeaderboard ───────────────────────────────────────────────────────
+//leaderboard update
 void LeaderboardScreen::updateLeaderboard()
 {
     fileManager->getTopScores(leaderboardUserNames, leaderboardScores);
