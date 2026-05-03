@@ -1,8 +1,21 @@
 #include "Mogera.h"
+#include <iostream>
+using namespace std;
+
+static const float ENEMY_FRAME_X = 585;
+static const float ENEMY_FRAME_Y = 5;
+static const float ENEMY_FRAME_WIDTH = 537;
+static const float ENEMY_FRAME_HEIGHT = 673;
 
 
+static const float SNOWBALL_FRAME_X = 970;
+static const float SNOWBALL_FRAME_Y = 1300;
+static const float SNOWBALL_FRAME_WIDTH = 783;
+static const float SNOWBALL_FRAME_HEIGHT = 335;
 
-Mogera::Mogera(float x, float y) : Boss(x, y, 80, 80, 30, 1000)
+
+Mogera::Mogera(float x, float y) : Boss(x, y, 150, 150, 60, 1000)
+, texture(), sprite(texture), snowball()
 {
     childCount = 0;           
     maxChildPerPhase = 4;        
@@ -10,26 +23,54 @@ Mogera::Mogera(float x, float y) : Boss(x, y, 80, 80, 30, 1000)
 
     
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
-    shape.setFillColor(sf::Color::Magenta);         
+    shape.setFillColor(sf::Color::Transparent);         
     shape.setPosition(sf::Vector2f(getX(), getY()));
+    if (!snowball.loadFromFile("SnowBrosAssets/Images/Mogera.png"))
+    {
+        cout << "snowball texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else
+    {
+        cout << "snowball texture loaded\n";
+    }
+
+    if (!texture.loadFromFile("SnowBrosAssets/Images/Mogera.png"))
+    {
+        cout << "Mogera texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else {
+        cout << "Mogera texture loaded\n";
+    }
+
+
+    frameRect = sf::IntRect(sf::Vector2i(ENEMY_FRAME_X, ENEMY_FRAME_Y),
+        sf::Vector2i(ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT));
+
+    sprite = sf::Sprite(texture, frameRect);
+
+
+    float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
+    float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
+    sprite.setScale({ scaleX, scaleY });
+    sprite.setPosition(sf::Vector2f(getX(), getY()));
 }
 
 void Mogera::updateMovement(float deltaTime, platform platform[], int count)
 {
     if (!alive)
     {
+        sprite.setPosition(sf::Vector2f(getX(), getY()));
+        updateHitboxPosition();
         return;
     }
-    updateHitboxPosition();
 }
 
 
 void Mogera::updatePhase(float deltaTime)
 {
-    if (getSnowball())
-    {
-        return;
-    }
+    
 
     setPhaseTimer(getPhaseTimer() + deltaTime * 100) ;
 
@@ -91,7 +132,7 @@ void Mogera::draw(sf::RenderWindow& window)
 {
     if (getActive())
     {
-        window.draw(shape);
+        window.draw(sprite);
     }
 }
 
@@ -123,10 +164,10 @@ void Mogera::onHit()
     
     if (getCurrentPhase() == 2)
     {
-        shape.setFillColor(sf::Color(180, 0, 180));   // darker magenta
+        sprite.setColor(sf::Color(180, 180, 255)); // Altered - bluish tint phase 2
     }
     else if (getCurrentPhase() == 3)
     {
-        shape.setFillColor(sf::Color(100, 0, 100));   // very dark
+        sprite.setColor(sf::Color(255, 100, 100)); // Altered - reddish tint phase 3
     }
 }

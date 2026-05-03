@@ -16,6 +16,12 @@ private:
 
     bool alive;
 
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::IntRect frameRect;
+
+    sf::Texture snowball;
+
 public:
     
     Mogera(float x, float y);
