@@ -117,10 +117,17 @@ game::game()
    
     fileManager = new FileManage("snowbros_Hazai.db");   // db is extension of data base files.
     leaderboard = new LeaderboardScreen(window, fileManager);
-    playerName1 = "P3";         // Modify these later when taken from login.
-    playerName2 = "P1";
-    fileManager->addUser(playerName1, "000000000");
-    fileManager->addUser(playerName2, "000000000");
+    //playerName1 = "P3";         // Modify these later when taken from login.
+    //playerName2 = "P1";
+    //fileManager->addUser(playerName1, "000000000");
+    //fileManager->addUser(playerName2, "000000000");
+    playerName1 = "";
+    playerName2 = "";
+
+    authManager = new Authenticate(fileManager);
+    loginScreen = new LoginScreen(window, authManager);
+
+    currentState = LOGIN;
 
     // pause screen
     pauseScreen = new PauseScreen(window);
@@ -177,32 +184,398 @@ game::~game()
     {
         delete pauseScreen;
     }
+
+    if (authManager != nullptr)
+    {
+        delete authManager;
+        authManager = nullptr;
+    }
+    if (loginScreen != nullptr)
+    {
+        delete loginScreen;
+        loginScreen = nullptr;
+    }
 }
 
+//void game::Run()
+//{
+//    Menu mainMenu(window);
+//
+//    while (window.isOpen())
+//    {
+//
+//        float deltaTime = clock.restart().asSeconds();
+//        // 🔥 EVENT LOOP (SFML 3)
+//        while (const std::optional event = window.pollEvent())
+//        {
+//
+//            // Handle login screen input
+//            if (currentState == LOGIN)
+//            {
+//                loginScreen->handleInput();
+//
+//                // Check if login just succeeded
+//                if (loginScreen->wasLoginSuccessful())
+//                {
+//                    playerName1 = authManager->getUsername();
+//
+//                    // Register user in DB if first time (login screen only logs in,
+//                    // so also call addUser to ensure save slot exists)
+//                    fileManager->addUser(playerName1, "");
+//                    // Note: addUser checks userExists first, so safe to call again
+//
+//                    currentState = MENU;
+//                }
+//                continue;  // skip all other key handling while on login screen
+//            }
+//            if (event->is<sf::Event::Closed>())
+//                window.close();
+//
+//            if (event->is<sf::Event::KeyPressed>())
+//            {
+//                auto key = event->getIf<sf::Event::KeyPressed>();
+//
+//
+//                // 🔥 SHOOT
+//                if (key && key->code == sf::Keyboard::Key::F)
+//                {
+//                    //int direction = 1;
+//
+//                    B1.shoot(
+//                        player1.getBounds().position.x,
+//                        player1.getBounds().position.y,
+//                        player1.getDirection()
+//                    );
+//                }
+//                if (key && key->code == sf::Keyboard::Key::RShift)
+//                {
+//                    //int direction = 1;
+//
+//                    B2.shoot(
+//                        player2.getBounds().position.x,
+//                        player2.getBounds().position.y,
+//                        player2.getDirection()
+//                    );
+//                }
+//
+//                // 🔥 HITBOX TOGGLE
+//                if (key && key->code == sf::Keyboard::Key::H)
+//                {
+//                    Hitbox = !Hitbox;
+//                }
+//
+//                if (key && key->code == sf::Keyboard::Key::J)
+//                {
+//                    EnemyHitbox = !EnemyHitbox;
+//                }
+//
+//             
+//
+//
+//                if (key && key->code == sf::Keyboard::Key::Escape)
+//                {
+//                    if (currentState == GAME_OVER)
+//                    {
+//                        // Reset game variables so for next play
+//                        lives1 = 3;
+//                        lives2 = 3;
+//                        score1 = 0;
+//                        score2 = 0;
+//
+//                        // as gems buy powerups.so the need not be stored after gameover or wins
+//                        gems1.reset();
+//                        gems2.reset();
+//
+//                        currentLevel = 1;
+//                        gameOverPrinted = false;
+//                        loadLevel(1);
+//
+//                        currentState = MENU; 
+//                    }
+//                    if (currentState == LOGIN)
+//                    {
+//                        window.clear(sf::Color::Black); //login 297
+//                        loginScreen->draw();
+//                    }
+//                    else if (currentState == PLAYING)
+//                    {
+//                        // shows pause sccreen and resets bools resume and quit
+//                        currentState = PAUSED;
+//                        pauseScreen->show();
+//                        pauseScreen->resetBool();
+//                    }
+//
+//                   
+//                }
+//
+//                if (key && key->code == sf::Keyboard::Key::Enter) {
+//                    
+//                    int selected = mainMenu.getSelectedIndex();
+//                    
+//                    if (selected == 0) {
+//                        currentState = PLAYING;
+//                    }
+//                    else if (selected == 1)   // ← ADD THIS BLOCK
+//                    {
+//                        SaveData saveData;
+//                        if (fileManager->loadGameData(playerName1, &saveData))
+//                        {
+//                            // Apply loaded data to game state
+//                            currentLevel = saveData.currentLevel;
+//                            score1 = saveData.totalScore;
+//                            lives1 = saveData.livesRemaining;
+//
+//                            // Reset P2 fresh (save is P1-only in your current setup)
+//                            score2 = 0;
+//                            lives2 = 3;
+//
+//                            gems1.reset();
+//                            gems2.reset();
+//
+//                            winPrinted = false;
+//                            gameOverPrinted = false;
+//
+//                            loadLevel(currentLevel);
+//                            currentState = PLAYING;
+//                        }
+//                        // If load fails (no save file yet), just do nothing or show a message
+//                    }
+//
+//                    else if (selected == 2)
+//                    {
+//                        currentState = LEADER_BOARD;
+//                        showLeaderboard();
+//                    }
+//                    
+//                    else if (selected == 4)
+//                        window.close();
+//                }
+//                if (currentState == LEVEL_COMPLETE && key && key->code == sf::Keyboard::Key::Enter)
+//                {
+//                    currentLevel++;
+//
+//                    if (currentLevel <= 10)
+//                    {
+//                        loadLevel(currentLevel);
+//                        currentState = PLAYING;
+//                    }
+//                }
+//                
+//            }
+//
+//        }
+//
+//        // 🔥 INPUT UPDATE
+//        input1.updatePlayer1();
+//        input2.updatePlayer2();
+//        if (currentState == MENU)
+//            mainMenu.handleInput();
+//        else if (currentState == LEADER_BOARD)
+//        {
+//            leaderboard->handleInput();
+//        }
+//        else if (currentState == PAUSED)
+//        {
+//            pauseScreen->handleInput();
+//        }
+//       
+//        update(deltaTime);
+//        B1.update(deltaTime);
+//        B2.update(deltaTime);// Snowball update MUST be before rendering
+//
+//        // 🔥 RENDER
+//        window.clear();
+//
+//        if (currentState == MENU)
+//        {
+//            mainMenu.draw();
+//        }
+//        else if (currentState == PLAYING)
+//        {
+//
+//            window.draw(bgSprite);
+//            if (showLevelText)
+//            {
+//                levelDisplayTimer -= deltaTime;
+//
+//                if (levelDisplayTimer <= 0)
+//                {
+//                    showLevelText = false;
+//                }
+//            }
+//            // platforms
+//            for (int i = 0; i < MAX_PLATFORMS; i++)
+//            {
+//                platforms[i].draw(window);
+//
+//                if (Hitbox)
+//                {
+//                    sf::RectangleShape box;
+//                    box.setSize(platforms[i].getBody().getSize());
+//                    box.setPosition(platforms[i].getBody().getPosition());
+//                    box.setFillColor(sf::Color::Transparent);
+//                    box.setOutlineColor(sf::Color::Yellow);
+//                    box.setOutlineThickness(1);
+//
+//                    window.draw(box);
+//                }
+//            }
+//
+//            //coins spawn
+//            for (int i = 0; i < coinCount; i++)
+//            {
+//                if (coinActive[i])
+//                    window.draw(coins[i]);
+//            }
+//            
+//            //levels
+//            
+//            // objects
+//            player1.draw(window);
+//            player2.draw(window);
+//            
+//            for (int i = 0; i < enemyCount; i++)
+//            {
+//                if (enemies[i] != nullptr && enemies[i]->isAlive())
+//                {
+//                    enemies[i]->draw(window);//for multiple enemies
+//                }
+//            }
+//            
+//            B1.draw(window);
+//            B2.draw(window);
+//            window.draw(scoreText1);
+//            window.draw(scoreText2);
+//
+//            window.draw(gemText1);
+//            window.draw(gemText2);
+//            // player hitbox
+//            if (Hitbox)
+//            {
+//                player1.drawHitbox(window);
+//                player2.drawHitbox(window);
+//            }
+//           
+//            if (EnemyHitbox)
+//            {
+//                player1.drawHitbox(window);
+//                player2.drawHitbox(window);
+//            }
+//
+//            if (EnemyHitbox)
+//            {
+//                
+//                for (int i = 0; i < enemyCount; i++)
+//                {
+//                    if (enemies[i] != nullptr)
+//                    {
+//                        enemies[i]->drawHitbox(window);
+//                    }
+//                }
+//            }
+//
+//           /* if (showLevelText)
+//            {
+//                window.draw(levelText);
+//            }*/
+//            window.draw(livesText1);
+//            window.draw(livesText2);
+//
+//            if (isBossLevel)
+//            {
+//                window.draw(bossHealthBarBg);
+//                window.draw(bossHealthBarFill);
+//                window.draw(bossHealthText);
+//            }
+//          
+//        }
+//
+//        else if (currentState == PAUSED)
+//        {
+//            // draw game world behind so you can still see the level while paused
+//            window.draw(bgSprite);
+//            for (int i = 0; i < MAX_PLATFORMS; i++)
+//            {
+//                platforms[i].draw(window);
+//            }
+//
+//            player1.draw(window);
+//            player2.draw(window);
+//
+//            for (int i = 0; i < enemyCount; i++)
+//            {
+//                if(enemies[i]!= nullptr)
+//                {
+//                    enemies[i]->draw(window);
+//                }
+//            }
+//
+//            B1.draw(window);
+//            B2.draw(window);
+//
+//            window.draw(scoreText1);
+//            window.draw(scoreText2);
+//            window.draw(livesText1);
+//            window.draw(livesText2);
+//            window.draw(gemText1);     
+//            window.draw(gemText2);
+//
+//            pauseScreen->draw();
+//        }
+//        else if (currentState == LEADER_BOARD)
+//        {
+//            leaderboard->draw();  
+//
+//            // Check if user pressed ESC
+//            if (leaderboard->getIsVisible() == false)
+//            {
+//                currentState = MENU;  // Return to menu
+//                leaderboard->show();  // Reset visibility of menu
+//            }
+//        }
+//        else if (currentState == LEVEL_COMPLETE)
+//        {
+//            window.draw(levelCompleteText);
+//            window.draw(levelCompleteText2);
+//        }
+//        else if (currentState == GAME_OVER)
+//        {
+//            if (!gameOverPrinted)
+//            {
+//                cout << "GAME OVER" << endl;
+//                gameOverPrinted = true;
+//            }
+//
+//            window.draw(gameOverText);
+//        }
+//       
+//
+//        window.display();
+//    }
+//}
 void game::Run()
 {
     Menu mainMenu(window);
 
     while (window.isOpen())
     {
-
         float deltaTime = clock.restart().asSeconds();
-        // 🔥 EVENT LOOP (SFML 3)
+
+        // ── EVENT LOOP ──────────────────────────────────────────────
         while (const std::optional event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>())
                 window.close();
 
-            if (event->is<sf::Event::KeyPressed>())
+            // Only handle key events when NOT on login screen
+            // (login screen uses isKeyPressed polling, not events)
+            if (event->is<sf::Event::KeyPressed>() && currentState != LOGIN)
             {
                 auto key = event->getIf<sf::Event::KeyPressed>();
 
-
-                // 🔥 SHOOT
+                // SHOOT
                 if (key && key->code == sf::Keyboard::Key::F)
                 {
-                    //int direction = 1;
-
                     B1.shoot(
                         player1.getBounds().position.x,
                         player1.getBounds().position.y,
@@ -211,8 +584,6 @@ void game::Run()
                 }
                 if (key && key->code == sf::Keyboard::Key::RShift)
                 {
-                    //int direction = 1;
-
                     B2.shoot(
                         player2.getBounds().position.x,
                         player2.getBounds().position.y,
@@ -220,113 +591,121 @@ void game::Run()
                     );
                 }
 
-                // 🔥 HITBOX TOGGLE
+                // HITBOX TOGGLE
                 if (key && key->code == sf::Keyboard::Key::H)
-                {
                     Hitbox = !Hitbox;
-                }
 
                 if (key && key->code == sf::Keyboard::Key::J)
-                {
                     EnemyHitbox = !EnemyHitbox;
-                }
 
-             
-
-
+                // ESCAPE
                 if (key && key->code == sf::Keyboard::Key::Escape)
                 {
                     if (currentState == GAME_OVER)
                     {
-                        // Reset game variables so for next play
                         lives1 = 3;
                         lives2 = 3;
                         score1 = 0;
                         score2 = 0;
-
-                        // as gems buy powerups.so the need not be stored after gameover or wins
                         gems1.reset();
                         gems2.reset();
-
                         currentLevel = 1;
                         gameOverPrinted = false;
                         loadLevel(1);
-
-                        currentState = MENU; 
+                        currentState = MENU;
                     }
                     else if (currentState == PLAYING)
                     {
-                        // shows pause sccreen and resets bools resume and quit
                         currentState = PAUSED;
                         pauseScreen->show();
                         pauseScreen->resetBool();
                     }
-
-                   
                 }
 
-                if (key && key->code == sf::Keyboard::Key::Enter) {
-                    
+                // ENTER
+                if (key && key->code == sf::Keyboard::Key::Enter)
+                {
                     int selected = mainMenu.getSelectedIndex();
-                    
-                    if (selected == 0) {
+
+                    if (selected == 0)
+                    {
+                        // New Game - reset everything fresh
+                        lives1 = 3;
+                        lives2 = 3;
+                        score1 = 0;
+                        score2 = 0;
+                        gems1.reset();
+                        gems2.reset();
+                        currentLevel = 1;
+                        winPrinted = false;
+                        gameOverPrinted = false;
+                        loadLevel(1);
                         currentState = PLAYING;
                     }
-                    else if (selected == 1)   // ← ADD THIS BLOCK
+                    else if (selected == 1)  // Continue
                     {
                         SaveData saveData;
-                        if (fileManager->loadGameData(playerName1, &saveData))
+                        if (fileManager->loadGameData(playerName1, &saveData)
+                            && saveData.currentLevel > 1)  // only continue if real save exists
                         {
-                            // Apply loaded data to game state
                             currentLevel = saveData.currentLevel;
                             score1 = saveData.totalScore;
                             lives1 = saveData.livesRemaining;
-
-                            // Reset P2 fresh (save is P1-only in your current setup)
                             score2 = 0;
                             lives2 = 3;
-
                             gems1.reset();
                             gems2.reset();
-
                             winPrinted = false;
                             gameOverPrinted = false;
-
                             loadLevel(currentLevel);
                             currentState = PLAYING;
                         }
-                        // If load fails (no save file yet), just do nothing or show a message
+                        // else: silently do nothing (no save yet)
                     }
-
                     else if (selected == 2)
                     {
-                        currentState = LEADER_BOARD;
                         showLeaderboard();
                     }
-                    
                     else if (selected == 4)
+                    {
                         window.close();
+                    }
                 }
-                if (currentState == LEVEL_COMPLETE && key && key->code == sf::Keyboard::Key::Enter)
+
+                if (currentState == LEVEL_COMPLETE
+                    && key && key->code == sf::Keyboard::Key::Enter)
                 {
                     currentLevel++;
-
                     if (currentLevel <= 10)
                     {
                         loadLevel(currentLevel);
                         currentState = PLAYING;
                     }
                 }
-                
             }
-
         }
+        // ── END EVENT LOOP ──────────────────────────────────────────
 
-        // 🔥 INPUT UPDATE
-        input1.updatePlayer1();
-        input2.updatePlayer2();
-        if (currentState == MENU)
+        // ── POLLING INPUT (runs every frame regardless of events) ───
+        if (currentState == LOGIN)
+        {
+            // Login screen uses isKeyPressed internally, call every frame
+            loginScreen->handleInput();
+
+            // Check if login succeeded this frame
+            if (loginScreen->wasLoginSuccessful())
+            {
+                playerName1 = authManager->getUsername();
+                fileManager->addUser(playerName1, "");  // safe: checks exists first
+                currentState = MENU;
+            }
+        }
+        else if (currentState == MENU)
+        {
+            input1.updatePlayer1();
+            input2.updatePlayer2();
             mainMenu.handleInput();
+        }
         else if (currentState == LEADER_BOARD)
         {
             leaderboard->handleInput();
@@ -335,36 +714,45 @@ void game::Run()
         {
             pauseScreen->handleInput();
         }
-       
-        update(deltaTime);
-        B1.update(deltaTime);
-        B2.update(deltaTime);// Snowball update MUST be before rendering
+        else
+        {
+            input1.updatePlayer1();
+            input2.updatePlayer2();
+        }
 
-        // 🔥 RENDER
-        window.clear();
+        // ── UPDATE ──────────────────────────────────────────────────
+        if (currentState != LOGIN)
+        {
+            update(deltaTime);
+            B1.update(deltaTime);
+            B2.update(deltaTime);
+        }
 
-        if (currentState == MENU)
+        // ── RENDER ──────────────────────────────────────────────────
+        window.clear(sf::Color::Black);
+
+        if (currentState == LOGIN)
+        {
+            loginScreen->draw();
+        }
+        else if (currentState == MENU)
         {
             mainMenu.draw();
         }
         else if (currentState == PLAYING)
         {
-
             window.draw(bgSprite);
+
             if (showLevelText)
             {
                 levelDisplayTimer -= deltaTime;
-
                 if (levelDisplayTimer <= 0)
-                {
                     showLevelText = false;
-                }
             }
-            // platforms
+
             for (int i = 0; i < MAX_PLATFORMS; i++)
             {
                 platforms[i].draw(window);
-
                 if (Hitbox)
                 {
                     sf::RectangleShape box;
@@ -373,68 +761,41 @@ void game::Run()
                     box.setFillColor(sf::Color::Transparent);
                     box.setOutlineColor(sf::Color::Yellow);
                     box.setOutlineThickness(1);
-
                     window.draw(box);
                 }
             }
 
-            //coins spawn
             for (int i = 0; i < coinCount; i++)
-            {
                 if (coinActive[i])
                     window.draw(coins[i]);
-            }
-            
-            //levels
-            
-            // objects
+
             player1.draw(window);
             player2.draw(window);
-            
+
             for (int i = 0; i < enemyCount; i++)
-            {
                 if (enemies[i] != nullptr && enemies[i]->isAlive())
-                {
-                    enemies[i]->draw(window);//for multiple enemies
-                }
-            }
-            
+                    enemies[i]->draw(window);
+
             B1.draw(window);
             B2.draw(window);
+
             window.draw(scoreText1);
             window.draw(scoreText2);
-
             window.draw(gemText1);
             window.draw(gemText2);
-            // player hitbox
+
             if (Hitbox)
             {
                 player1.drawHitbox(window);
                 player2.drawHitbox(window);
             }
-           
             if (EnemyHitbox)
             {
-                player1.drawHitbox(window);
-                player2.drawHitbox(window);
-            }
-
-            if (EnemyHitbox)
-            {
-                
                 for (int i = 0; i < enemyCount; i++)
-                {
                     if (enemies[i] != nullptr)
-                    {
                         enemies[i]->drawHitbox(window);
-                    }
-                }
             }
 
-           /* if (showLevelText)
-            {
-                window.draw(levelText);
-            }*/
             window.draw(livesText1);
             window.draw(livesText2);
 
@@ -444,50 +805,37 @@ void game::Run()
                 window.draw(bossHealthBarFill);
                 window.draw(bossHealthText);
             }
-          
         }
-
         else if (currentState == PAUSED)
         {
-            // draw game world behind so you can still see the level while paused
             window.draw(bgSprite);
             for (int i = 0; i < MAX_PLATFORMS; i++)
-            {
                 platforms[i].draw(window);
-            }
 
             player1.draw(window);
             player2.draw(window);
 
             for (int i = 0; i < enemyCount; i++)
-            {
-                if(enemies[i]!= nullptr)
-                {
+                if (enemies[i] != nullptr)
                     enemies[i]->draw(window);
-                }
-            }
 
             B1.draw(window);
             B2.draw(window);
-
             window.draw(scoreText1);
             window.draw(scoreText2);
             window.draw(livesText1);
             window.draw(livesText2);
-            window.draw(gemText1);     
+            window.draw(gemText1);
             window.draw(gemText2);
-
             pauseScreen->draw();
         }
         else if (currentState == LEADER_BOARD)
         {
-            leaderboard->draw();  
-
-            // Check if user pressed ESC
-            if (leaderboard->getIsVisible() == false)
+            leaderboard->draw();
+            if (!leaderboard->getIsVisible())
             {
-                currentState = MENU;  // Return to menu
-                leaderboard->show();  // Reset visibility of menu
+                currentState = MENU;
+                leaderboard->show();
             }
         }
         else if (currentState == LEVEL_COMPLETE)
@@ -502,10 +850,8 @@ void game::Run()
                 cout << "GAME OVER" << endl;
                 gameOverPrinted = true;
             }
-
             window.draw(gameOverText);
         }
-       
 
         window.display();
     }
@@ -679,14 +1025,14 @@ void game::update(float deltaTime)
         livesText2.setString("P2 Lives: " + std::to_string(lives2));
     }
 
-    if (AllDead() && !winPrinted)
+    if(AllDead() && !winPrinted)
     {
-        currentLevel++;
+        //currentLevel++;
         if (AllDead())
         {
             currentState = LEVEL_COMPLETE;   // pause game
             submitScores();
-        }
+       }
 
         if (currentLevel <= 10)
         {
@@ -698,6 +1044,7 @@ void game::update(float deltaTime)
             winPrinted = 1;
         }
     }
+    
 
     //game over condition
     if (lives1 <= 0 && lives2 <= 0)
