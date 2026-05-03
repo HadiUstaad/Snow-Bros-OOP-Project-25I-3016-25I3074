@@ -51,8 +51,7 @@ texture(), sprite(texture), snowball()
 
 
     frameRect = sf::IntRect(sf::Vector2i(ENEMY_FRAME_X, ENEMY_FRAME_Y),
-        sf::Vector2i(ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT)
-    );
+        sf::Vector2i(ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT));
 
     sprite = sf::Sprite(texture, frameRect);
 
@@ -249,6 +248,13 @@ void Fooga::applygravity(float deltaTime, platform platforms[], int count)
                 break;
             }
         }
+
+        //flip
+        if (getX() < 0 || getX() > 800 - getWidth())
+        {
+            moveDirection *= 1;
+        }
+
         float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
         float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
         if (moveDirection == 1)
