@@ -15,6 +15,8 @@ private:
     float velocityY = 0;
     bool alive;    
     bool froze;
+    float hoverTimer = 0;
+    int moveDirection = 1;
 
 public:
  

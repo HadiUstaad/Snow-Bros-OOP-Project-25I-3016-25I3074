@@ -360,7 +360,7 @@ void game::Run()
             }
             
             //levels
-            window.draw(bgSprite);
+            //window.draw(bgSprite);
             // objects
             player1.draw(window);
             player2.draw(window);

@@ -9,7 +9,9 @@ Fooga::Fooga(float x, float y) : FlyEnemy(x, y, 40, 40, 4, 60, 150)
     alive = true;
     froze = false;
 
-    setSpeed(15);
+    hoverHeight = y - 100;
+
+    setSpeed(150);
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
     shape.setFillColor(sf::Color::Green);    
     shape.setPosition(sf::Vector2f(getX(), getY()));
@@ -34,7 +36,32 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
     if (isFlying)
     {
         // call parent flying movement
-        FlyEnemy::updateMovement(deltaTime, platforms, count);
+        //FlyEnemy::updateMovement(deltaTime, platforms, count);
+        hoverTimer += deltaTime;
+
+        float amplitude = 120.0f;   // height of movement
+        float speed = 3.0f;        // speed of oscillation
+
+        float newY = hoverHeight + amplitude * sin(hoverTimer * speed);
+        float minY = 50.0f;     // top limit (adjust if needed)
+        float maxY = 550.0f;    // ground level (important)
+
+        // clamp
+        if (newY < minY) newY = minY;
+        if (newY > maxY) newY = maxY;
+
+        // Keep horizontal movement (optional)
+        //float newX = getX() + (getSpeed() * deltaTime);
+        float newX = getX() + (moveDirection * getSpeed() * deltaTime);
+
+        // screen boundaries
+        if (newX <= 0 || newX >= 800 - getWidth())
+        {
+            moveDirection *= -1; // reverse direction
+            newX = getX() + (moveDirection * getSpeed() * deltaTime);
+        }
+
+        setPosition(newX, newY);
 
         // check if time to land
         if (landTimer <= 0)
@@ -101,7 +128,7 @@ void Fooga::attemptLanding()
 void Fooga::takeoff()
 {
     isFlying = true;
-    hoverHeight = getY()-90;   // set new hover center at current height
+    hoverHeight = getY();   // set new hover center at current height
 }
 
 void Fooga::applygravity(float deltaTime, platform platforms[], int count)
@@ -114,7 +141,7 @@ void Fooga::applygravity(float deltaTime, platform platforms[], int count)
         {
             float max_velocity = 2500;
             float gravity = 1000;
-            velocityY += gravity * deltaTime * 100;
+            velocityY += gravity * deltaTime ; //changed here
             if (velocityY > max_velocity)
             {
                 velocityY = max_velocity;
@@ -161,7 +188,7 @@ void Fooga::applygravity(float deltaTime, platform platforms[], int count)
                 break;
             }
         }
-        velocityY = 0;
+        //velocityY = 0;
 
     }
     
