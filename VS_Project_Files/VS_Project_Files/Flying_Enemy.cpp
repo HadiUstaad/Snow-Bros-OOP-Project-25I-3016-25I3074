@@ -19,8 +19,7 @@ void FlyEnemy::updateMovement(float deltaTime, platform platforms[], int count)
     if (getSnowball())
         return;
 
-    // Update hover motion up and down 
-    // Increment time counter
+
     timeCounter += deltaTime * 100;
 
     // Calculate Y offset using sine function sin returns value between -1 and 1

@@ -48,9 +48,7 @@ void GamakichiRocket::updatePosition(float deltaTime)
     // shapes position is equal to the gameobjects pos
     shape.setPosition(sf::Vector2f(getX(), getY()));
 
-    //modify rotate rocket to face direction of travel
-    /*float angle = atan2(velocityY, velocityX) * (180.f / 3.14159f);
-    shape.setRotation(sf::degrees(angle));*/
+  
 
     // check if max distance reached then explode
     if (distanceTraveled >= maxDistance)

@@ -2,9 +2,7 @@
 
 static const int MENU_COUNT = 5;
 
-// =============================================================================
-// Constructor
-// =============================================================================
+
 
 PauseScreen::PauseScreen(sf::RenderWindow& gameWindow)
     : Display(true), window(gameWindow), titleText(font)
@@ -13,7 +11,7 @@ PauseScreen::PauseScreen(sf::RenderWindow& gameWindow)
     shouldResume = false;
     shouldQuit = false;
     shouldLogout = false;
-    shouldShop = false;   // ← properly initialised
+    shouldShop = false;   
 
     font.openFromFile("RussoOne-Regular.ttf");
 
@@ -44,9 +42,7 @@ PauseScreen::PauseScreen(sf::RenderWindow& gameWindow)
     updateMenuColors();
 }
 
-// =============================================================================
-// Destructor
-// =============================================================================
+
 
 PauseScreen::~PauseScreen()
 {
@@ -57,15 +53,12 @@ PauseScreen::~PauseScreen()
     }
 }
 
-// =============================================================================
-// draw()
-// =============================================================================
+
 
 void PauseScreen::draw()
 {
     if (!isVisible) return;
 
-    // Semi-transparent dark overlay
     sf::RectangleShape overlay(sf::Vector2f(800.f, 600.f));
     overlay.setFillColor(sf::Color(0, 0, 0, 160));
     window.draw(overlay);
@@ -76,9 +69,7 @@ void PauseScreen::draw()
         window.draw(*menuItems[i]);
 }
 
-// =============================================================================
-// handleInput()
-// =============================================================================
+
 
 void PauseScreen::handleInput()
 {
@@ -118,10 +109,10 @@ void PauseScreen::handleInput()
             hide();
             break;
 
-        case 1:   // Save Game — wire up your save logic here if needed
+        case 1:  
             break;
 
-        case 2:   // Open Shop — ← flag is now properly set
+        case 2:  
             shouldShop = true;
             hide();
             break;
@@ -140,31 +131,24 @@ void PauseScreen::handleInput()
     }
 }
 
-// =============================================================================
-// Public flag accessors
-// =============================================================================
+
 
 bool PauseScreen::Resume() { return shouldResume; }
 bool PauseScreen::Quit() { return shouldQuit; }
 bool PauseScreen::Logout() { return shouldLogout; }
-bool PauseScreen::Shop() { return shouldShop; }  // ← now returns the correct flag
+bool PauseScreen::Shop() { return shouldShop; }  
 
-// =============================================================================
-// resetBool()
-// Resets ALL flags — call this after handling any state transition.
-// =============================================================================
+
 
 void PauseScreen::resetBool()
 {
     shouldResume = false;
     shouldQuit = false;
     shouldLogout = false;
-    shouldShop = false;   // ← was missing, caused stale true after first shop visit
+    shouldShop = false;   
 }
 
-// =============================================================================
-// updateMenuColors()
-// =============================================================================
+
 
 void PauseScreen::updateMenuColors()
 {
@@ -180,7 +164,7 @@ void PauseScreen::updateMenuColors()
             menuItems[i]->setFillColor(sf::Color::White);
             menuItems[i]->setCharacterSize(28);
         }
-        // Re-centre after size change
+     
         sf::FloatRect b = menuItems[i]->getLocalBounds();
         menuItems[i]->setOrigin(sf::Vector2f(b.size.x / 2.f, 0.f));
     }

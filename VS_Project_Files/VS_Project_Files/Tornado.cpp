@@ -89,9 +89,7 @@ void Tornado::updateMovement(float deltaTime, platform platforms[], int count)
 
 bool Tornado::canThrow()
 {
-    // throws if not snowballed and it is time to throw
-    //modify player in range check
-   //if () 
+   
     {
         if (throwTimer <= 0 && !getSnowball())
         {

@@ -70,7 +70,7 @@ int EnemyCreator::getEnemyType(int level)
 // Gets color variants for stronger enemies
 int EnemyCreator::getColor(int baseType)
 {
-    // Color variants: 0 = normal, 1 = red (1.5x), 2 = blue (2x) as lvl increase
+   
     // Future implementation would create wrapped enemy with multipliers
     // For now just return normal
     return 0;

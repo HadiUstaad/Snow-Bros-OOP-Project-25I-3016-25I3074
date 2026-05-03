@@ -84,6 +84,6 @@ void Boss::drawHitbox(sf::RenderWindow& window)
 
 void Boss::updateMovement(float deltaTime, platform platform[], int count)
 {
-   //Enemies::updateMovement(deltaTime,platform,count);
+   
     updateHitboxPosition();
 }

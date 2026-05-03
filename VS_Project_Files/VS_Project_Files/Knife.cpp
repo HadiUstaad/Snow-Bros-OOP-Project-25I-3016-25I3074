@@ -41,26 +41,7 @@ Knife::Knife(float x, float y, float targetX, float targetY)
     shape.setOrigin(sf::Vector2f(7.5f, 2.5f));   // origin for rotation or center is middle of knife
     shape.setPosition(sf::Vector2f(x, y));
 
-    /*if (!texture.loadFromFile("SnowBrosAssets/Images/Tornado_Red.png"))
-    {
-        cout << "Tornado texture failed to load\n";
-        shape.setFillColor(sf::Color::Yellow);
-    }
-    else {
-        cout << "Tornado texture loaded\n";
-    }
-
-
-    frameRect = sf::IntRect(sf::Vector2i(ENEMY_FRAME_X, ENEMY_FRAME_Y),
-        sf::Vector2i(ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT));
-
-    sprite = sf::Sprite(texture, frameRect);
-
-
-    float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
-    float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
-    sprite.setScale({ scaleX, scaleY });
-    sprite.setPosition(sf::Vector2f(getX(), getY()));*/
+   
 }
 
 

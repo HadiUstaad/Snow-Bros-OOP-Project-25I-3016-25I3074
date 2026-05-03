@@ -165,10 +165,10 @@ void Mogera::onHit()
     
     if (getCurrentPhase() == 2)
     {
-        sprite.setColor(sf::Color(180, 180, 255)); // Altered - bluish tint phase 2
+        sprite.setColor(sf::Color(180, 180, 255)); 
     }
     else if (getCurrentPhase() == 3)
     {
-        sprite.setColor(sf::Color(255, 100, 100)); // Altered - reddish tint phase 3
+        sprite.setColor(sf::Color(255, 100, 100)); 
     }
 }

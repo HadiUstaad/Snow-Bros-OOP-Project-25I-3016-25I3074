@@ -147,24 +147,6 @@ void Player::update(Input& input, platform platforms[], int count) {
 	sf::FloatRect playerBounds = Body.getGlobalBounds();
 
 
-	//	if (playerBounds.findIntersection(groundBounds)) {
-	//
-	//		if (vy > 0) {
-	//
-	//			float previousBottom = playerBounds.position.y + playerBounds.size.y - vy;
-	//
-	//			if (previousBottom <= groundBounds.position.y + 2) { 
-	//
-	//				y = groundBounds.position.y - playerBounds.size.y;
-	//				vy = 0;
-	//				onground = true;
-	//
-	//				Body.setPosition({ x, y });
-	//			}
-	//		}
-	//	}
-	//
-	//}
 
 	onground = false;
 
@@ -222,13 +204,6 @@ void Player::draw(sf::RenderWindow& window)
 {
 	
 	window.draw(sprite);
-	//sf::RectangleShape debugRect;
-	//debugRect.setSize(sf::Vector2f(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
-	//debugRect.setOutlineColor(sf::Color::Red);
-	//debugRect.setOutlineThickness(2);
-	//debugRect.setFillColor(sf::Color::Transparent);
-	//// Position it where your sprite would be drawing the texture
-	//window.draw(debugRect);
 }
 
 
