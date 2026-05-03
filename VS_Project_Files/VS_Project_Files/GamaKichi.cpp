@@ -162,7 +162,7 @@ void Gamakichi::fireRockets(float playerX, float playerY)
         // modify rocket spawn from above
         float angleOffset = (s - shots / 2) * spreadAngle;
 
-        float rad = angleOffset * (3.14f / 180.f); // computer doesnot know degrees but radians
+        float rad = angleOffset * (3.14f / 180); // computer doesnot know degrees but radians
 
         // rotate the velocity by angle
         float rotVx = nx * cos(rad) - ny * sin(rad);

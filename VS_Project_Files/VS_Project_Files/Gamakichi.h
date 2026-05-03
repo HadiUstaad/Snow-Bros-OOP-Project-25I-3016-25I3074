@@ -24,12 +24,13 @@ private:
 
     bool alive;
 
+
+public:
+
     // tracks where we last saw the player for aiming
     // iski wajah se rocket jo bas seedhi line mei jaa raha tha wo masla hal hua hai
     float lastPlayerX;
     float lastPlayerY;
-
-public:
     Gamakichi(float x, float y);
 
     ~Gamakichi() override;

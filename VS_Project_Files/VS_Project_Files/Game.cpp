@@ -683,6 +683,95 @@ void game::update(float deltaTime)
                 
         }
 
+
+       // get player  position to pass to Gamakichi for rocket aiming
+        if (currentLevel == 10 && BossGamakichi != nullptr && BossGamakichi->isAlive())
+        {
+            float p1x = player1.getBounds().position.x;
+            float p1y = player1.getBounds().position.y;
+            if (rand() % 2 == 0)
+            {
+                p1x = player2.getBounds().position.x;
+                p1y = player2.getBounds().position.y;
+            }
+            
+
+            //  pass player position so rockets aim correctly like knives of tornado
+            BossGamakichi->lastPlayerX = p1x;
+            BossGamakichi->lastPlayerY = p1y;
+
+            BossGamakichi->updatePhase(deltaTime);
+            spawnGamakichiChildren();
+            updateGamakichiBossHealthBar();
+
+            // check if rocket collided with player
+            GamakichiRocket** rockets = BossGamakichi->getRockets();
+            int rocketCount = BossGamakichi->getRocketCount();
+
+            for (int r = 0; r < rocketCount; r++)
+            {
+                if (rockets[r] == nullptr || !rockets[r]->getActive())
+                {
+                    continue;
+                }
+
+                // if rocket hit player 1
+                if (rockets[r]->hasExploded())
+                {
+                    if (lives1 > 0 && invincibleTimer1 <= 0 &&
+                        player1.getBounds().findIntersection(rockets[r]->getExplosionBounds()))
+                    {
+                        lives1--;
+                        invincibleTimer1 = 1;
+                        if (lives1 > 0)
+                        {
+                            player1.Reset();
+                        }
+                    }
+
+                    // if rocket hit player  2. else if nhi hai cos explosion can affect both
+                    if (lives2 > 0 && invincibleTimer2 <= 0 &&
+                        player2.getBounds().findIntersection(rockets[r]->getExplosionBounds()))
+                    {
+                        lives2--;
+                        invincibleTimer2 = 1;
+                        if (lives2 > 0)
+                        {
+                            player2.Reset();
+                        }
+                    }
+                }
+                else
+                {
+                    // direct hit of rocket with the players checking
+                    if (lives1 > 0 && invincibleTimer1 <= 0 &&
+                        player1.getBounds().findIntersection(rockets[r]->getBounds()))
+                    {
+                        lives1--;
+                        invincibleTimer1 = 1;
+                        rockets[r]->markAsHit();
+                        if (lives1 > 0)
+                        {
+                            player1.Reset();
+                        }
+                    }
+
+                    
+                    if (lives2 > 0 && invincibleTimer2 <= 0 &&
+                        player2.getBounds().findIntersection(rockets[r]->getBounds()))
+                    {
+                        lives2--;
+                        invincibleTimer2 = 1;
+                        rockets[r]->markAsHit();
+                        if (lives2 > 0)
+                        {
+                            player2.Reset();
+                        }
+                    }
+                }
+            }
+        }
+
         // make the enemies who are tornado throw knife
         for (int i = 0; i < enemyCount; i++)
         {
@@ -751,7 +840,7 @@ void game::update(float deltaTime)
                 player2.getBounds().findIntersection(enemies[i]->getBounds()) && invincibleTimer2 <= 0)
             {
                 lives2--;
-                invincibleTimer2 = 1.0f;
+                invincibleTimer2 = 1;
 
                 if (lives2 > 0)
                 {
@@ -814,6 +903,25 @@ void game::update(float deltaTime)
             }
         }
        
+        // ball collison with 2nd boss detect and get reqarded per shot
+        if (currentLevel == 10 && BossGamakichi != nullptr && BossGamakichi->isAlive())
+        {
+            if (B1.checkactive() && B1.getbounds().findIntersection(BossGamakichi->getBounds()))
+            {
+                BossGamakichi->onHit();
+                score1 += 1500;
+                gems1.addGems(3 + rand() % 5);
+                B1 = Ball();
+            }
+
+            if (B2.checkactive() && B2.getbounds().findIntersection(BossGamakichi->getBounds()))
+            {
+                BossGamakichi->onHit();
+                score2 += 1500;
+                gems2.addGems(3 + rand() % 5);
+                B2 = Ball();
+            }
+        }
 
         scoreText1.setString("P1: " + to_string(score1));
         scoreText2.setString("P2: " + to_string(score2));
@@ -888,6 +996,7 @@ void game::loadLevel(int level)
     }
     enemyCount = 0;
     BossMogera = nullptr;
+    BossGamakichi = nullptr;
     isBossLevel = false;
     coinCount = 0;
 
@@ -991,6 +1100,29 @@ void game::loadLevel(int level)
         return;
     }
 
+    //final boss finally!
+    if (level == 10)
+    {
+        isBossLevel = true;
+
+        // Center top of screen jese mogera tha
+        BossGamakichi = new Gamakichi(220, 100);
+        enemies[0] = BossGamakichi;
+        enemyCount = 1;
+
+        platformCount = 5;
+        platforms[0] = platform(0, 550, 800, 50);
+        platforms[1] = platform(50, 430, 200, 20);
+        platforms[2] = platform(300, 330, 200, 20);
+        platforms[3] = platform(550, 430, 200, 20);
+        platforms[4] = platform(150, 230, 500, 20);
+
+        levelText.setString("LEVEL 10: GENICHIRO FINAL BOSS!");
+        levelDisplayTimer = 3;
+        showLevelText = true;
+        return;
+    }
+
     //Bonus levels
 
     if (level == 4 || level == 9)
@@ -1051,7 +1183,7 @@ void game::loadLevel(int level)
     }
 
     levelText.setString("Level " + std::to_string(level));
-    levelDisplayTimer = 2.0f;
+    levelDisplayTimer = 2;
     showLevelText = true;
 }
 
@@ -1213,7 +1345,7 @@ void game::spawnGamakichiChildren()
     {
         BossGamakichi->setCanSpawnChild(false);
 
-        // alter - find a free slot in the enemy array for the child (slots 8-14)
+        // same as mogera
         for (int slot = 8; slot < 15; slot++)
         {
             if (enemies[slot] == nullptr || !enemies[slot]->isAlive())
@@ -1223,13 +1355,19 @@ void game::spawnGamakichiChildren()
                     delete enemies[slot];
                 }
 
-                // alter - spawn a Boton as Gamakichi's minion near the boss position
+                // spawning 
                 float cx = BossGamakichi->getX() + (rand() % 200) - 100;
                 float cy = BossGamakichi->getY();
 
-                // alter - clamp spawn x so minion does not spawn off screen
-                if (cx < 10) cx = 10;
-                if (cx > 750) cx = 750;
+                // clamp spawn x so child will not spawn off screen
+                if (cx < 10)
+                {
+                    cx = 10;
+                }
+                if (cx > 750) 
+                {
+                    cx = 750;
+                }
 
                 enemies[slot] = new Boton(cx, cy);
 
@@ -1244,7 +1382,7 @@ void game::spawnGamakichiChildren()
     }
 }
 
-// alter - Gamakichi health bar update (uses 60 hp which is Gamakichi's max)
+
 void game::updateGamakichiBossHealthBar()
 {
     if (!isBossLevel || BossGamakichi == nullptr)
@@ -1255,7 +1393,7 @@ void game::updateGamakichiBossHealthBar()
 
     if (BossGamakichi->isAlive())
     {
-        int maxHp = 60;    // alter - Gamakichi has 60 hp as set in its constructor
+        int maxHp = 60;    
         float fraction = (float)BossGamakichi->getHealth() / (float)maxHp;
 
         if (fraction < 0)
@@ -1271,7 +1409,7 @@ void game::updateGamakichiBossHealthBar()
     }
 }
 
-// alter - update all active knife positions and clean up inactive ones
+
 void game::updateKnives(float deltaTime)
 {
     for (int i = 0; i < MAX_KNIVES; i++)
@@ -1287,14 +1425,14 @@ void game::updateKnives(float deltaTime)
         }
         else
         {
-            // alter - knife went off screen or hit something, free the memory
+            // knife went off screen or hit something (basically deactive hai). so we free memory
             delete knives[i];
             knives[i] = nullptr;
         }
     }
 }
 
-// alter - check if any active knife has hit player1 or player2
+
 void game::checkKnifePlayerCollisions()
 {
     for (int i = 0; i < MAX_KNIVES; i++)
@@ -1304,13 +1442,12 @@ void game::checkKnifePlayerCollisions()
             continue;
         }
 
-        // alter - knife hit player1
-        if (lives1 > 0 && invincibleTimer1 <= 0 &&
-            player1.getBounds().findIntersection(knives[i]->getBounds()))
+        //  knife hit player1
+        if (lives1 > 0 && invincibleTimer1 <= 0 && player1.getBounds().findIntersection(knives[i]->getBounds()))
         {
             lives1--;
             invincibleTimer1 = 1.0f;
-            knives[i]->markAsHit();   // alter - deactivate knife on hit
+            knives[i]->markAsHit();   //  deactivate knife on hit
 
             if (lives1 > 0)
             {
@@ -1318,14 +1455,13 @@ void game::checkKnifePlayerCollisions()
             }
         }
 
-        // alter - knife hit player2 (re-check active in case player1 already consumed it)
-        if (knives[i] != nullptr && knives[i]->getActive() &&
-            lives2 > 0 && invincibleTimer2 <= 0 &&
+        //  knife hit player2 . we check active again ke knife player 1 go hit na kiya ho and deactive hogai ho
+        if (knives[i] != nullptr && knives[i]->getActive() && lives2 > 0 && invincibleTimer2 <= 0 &&
             player2.getBounds().findIntersection(knives[i]->getBounds()))
         {
             lives2--;
             invincibleTimer2 = 1.0f;
-            knives[i]->markAsHit();   // alter - deactivate knife on hit
+            knives[i]->markAsHit();   
 
             if (lives2 > 0)
             {
