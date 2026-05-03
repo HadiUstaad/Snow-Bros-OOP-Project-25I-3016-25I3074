@@ -41,7 +41,7 @@ static const float BOX_W = CARD_W - PAD * 2.f;       // 344
 static const float BTN_H = 44.f;
 static const float BTN_W = (BOX_W - 16.f) / 2.f;    // 164
 
-// row Y positions (relative to card top)
+// row Y positions with respect to card
 static const float ROW_USER_LBL = HDR_H + 22.f;
 static const float ROW_USER_BOX = ROW_USER_LBL + 22.f;
 static const float ROW_PASS_LBL = ROW_USER_BOX + BOX_H + 14.f;
@@ -479,10 +479,22 @@ void LoginScreen::setMessage(const string& msg, bool error)
     messageBg.setFillColor(error ? COL_ERR_BG : COL_OK_BG);
 }
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-//  wasLoginSuccessful
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
 bool LoginScreen::wasLoginSuccessful() const
 {
     return authManager->isloggedin();
+}
+
+void LoginScreen::reset()
+{
+    clearFields();              // wipes enteredName, enteredPassword, and sf::Text strings
+
+    selectedField = 0;          // focus back to username box
+    showMessage = false;      // hide any error/success banner
+    isError = false;
+
+    authManager->logout();      // make sure the auth state is cleared too
+
+    show();                     // make the screen visible again
+    refreshBoxStyles();         // reset box highlights to initial state (username focused)
 }

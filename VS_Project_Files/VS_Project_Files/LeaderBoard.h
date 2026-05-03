@@ -48,7 +48,7 @@ private:
     // Helpers
     sf::Color getRankColor(int rank) const;      // gold/silver/bronze/normal
     sf::Color getRankBadgeColor(int rank) const;
-    void      buildRow(int i);
+    void buildRow(int i);
 
 public:
     LeaderboardScreen(sf::RenderWindow& gameWindow, FileManage* fm);
