@@ -1,17 +1,26 @@
 #include "Gamakichi.h"
 #include <cmath>
+#include <iostream>
 
+using namespace std;
+
+
+static const float ENEMY_FRAME_X = 1446;
+static const float ENEMY_FRAME_Y = 16;
+static const float ENEMY_FRAME_WIDTH = 1087;
+static const float ENEMY_FRAME_HEIGHT = 623;
 
 Gamakichi::Gamakichi(float x, float y)
-    : Boss(x, y, 120, 100, 60, 10000)   // big 120x100, 60 hp, 10000 score
+    : Boss(x, y, 250, 100, 60, 10000)   // big 120x100, 60 hp, 10000 score
+ , texture(), sprite(texture)
 {
     rocketCount = 0;
     fireTimer = 3;          // first shot after 3 seconds
     fireCooldown = 3;
 
     childCount = 0;
-    spawnTimer = 5;
-    spawnCooldown = 5;
+    spawnTimer = 10;
+    spawnCooldown = 10;
 
     lastPlayerX = 300;  // random value. will be updated during gameplay
     lastPlayerY = 300;
@@ -25,8 +34,30 @@ Gamakichi::Gamakichi(float x, float y)
     }
 
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
-    shape.setFillColor(sf::Color(0, 180, 0));       // dark green 
+    shape.setFillColor(sf::Color::Transparent);     
     shape.setPosition(sf::Vector2f(getX(), getY()));
+
+    if (!texture.loadFromFile("SnowBrosAssets/Images/Gamakichi.png"))
+    {
+        cout << "Gamakichi texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else {
+        cout << "Gamakichi texture loaded\n";
+    }
+
+
+    frameRect = sf::IntRect(sf::Vector2i(ENEMY_FRAME_X, ENEMY_FRAME_Y),
+        sf::Vector2i(ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT));
+
+    sprite = sf::Sprite(texture, frameRect);
+
+
+    float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
+    float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
+    sprite.setScale({ scaleX, scaleY });
+    sprite.setPosition(sf::Vector2f(getX(), getY()));
+
 }
 
 
@@ -208,7 +239,7 @@ void Gamakichi::draw(sf::RenderWindow& window)
         return;
     }
 
-    window.draw(shape);
+    window.draw(sprite);
 
     // draw all active rockets
     for (int i = 0; i < 8; i++)
