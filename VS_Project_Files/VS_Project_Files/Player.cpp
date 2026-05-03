@@ -7,22 +7,13 @@
 using namespace std;
 
 
-static const int PLAYER_FRAME_X = 2;    // column index of idle first frame
-static const int PLAYER_FRAME_Y = 0;    //  row index of idle frame  
-static const int PLAYER_FRAME_WIDTH = 160;  // width of one frame in sheet
-static const int PLAYER_FRAME_HEIGHT = 160;  //  height of one frame in sheet
+static const int PLAYER_FRAME_X = 20;    // column index of idle first frame
+static const int PLAYER_FRAME_Y = 5;    //  row index of idle frame  
+static const int PLAYER_FRAME_WIDTH = 55;  // width of one frame in sheet
+static const int PLAYER_FRAME_HEIGHT = 75;  //  height of one frame in sheet
 Player::Player() : texture(), sprite(texture) {
 
 
-	if (!texture.loadFromFile("./player.png.png")) {
-		cout << "Image failed";
-	}
-	else {
-		cout << "image loaded";
-		//sprite.setTexture(texture);
-		sprite = sf::Sprite(texture);
-
-	}
 
 
 
@@ -54,7 +45,7 @@ Player::Player() : texture(), sprite(texture) {
 	}
 	
 	// according to frame width hight the sprite coords ko fix kiya hai
-	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X * PLAYER_FRAME_WIDTH, PLAYER_FRAME_Y * PLAYER_FRAME_HEIGHT),
+	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X, PLAYER_FRAME_Y),
 		sf::Vector2i(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
 
 	sprite = sf::Sprite(texture, frameRect); //use rectangular framme
@@ -76,7 +67,7 @@ void Player::loadTexture(const string& file)
 
 	// same logic as in constructor
 	// re apply frame rect after loading new texture
-	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X * PLAYER_FRAME_WIDTH, PLAYER_FRAME_Y * PLAYER_FRAME_HEIGHT),
+	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X, PLAYER_FRAME_Y * PLAYER_FRAME_HEIGHT),
 		sf::Vector2i(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
 	sprite.setTexture(texture);
 	sprite.setTextureRect(frameRect);
@@ -230,6 +221,13 @@ void Player::draw(sf::RenderWindow& window)
 {
 	
 	window.draw(sprite);
+	sf::RectangleShape debugRect;
+	debugRect.setSize(sf::Vector2f(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
+	debugRect.setOutlineColor(sf::Color::Red);
+	debugRect.setOutlineThickness(2);
+	debugRect.setFillColor(sf::Color::Transparent);
+	// Position it where your sprite would be drawing the texture
+	window.draw(debugRect);
 }
 
 
