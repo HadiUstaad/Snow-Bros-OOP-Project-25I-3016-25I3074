@@ -424,6 +424,7 @@ void game::Run()
         else if (currentState == PAUSED)
         {
             // draw game world behind so you can still see the level while paused
+            window.draw(bgSprite);
             for (int i = 0; i < MAX_PLATFORMS; i++)
             {
                 platforms[i].draw(window);

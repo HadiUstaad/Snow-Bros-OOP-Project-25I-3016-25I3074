@@ -1,11 +1,24 @@
 #include "Botom.h"
 #include "Ball.h"
+#include <iostream>
 #include <ctime>
 
+using namespace std;
 //Modify add texture
 
+static const float BOTON_FRAME_X = 11;   
+static const float BOTON_FRAME_Y = 136;
+static const float BOTON_FRAME_WIDTH = 81;
+static const float BOTON_FRAME_HEIGHT = 84;
 
-Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 300, 50, 100) 
+
+static const float SNOWBALL_FRAME_X = 262;
+static const float SNOWBALL_FRAME_Y =885;
+static const float SNOWBALL_FRAME_WIDTH = 67;
+static const float SNOWBALL_FRAME_HEIGHT = 81;
+
+Boton::Boton(float x, float y) : GroundEnemy(x, y, 50, 50, 300, 50, 100)
+, texture(), sprite(texture),snowball()
 {
 
     froze = false;
@@ -14,16 +27,56 @@ Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 300, 50, 100)
 
     movespeed = 150;
 
+
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
-    shape.setFillColor(sf::Color::Yellow); // Make the Boton yellow for visibility until graphics is added
+    shape.setFillColor(sf::Color::Transparent); // transparent so dont show
     shape.setPosition(sf::Vector2f(getX(), getY()));
+
+    if (!snowball.loadFromFile("SnowBrosAssets/Images/Player_Red.png"))
+    {
+        cout << "snowball texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else
+    {
+        cout << "snowball texture loaded\n";
+    }
+
+    if (!texture.loadFromFile("SnowBrosAssets/Images/Botom_Pink.png")) 
+    {
+        cout << "Boton texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else {
+        cout << "Boton texture loaded\n";
+    }
+
+    
+    frameRect = sf::IntRect(sf::Vector2i(BOTON_FRAME_X, BOTON_FRAME_Y),
+        sf::Vector2i(BOTON_FRAME_WIDTH, BOTON_FRAME_HEIGHT)
+    );
+
+    sprite = sf::Sprite(texture, frameRect);
+
+    
+    float scaleX = getWidth() / BOTON_FRAME_WIDTH;
+    float scaleY = getHeight() / BOTON_FRAME_HEIGHT;
+    sprite.setScale({ scaleX, scaleY });
+    sprite.setPosition(sf::Vector2f(getX(), getY()));
 }
 
 void Boton::updateMovement(float deltaTime, platform platforms[], int count)
 {
 
     if (getSnowball() || froze || !alive)
+    {
+        float scaleX = getWidth() / SNOWBALL_FRAME_WIDTH;
+        float scaleY = getHeight() / SNOWBALL_FRAME_HEIGHT;
+        sprite.setScale({ scaleX, scaleY });
+        sprite.setPosition(sf::Vector2f(getX(), getY()));
+        
         return;
+    }
 
 
   
@@ -89,6 +142,24 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
 
     }
    
+    
+    sprite.setPosition(sf::Vector2f(getX(), getY()));
+
+    // flip
+    float scaleX = getWidth() /BOTON_FRAME_WIDTH;
+    float scaleY = getHeight() / BOTON_FRAME_HEIGHT;
+    if (moveDirection == 1) 
+    {
+        sprite.setScale({ -scaleX, scaleY });
+        sprite.setPosition(sf::Vector2f(getX() + getWidth(), getY())); 
+    }
+    else
+    {
+        sprite.setScale({ scaleX, scaleY });
+        sprite.setPosition(sf::Vector2f(getX(), getY()));
+    }
+
+
     shape.setPosition(sf::Vector2f(getX(), getY()));
     // makes hitbox at the same positon as sprite
     updateHitboxPosition();
@@ -106,7 +177,11 @@ sf::FloatRect Boton::getBounds() {
 void Boton::freeze() {
 
     froze = true;
-    shape.setFillColor(sf::Color::Cyan);
+    
+    frameRect= sf::IntRect(sf::Vector2i(SNOWBALL_FRAME_X, SNOWBALL_FRAME_Y),
+        sf::Vector2i(SNOWBALL_FRAME_WIDTH, SNOWBALL_FRAME_HEIGHT));
+    sprite = sf::Sprite(snowball, frameRect);
+
 }
 
 bool Boton::checkfreeze() {
@@ -134,7 +209,7 @@ void Boton::draw(sf::RenderWindow& window)
 {
     if (alive && getActive())
     {
-        window.draw(shape);
+        window.draw(sprite);
     }
 }
 

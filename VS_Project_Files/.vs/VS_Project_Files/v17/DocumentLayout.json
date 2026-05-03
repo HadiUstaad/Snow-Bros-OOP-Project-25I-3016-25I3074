@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Botom.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Botom.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B52A8390-CC3D-4EE0-91A9-A39FE045DDDB}|VS_Project_Files\\VS_Project_Files.vcxproj|solutionrelative:VS_Project_Files\\Game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -44,40 +52,66 @@
               "RelativeDocumentMoniker": "VS_Project_Files\\Player.cpp",
               "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.cpp",
               "RelativeToolTip": "VS_Project_Files\\Player.cpp",
-              "ViewState": "AgIAANsAAAAAAAAAAAAAAOwAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAANIAAAAAAAAAAAAAAOYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-03T07:25:49.071Z",
+              "WhenOpened": "2026-05-03T12:02:11.257Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "Player.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\Player.h",
               "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Player.h",
               "RelativeToolTip": "VS_Project_Files\\Player.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACQAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-03T07:25:41.536Z",
+              "WhenOpened": "2026-05-03T11:39:19.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Botom.cpp",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.cpp",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Botom.cpp",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.cpp",
+              "RelativeToolTip": "VS_Project_Files\\Botom.cpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-02T13:13:21.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Botom.h",
+              "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.h",
+              "RelativeDocumentMoniker": "VS_Project_Files\\Botom.h",
+              "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Botom.h",
+              "RelativeToolTip": "VS_Project_Files\\Botom.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-02T13:13:16.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Game.cpp",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp",
               "RelativeDocumentMoniker": "VS_Project_Files\\Game.cpp",
               "ToolTip": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.cpp",
               "RelativeToolTip": "VS_Project_Files\\Game.cpp",
-              "ViewState": "AgIAADUBAAAAAAAAAAAAwEYBAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAJ4BAAAAAAAAAAAjwLEBAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-05-02T08:28:57.062Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Game.h",
               "DocumentMoniker": "D:\\University Data\\Semester 2\\OOP\\project\\SnowBros_OOP\\Snow-Bros-OOP-Project-25I-3016-25I3074\\VS_Project_Files\\VS_Project_Files\\Game.h",
               "RelativeDocumentMoniker": "VS_Project_Files\\Game.h",

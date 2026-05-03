@@ -15,6 +15,12 @@ class Boton : public GroundEnemy
     bool froze;
     bool alive;
 
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::IntRect frameRect;
+
+    sf::Texture snowball;
+    
 public:
     
    
