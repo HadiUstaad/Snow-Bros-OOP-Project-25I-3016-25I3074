@@ -212,13 +212,7 @@ void Player::draw(sf::RenderWindow& window)
 		window.draw(sprite);
 
 	}
-	//sf::RectangleShape debugRect;
-	//debugRect.setSize(sf::Vector2f(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
-	//debugRect.setOutlineColor(sf::Color::Red);
-	//debugRect.setOutlineThickness(2);
-	//debugRect.setFillColor(sf::Color::Transparent);
-	//// Position it where your sprite would be drawing the texture
-	//window.draw(debugRect);
+	
 }
 
 

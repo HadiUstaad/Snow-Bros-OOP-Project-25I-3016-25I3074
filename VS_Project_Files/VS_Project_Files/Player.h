@@ -28,7 +28,7 @@ private:
 	sf::RectangleShape Body;	// collision logic
 public:
 	Player();
-	//Inputmanager remaining
+	
 	void update(Input& input, platform platforms[], int count);
 	void draw(sf::RenderWindow& window);
 	void drawHitbox(sf::RenderWindow& window);
