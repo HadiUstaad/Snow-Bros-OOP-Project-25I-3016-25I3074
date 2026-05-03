@@ -311,8 +311,8 @@ void game::Run()
         }
        
         update(deltaTime);
-        B1.update();
-        B2.update();// Snowball update MUST be before rendering
+        B1.update(deltaTime);
+        B2.update(deltaTime);// Snowball update MUST be before rendering
 
         // 🔥 RENDER
         window.clear();

@@ -2,30 +2,52 @@
 
 Ball::Ball() {
 
-	ball.setRadius(20.0);
+	ball.setRadius(10.0);
 	ball.setFillColor(sf::Color::White);
-	speed = 0.7f;
+	//speed = 0.7f;
+	velocityX = 0;
+	velocityY = 0;
 	active = false;
 }
 
 void Ball::shoot(float x, float y, int direction) {
 
 	ball.setPosition({ x,y });
-	speed = 0.7f * direction;
+	//speed = 0.7f * direction;
+	velocityX = 500.0f * direction;  // speed
+	velocityY = -85.0f;             //  slight upward arc (optional)
 	active = true;
 }
 
-void Ball::update() {
+void Ball::update(float deltaTime) {
 
 	if (!active) {
 		return;
 	}
 
-	ball.move({ speed,0 });
+	//ball.move({ speed,0 });
+	// gravity (optional but makes it feel like projectile)
+	velocityY += 200.0f * deltaTime;
 
-	if (ball.getPosition().x < 0 || ball.getPosition().x > 800) {
+	// movement
+	ball.move({ velocityX * deltaTime, velocityY * deltaTime });
+
+	//if (ball.getPosition().x < 0 || ball.getPosition().x > 800) {
+	//	active = false;
+
+	//}
+	//if (ball.getPosition().x < 0 || ball.getPosition().x > 800 ||
+	//	ball.getPosition().y > 600 || ball.getPosition().y > 600)
+	//{
+	//	active = false;
+	//}
+	sf::Vector2f pos = ball.getPosition();
+	float r = ball.getRadius();
+
+	if (pos.x - r < 0 || pos.x + r > 800 ||
+		pos.y - r < 0 || pos.y + r > 600)
+	{
 		active = false;
-
 	}
 }
 
