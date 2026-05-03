@@ -152,24 +152,6 @@ void Player::update(Input& input, platform platforms[], int count) {
 	sf::FloatRect playerBounds = Body.getGlobalBounds();
 
 
-	//	if (playerBounds.findIntersection(groundBounds)) {
-	//
-	//		if (vy > 0) {
-	//
-	//			float previousBottom = playerBounds.position.y + playerBounds.size.y - vy;
-	//
-	//			if (previousBottom <= groundBounds.position.y + 2) { 
-	//
-	//				y = groundBounds.position.y - playerBounds.size.y;
-	//				vy = 0;
-	//				onground = true;
-	//
-	//				Body.setPosition({ x, y });
-	//			}
-	//		}
-	//	}
-	//
-	//}
 
 	onground = false;
 

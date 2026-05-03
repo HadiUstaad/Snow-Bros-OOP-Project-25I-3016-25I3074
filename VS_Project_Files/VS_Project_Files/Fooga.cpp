@@ -81,11 +81,10 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
     // decrease timer until it will be 0
     landTimer -= deltaTime;
 
-    // if flying update hover motion , else apply gravity logic
+    // if flying update hover motion  else apply gravity logic
     if (isFlying)
     {
-        // call parent flying movement
-        //FlyEnemy::updateMovement(deltaTime, platforms, count);
+       
         hoverTimer += deltaTime;
 
         float amplitude = 120.0f;   // height of movement
@@ -99,8 +98,7 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
         if (newY < minY) newY = minY;
         if (newY > maxY) newY = maxY;
 
-        // Keep horizontal movement (optional)
-        //float newX = getX() + (getSpeed() * deltaTime);
+      
         float newX = getX() + (moveDirection * getSpeed() * deltaTime);
 
         // screen boundaries
@@ -179,8 +177,7 @@ void Fooga::draw(sf::RenderWindow& window)
 // attempts to land on nearest platform below
 void Fooga::attemptLanding()
 {
-    // Modify for now just land at current position
-    // In full version would check if platform then land below but this will be later added as an extra
+    
     isFlying = false;
 }
 

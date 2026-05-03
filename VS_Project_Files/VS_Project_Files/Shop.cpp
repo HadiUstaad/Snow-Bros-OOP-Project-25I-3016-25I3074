@@ -2,9 +2,7 @@
 #include <iostream>
 using namespace std;
 
-// =============================================================================
-// PowerUpState
-// =============================================================================
+
 
 PowerUpState::PowerUpState()
     : speedBoost(false), doubleScore(false), widerShot(false),
@@ -34,9 +32,7 @@ int PowerUpState::getWiderShotOwned()   const { return widerShotOwned; }
 void PowerUpState::reset() { *this = PowerUpState(); }
 
 
-// =============================================================================
-// ShopItem
-// =============================================================================
+
 
 ShopItem::ShopItem()
     : name(""), description(""), flavorText(""), cost(0), maxOwned(0)
@@ -56,16 +52,7 @@ int    ShopItem::getCost()        const { return cost; }
 int    ShopItem::getMaxOwned()    const { return maxOwned; }
 
 
-// =============================================================================
-// ShopScreen — Constructor
-//
-// SFML 3 requires sf::Text(font) — no default constructor exists.
-// Steps taken here:
-//   1. Load font FIRST (font is a plain member, not a pointer).
-//   2. Pass font to every non-array sf::Text in the member-initialiser list.
-//   3. Allocate per-item sf::Text* pointers in the constructor BODY after
-//      the font is confirmed loaded.
-// =============================================================================
+
 
 ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
     Currency* p1Gems, Currency* p2Gems,
@@ -73,8 +60,7 @@ ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
     : Display(true),
     window(gameWindow),
     powerUps(state),
-    // font is default-constructed (sf::Font has a default ctor — fine)
-    // Now pass font to every fixed sf::Text member:
+
     titleText(font),
     gemText(font),
     playerTag(font),
@@ -86,11 +72,11 @@ ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
     purchaseFlag(false),
     lastBought(-1)
 {
-    // ── Assign currency pointers ──────────────────────────────────────────
+   
     gems[0] = p1Gems;
     gems[1] = p2Gems;
 
-    // ── Null-initialise pointer arrays before anything can throw ─────────
+  
     for (int i = 0; i < ITEM_COUNT; i++)
     {
         itemName[i] = nullptr;
@@ -101,22 +87,20 @@ ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
         buyBtnText[i] = nullptr;
     }
 
-    // ── Load font ─────────────────────────────────────────────────────────
+  
     if (!font.openFromFile("RussoOne-Regular.ttf"))
     {
         cout << "[ShopScreen] WARNING: Could not load RussoOne-Regular.ttf\n";
     }
 
-    // Re-apply font to header texts after the font object is populated.
-    // (The initialiser list captured a reference to font before it was loaded,
-    //  so we set it explicitly here to be safe with SFML 3.)
+    
     titleText.setFont(font);
     gemText.setFont(font);
     playerTag.setFont(font);
     backHint.setFont(font);
     feedbackText.setFont(font);
 
-    // ── Allocate per-item sf::Text objects NOW that font is loaded ────────
+
     for (int i = 0; i < ITEM_COUNT; i++)
     {
         itemName[i] = new sf::Text(font);
@@ -127,25 +111,25 @@ ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
         buyBtnText[i] = new sf::Text(font);
     }
 
-    // ── Define shop items ─────────────────────────────────────────────────
+   
     items[0] = ShopItem("Extra Life", "+1 Life", "Stay in the fight!", 50, 5);
     items[1] = ShopItem("Speed Boost", "Move faster", "Leave them in dust", 40, 0);
     items[2] = ShopItem("Double Score", "2x points", "Score like a legend", 60, 0);
     items[3] = ShopItem("Wide Shot", "Bigger attack", "Hit more, miss less", 45, 0);
 
-    // ── Background overlay ────────────────────────────────────────────────
+    
     overlay.setSize(sf::Vector2f(800.f, 600.f));
     overlay.setFillColor(sf::Color(0, 0, 0, 180));
     overlay.setPosition({ 0.f, 0.f });
 
-    // ── Panel ─────────────────────────────────────────────────────────────
+  
     panel.setSize(sf::Vector2f(620.f, 520.f));
     panel.setFillColor(sf::Color(20, 20, 35));
     panel.setOutlineColor(sf::Color(80, 120, 200));
     panel.setOutlineThickness(2.f);
     panel.setPosition({ 90.f, 40.f });
 
-    // ── Header bar ────────────────────────────────────────────────────────
+
     headerBar.setSize(sf::Vector2f(620.f, 60.f));
     headerBar.setFillColor(sf::Color(35, 35, 60));
     headerBar.setPosition({ 90.f, 40.f });
@@ -158,34 +142,32 @@ ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
     footerLine.setFillColor(sf::Color(60, 60, 100));
     footerLine.setPosition({ 90.f, 530.f });
 
-    // ── Title text ────────────────────────────────────────────────────────
     titleText.setCharacterSize(32);
     titleText.setFillColor(sf::Color(200, 220, 255));
     titleText.setStyle(sf::Text::Bold);
     titleText.setString("SHOP");
     titleText.setPosition({ 360.f, 52.f });
 
-    // ── Gem display ───────────────────────────────────────────────────────
+  
     gemText.setCharacterSize(18);
     gemText.setFillColor(sf::Color(255, 215, 0));
     gemText.setPosition({ 100.f, 58.f });
 
-    // ── Player tag ────────────────────────────────────────────────────────
     playerTag.setCharacterSize(16);
     playerTag.setFillColor(sf::Color(150, 200, 255));
     playerTag.setPosition({ 560.f, 60.f });
 
-    // ── Back hint ─────────────────────────────────────────────────────────
+   
     backHint.setCharacterSize(15);
     backHint.setFillColor(sf::Color(120, 120, 140));
     backHint.setString("ESC - Back    ENTER - Buy    UP/DOWN - Navigate");
     backHint.setPosition({ 130.f, 540.f });
 
-    // ── Feedback text ─────────────────────────────────────────────────────
+  
     feedbackText.setCharacterSize(18);
     feedbackText.setPosition({ 300.f, 510.f });
 
-    // ── Per-item card layout ──────────────────────────────────────────────
+   
     const float CARD_X = 110.f;
     const float CARD_Y_START = 115.f;
     const float CARD_H = 90.f;
@@ -206,7 +188,7 @@ ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
         cardBorder[i].setFillColor(itemAccentColor(i));
         cardBorder[i].setPosition({ CARD_X, cy });
 
-        // Selection highlight outline (hidden by default)
+        // Selection highlight outline 
         cardHighlight[i].setSize(sf::Vector2f(CARD_W, CARD_H));
         cardHighlight[i].setFillColor(sf::Color::Transparent);
         cardHighlight[i].setOutlineThickness(2.f);
@@ -263,11 +245,8 @@ ShopScreen::ShopScreen(sf::RenderWindow& gameWindow,
 }
 
 
-// =============================================================================
-// ShopScreen — Destructor
-// Delete every sf::Text pointer to avoid memory leaks.
-// =============================================================================
 
+//destructor
 ShopScreen::~ShopScreen()
 {
     for (int i = 0; i < ITEM_COUNT; i++)
@@ -289,9 +268,7 @@ ShopScreen::~ShopScreen()
 }
 
 
-// =============================================================================
-// draw()
-// =============================================================================
+
 
 void ShopScreen::draw()
 {
@@ -358,9 +335,7 @@ void ShopScreen::draw()
 }
 
 
-// =============================================================================
-// handleInput()
-// =============================================================================
+
 
 void ShopScreen::handleInput()
 {
@@ -386,9 +361,7 @@ void ShopScreen::handleInput()
 }
 
 
-// =============================================================================
-// tryBuy()
-// =============================================================================
+
 
 void ShopScreen::tryBuy(int index)
 {
@@ -398,7 +371,7 @@ void ShopScreen::tryBuy(int index)
     int maxO = items[index].getMaxOwned();
     int owned = getOwnedCount(index);
 
-    // Check max ownership cap (0 = unlimited)
+    // Check max ownership cap 
     if (maxO > 0 && owned >= maxO)
     {
         feedbackText.setFillColor(sf::Color(255, 100, 100));
@@ -433,9 +406,7 @@ void ShopScreen::tryBuy(int index)
 }
 
 
-// =============================================================================
-// Public accessors
-// =============================================================================
+
 
 bool ShopScreen::wasPurchased() { return purchaseFlag; }
 int  ShopScreen::lastPurchasedIndex() { return lastBought; }
@@ -447,9 +418,7 @@ void ShopScreen::setActivePlayer(int p)
 }
 
 
-// =============================================================================
-// Private helpers
-// =============================================================================
+
 
 void ShopScreen::updateCardStyles()
 {
