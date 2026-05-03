@@ -25,6 +25,11 @@ Boton::Boton(float x, float y) : GroundEnemy(x, y, 50, 50, 300, 50, 100)
     alive = true;
     moveDirection = 1;
 
+    jumpCooldown = 5;    
+    jumpTimer = jumpCooldown;
+    jumpVelocityY = -550; 
+    isJumping = false;
+
     movespeed = 150;
 
 
@@ -78,14 +83,31 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
         return;
     }
 
-
   
     // checks if it is in air and then pulls it down until it reaches a ground
     applyGravity(deltaTime, platforms, count);
+     
+    jumpTimer -= deltaTime;
+
+    // when grounded and timer fires, launch upward
+    if (isGrounded && jumpTimer <= 0)
+    {
+        velocityY = jumpVelocityY;  // apply upward velocity
+        isGrounded = false;         // leave the ground
+        isJumping = true;
+        jumpTimer = jumpCooldown;   // reset timer for next jump
+    }
+
+    // once we land again, clear the jumping flag
+    if (isJumping && isGrounded)
+    {
+        isJumping = false;
+    }
 
     // walks horizontally on ground. no vertical movement
     if (isGrounded)
     {
+        // count down for jumping
         float newX = getX() + (moveDirection * getSpeed() * deltaTime);
 
         // screen boundary reversal check
@@ -99,7 +121,7 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
         // ahead of boton. if that place has air it will either fal or reverse direction
         // if it is grounded it will keep moving in its direcetion
 
-        float probeY = getY() + getHeight() + 1.0f;   // one pixel below feet
+        float probeY = getY() + getHeight() + 1;   // one pixel below feet
         float probeX;
         if (moveDirection > 0)
         {

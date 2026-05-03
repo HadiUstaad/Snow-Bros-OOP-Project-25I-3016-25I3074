@@ -15,6 +15,11 @@ class Boton : public GroundEnemy
     bool froze;
     bool alive;
 
+    float jumpTimer;        
+    float jumpCooldown;     
+    float jumpVelocityY;    
+    bool isJumping;
+
     sf::Texture texture;
     sf::Sprite sprite;
     sf::IntRect frameRect;
@@ -31,6 +36,8 @@ public:
 
     // If we don't override these, Boton remains abstract and we can't spawn it
     void updateMovement(float deltaTime,platform platform[], int count) override; // From Enemies
+
+
     
     void drawHitbox(sf::RenderWindow& window) override;
 

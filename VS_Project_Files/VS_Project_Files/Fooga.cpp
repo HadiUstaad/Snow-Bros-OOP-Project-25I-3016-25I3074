@@ -19,7 +19,7 @@ Fooga::Fooga(float x, float y) : FlyEnemy(x, y, 50, 50, 4, 60, 150),
 texture(), sprite(texture), snowball()
 {
     isFlying = true; // starts in air
-    landTimer = 25; // will attempt landing after 3 seconds
+    landTimer = 7; // will attempt landing after 3 seconds
     alive = true;
     froze = false;
 
@@ -117,7 +117,7 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
         if (landTimer <= 0)
         {
             attemptLanding();
-            landTimer = 20;   // stay grounded for 2 seconds
+            landTimer = 7;   // stay grounded for 2 seconds
         }
     }
     else
@@ -139,7 +139,7 @@ void Fooga::updateMovement(float deltaTime, platform platforms[], int count)
         if (landTimer <= 0)
         {
             takeoff();
-            landTimer = 25;   
+            landTimer = 7;   
         }
     }
 
@@ -189,7 +189,7 @@ void Fooga::attemptLanding()
 void Fooga::takeoff()
 {
     isFlying = true;
-    hoverHeight = getY();   // set new hover center at current height
+    hoverHeight = getY()-120;   // set new hover center at current height
 }
 
 void Fooga::applygravity(float deltaTime, platform platforms[], int count)
@@ -249,7 +249,18 @@ void Fooga::applygravity(float deltaTime, platform platforms[], int count)
                 break;
             }
         }
-        //velocityY = 0;
+        float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
+        float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
+        if (moveDirection == 1)
+        {
+            sprite.setScale({ -scaleX, scaleY });
+            sprite.setPosition(sf::Vector2f(getX() + getWidth(), getY()));
+        }
+        else
+        {
+            sprite.setScale({ scaleX, scaleY });
+            sprite.setPosition(sf::Vector2f(getX(), getY()));
+        }
 
     }
     
