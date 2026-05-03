@@ -219,6 +219,9 @@
   <ItemGroup>
     <Font Include="RussoOne-Regular.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="bin\Player_Red.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

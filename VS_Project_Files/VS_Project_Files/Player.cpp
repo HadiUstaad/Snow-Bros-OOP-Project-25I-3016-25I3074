@@ -7,10 +7,10 @@
 using namespace std;
 
 
-static const int PLAYER_FRAME_X = 20;    // column index of idle first frame
-static const int PLAYER_FRAME_Y = 5;    //  row index of idle frame  
-static const int PLAYER_FRAME_WIDTH = 55;  // width of one frame in sheet
-static const int PLAYER_FRAME_HEIGHT = 75;  //  height of one frame in sheet
+static const float PLAYER_FRAME_X = 20;    // column index of idle first frame
+static const float PLAYER_FRAME_Y = 4;    //  row index of idle frame  
+static const float PLAYER_FRAME_WIDTH = 55;  // width of one frame in sheet
+static const float PLAYER_FRAME_HEIGHT = 75;  //  height of one frame in sheet
 Player::Player() : texture(), sprite(texture) {
 
 
@@ -35,7 +35,8 @@ Player::Player() : texture(), sprite(texture) {
 	Body.setSize({ 50,50 });
 	Body.setFillColor(sf::Color::Transparent);
 
-	if (!texture.loadFromFile("Player_Red.png")) 
+	
+	if (!texture.loadFromFile("SnowBrosAssets/Images/Player_Red.png")) 
 	{
 		cout << "Player texture failed to load\n";
 	}
@@ -50,9 +51,9 @@ Player::Player() : texture(), sprite(texture) {
 
 	sprite = sf::Sprite(texture, frameRect); //use rectangular framme
 
-	// sprite is scaled to according to requirements float is used to be precise
-	float scaleX = 50 / (float)PLAYER_FRAME_WIDTH;
-	float scaleY = 50 / (float)PLAYER_FRAME_HEIGHT;
+	
+	float scaleX = 50 / PLAYER_FRAME_WIDTH;
+	float scaleY = 50 /PLAYER_FRAME_HEIGHT;
 	sprite.setScale({ scaleX, scaleY });
 	
 }
@@ -67,13 +68,13 @@ void Player::loadTexture(const string& file)
 
 	// same logic as in constructor
 	// re apply frame rect after loading new texture
-	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X, PLAYER_FRAME_Y * PLAYER_FRAME_HEIGHT),
+	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X, PLAYER_FRAME_Y),
 		sf::Vector2i(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
 	sprite.setTexture(texture);
 	sprite.setTextureRect(frameRect);
 
-	float scaleX = 50.0f / (float)PLAYER_FRAME_WIDTH;
-	float scaleY = 50.0f / (float)PLAYER_FRAME_HEIGHT;
+	float scaleX = 50.0f / PLAYER_FRAME_WIDTH;
+	float scaleY = 50.0f / PLAYER_FRAME_HEIGHT;
 	sprite.setScale({ scaleX, scaleY });
 }
 void Player::update(Input& input, platform platforms[], int count) {
@@ -201,7 +202,7 @@ void Player::update(Input& input, platform platforms[], int count) {
 	}
 
 	// flip sprite based on direction
-	if (direction == -1) 
+	if (direction == 1) 
 	{
 		// - is the flip in setscale.
 		// + 50 in set position to avoid the ajeeb sa change jo ho raha tha
@@ -221,13 +222,13 @@ void Player::draw(sf::RenderWindow& window)
 {
 	
 	window.draw(sprite);
-	sf::RectangleShape debugRect;
-	debugRect.setSize(sf::Vector2f(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
-	debugRect.setOutlineColor(sf::Color::Red);
-	debugRect.setOutlineThickness(2);
-	debugRect.setFillColor(sf::Color::Transparent);
-	// Position it where your sprite would be drawing the texture
-	window.draw(debugRect);
+	//sf::RectangleShape debugRect;
+	//debugRect.setSize(sf::Vector2f(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
+	//debugRect.setOutlineColor(sf::Color::Red);
+	//debugRect.setOutlineThickness(2);
+	//debugRect.setFillColor(sf::Color::Transparent);
+	//// Position it where your sprite would be drawing the texture
+	//window.draw(debugRect);
 }
 
 

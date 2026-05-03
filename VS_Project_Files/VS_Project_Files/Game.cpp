@@ -324,7 +324,7 @@ void game::Run()
         else if (currentState == PLAYING)
         {
 
-                  
+            window.draw(bgSprite);
             if (showLevelText)
             {
                 levelDisplayTimer -= deltaTime;
@@ -360,7 +360,7 @@ void game::Run()
             }
             
             //levels
-            //window.draw(bgSprite);
+            
             // objects
             player1.draw(window);
             player2.draw(window);
@@ -382,9 +382,11 @@ void game::Run()
             window.draw(gemText2);
             // player hitbox
             if (Hitbox)
-            player1.drawHitbox(window);
-            player2.drawHitbox(window);
-            player2.drawHitbox(window);
+            {
+                player1.drawHitbox(window);
+                player2.drawHitbox(window);
+            }
+           
             if (EnemyHitbox)
             {
                 player1.drawHitbox(window);

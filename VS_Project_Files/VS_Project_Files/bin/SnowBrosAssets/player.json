@@ -1,0 +1,20 @@
+{"frames": {
+
+"Player_Red.png":
+{
+	"frame": {"x":0,"y":0,"w":672,"h":1597},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":672,"h":1597},
+	"sourceSize": {"w":672,"h":1597}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "player.png",
+	"format": "RGBA8888",
+	"size": {"w":672,"h":1597},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5c4f32a9f40987965319ed60eb631cb8:d05a4b7da4e306e2efda31886e8f9dd0:86d5339b780aedd87b35e2b7c0a7e11b$"
+}
+}
