@@ -249,7 +249,8 @@ bool FileManage::loadGameData(const string& username, SaveData* data)
     }
 
     string seperatedData;
-    if (!readLine(savePath, lineNum, seperatedData))
+    //if (!readLine(savePath, lineNum, seperatedData))
+    if (!readLine(savePath, lineNum, seperatedData) || seperatedData.empty())
     {
         // if we cant read then no save present.
         // Create new save by reset data and add usernmae.
