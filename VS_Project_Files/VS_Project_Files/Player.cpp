@@ -3,7 +3,14 @@
 #include"Platform.h"
 #include<SFML/Graphics.hpp>
 #include<iostream>
+
 using namespace std;
+
+
+static const int PLAYER_FRAME_X = 2;    // column index of idle first frame
+static const int PLAYER_FRAME_Y = 0;    //  row index of idle frame  
+static const int PLAYER_FRAME_WIDTH = 160;  // width of one frame in sheet
+static const int PLAYER_FRAME_HEIGHT = 160;  //  height of one frame in sheet
 Player::Player() : texture(), sprite(texture) {
 
 
@@ -35,11 +42,49 @@ Player::Player() : texture(), sprite(texture) {
 	onground = false;
 
 	Body.setSize({ 50,50 });
-	Body.setFillColor(sf::Color::Blue);
+	Body.setFillColor(sf::Color::Transparent);
 
-	sprite.setScale({ 0.2f,0.2f});
+	if (!texture.loadFromFile("Player_Red.png")) 
+	{
+		cout << "Player texture failed to load\n";
+	}
+	else 
+	{
+		cout << "Player texture loaded\n";
+	}
+	
+	// according to frame width hight the sprite coords ko fix kiya hai
+	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X * PLAYER_FRAME_WIDTH, PLAYER_FRAME_Y * PLAYER_FRAME_HEIGHT),
+		sf::Vector2i(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
+
+	sprite = sf::Sprite(texture, frameRect); //use rectangular framme
+
+	// sprite is scaled to according to requirements float is used to be precise
+	float scaleX = 50 / (float)PLAYER_FRAME_WIDTH;
+	float scaleY = 50 / (float)PLAYER_FRAME_HEIGHT;
+	sprite.setScale({ scaleX, scaleY });
+	
 }
 
+// diff sheet for both player
+void Player::loadTexture(const string& file)
+{
+	if (!texture.loadFromFile(file)) {
+		cout << "Player texture failed: " << file << "\n";
+		return;
+	}
+
+	// same logic as in constructor
+	// re apply frame rect after loading new texture
+	frameRect = sf::IntRect(sf::Vector2i(PLAYER_FRAME_X * PLAYER_FRAME_WIDTH, PLAYER_FRAME_Y * PLAYER_FRAME_HEIGHT),
+		sf::Vector2i(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
+	sprite.setTexture(texture);
+	sprite.setTextureRect(frameRect);
+
+	float scaleX = 50.0f / (float)PLAYER_FRAME_WIDTH;
+	float scaleY = 50.0f / (float)PLAYER_FRAME_HEIGHT;
+	sprite.setScale({ scaleX, scaleY });
+}
 void Player::update(Input& input, platform platforms[], int count) {
 
 	vx = 0;
@@ -163,13 +208,27 @@ void Player::update(Input& input, platform platforms[], int count) {
 	if (onground) {
 		vy = 0;
 	}
+
+	// flip sprite based on direction
+	if (direction == -1) 
+	{
+		// - is the flip in setscale.
+		// + 50 in set position to avoid the ajeeb sa change jo ho raha tha
+		sprite.setScale({ -50.0f / PLAYER_FRAME_WIDTH, 50.0f / PLAYER_FRAME_HEIGHT });
+		sprite.setPosition({ x + 50, y }); 
+	}
+	else 
+	{
+		sprite.setScale({ 50.0f / PLAYER_FRAME_WIDTH, 50.0f / PLAYER_FRAME_HEIGHT });
+		sprite.setPosition({ x, y });
+	}
 }
 
 
 //character draw
-void Player::draw(sf::RenderWindow& window) {
+void Player::draw(sf::RenderWindow& window) 
+{
 	
-	window.draw(Body);
 	window.draw(sprite);
 }
 
@@ -212,3 +271,4 @@ void Player::setPosition(float x, float y)
 int Player::getDirection() {
 	return direction;
 }
+
