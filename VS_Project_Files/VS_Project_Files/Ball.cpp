@@ -15,7 +15,7 @@ void Ball::shoot(float x, float y, int direction) {
 	ball.setPosition({ x,y });
 	//speed = 0.7f * direction;
 	velocityX = 500.0f * direction;  // speed
-	velocityY = -85.0f;             //  slight upward arc (optional)
+	velocityY = -85.0f;             //  slight upward arc
 	active = true;
 }
 
@@ -32,15 +32,7 @@ void Ball::update(float deltaTime) {
 	// movement
 	ball.move({ velocityX * deltaTime, velocityY * deltaTime });
 
-	//if (ball.getPosition().x < 0 || ball.getPosition().x > 800) {
-	//	active = false;
-
-	//}
-	//if (ball.getPosition().x < 0 || ball.getPosition().x > 800 ||
-	//	ball.getPosition().y > 600 || ball.getPosition().y > 600)
-	//{
-	//	active = false;
-	//}
+	
 	sf::Vector2f pos = ball.getPosition();
 	float r = ball.getRadius();
 
