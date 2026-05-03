@@ -18,7 +18,7 @@ private:
 	int direction;
 	bool onground;
 
-	
+	bool isAlive;
 	
 
 	sf::Texture texture;
@@ -37,5 +37,10 @@ public:
 	void setPosition(float x, float y);
 	int getDirection();
 	void loadTexture(const string& file);
+
+	void die();
+
+	void revive();
+	bool getIsAlive() const;
 
 };

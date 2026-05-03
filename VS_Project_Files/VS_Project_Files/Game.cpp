@@ -222,7 +222,7 @@ void game::Run()
                 auto key = event->getIf<sf::Event::KeyPressed>();
 
                 // SHOOT
-                if (key && key->code == sf::Keyboard::Key::F)
+                if (key && key->code == sf::Keyboard::Key::F && player1.getIsAlive()) // Alter: Verify player is alive before shooting
                 {
                     B1.shoot(
                         player1.getBounds().position.x,
@@ -230,7 +230,7 @@ void game::Run()
                         player1.getDirection()
                     );
                 }
-                if (key && key->code == sf::Keyboard::Key::RShift)
+                if (key && key->code == sf::Keyboard::Key::RShift && player2.getIsAlive()) // Alter: Verify player is alive before shooting
                 {
                     B2.shoot(
                         player2.getBounds().position.x,
@@ -255,6 +255,8 @@ void game::Run()
                         lives2 = 3;
                         score1 = 0;
                         score2 = 0;
+                        player1.revive(); 
+                        player2.revive();
                         gems1.reset();
                         gems2.reset();
                         currentLevel = 1;
@@ -319,8 +321,13 @@ void game::Run()
                                 lives1 = saveData.livesRemaining;
                                 score2 = 0;
                                 lives2 = 3;
+                                if (lives1 > 0)
+                                    player1.revive(); 
+                                else 
+                                    player1.die();
                                 gems1.reset();
                                 gems2.reset();
+                                player2.revive();
                                 winPrinted = false;
                                 gameOverPrinted = false;
                                 loadLevel(currentLevel);
@@ -561,8 +568,18 @@ void game::update(float deltaTime)
             int idx = shopScreen->lastPurchasedIndex();
             if (idx == 0)  // Extra Life
             {
-                if (activePlayer == 0) lives1++;
-                else                   lives2++;
+                if (activePlayer == 0)
+                {
+                    lives1++;
+                    if (lives1 == 1)
+                        player1.revive();
+                }
+                else 
+                {
+                    lives2++;
+                    if (lives2 == 1)
+                        player2.revive();
+                }
             }
             shopScreen->resetPurchaseFlag();
         }
@@ -592,6 +609,8 @@ void game::update(float deltaTime)
             lives2 = 3;
             score1 = 0;
             score2 = 0;
+            player1.revive();
+            player2.revive();
             gems1.reset();
             gems2.reset();
             currentLevel = 1;
@@ -611,6 +630,8 @@ void game::update(float deltaTime)
             lives2 = 3;
             score1 = 0;
             score2 = 0;
+            player1.revive(); 
+            player2.revive();
             gems1.reset();
             gems2.reset();
             currentLevel = 1;
@@ -687,14 +708,33 @@ void game::update(float deltaTime)
        // get player  position to pass to Gamakichi for rocket aiming
         if (currentLevel == 10 && BossGamakichi != nullptr && BossGamakichi->isAlive())
         {
-            float p1x = player1.getBounds().position.x;
-            float p1y = player1.getBounds().position.y;
-            if (rand() % 2 == 0)
+
+            float p1x = 400; 
+            float p1y = 300; 
+
+            if (player1.getIsAlive() && player2.getIsAlive()) 
             {
-                p1x = player2.getBounds().position.x;
-                p1y = player2.getBounds().position.y;
+                if (rand() % 2 == 0) 
+                {
+                    p1x = player2.getBounds().position.x;
+                    p1y = player2.getBounds().position.y; 
+                }
+                else 
+                {
+                    p1x = player1.getBounds().position.x; 
+                    p1y = player1.getBounds().position.y; 
+                }
             }
-            
+            else if (player1.getIsAlive()) 
+            {
+                p1x = player1.getBounds().position.x; 
+                p1y = player1.getBounds().position.y; 
+            }
+            else if (player2.getIsAlive()) 
+            {
+                p1x = player2.getBounds().position.x; 
+                p1y = player2.getBounds().position.y; 
+            }
 
             //  pass player position so rockets aim correctly like knives of tornado
             BossGamakichi->lastPlayerX = p1x;
@@ -727,6 +767,10 @@ void game::update(float deltaTime)
                         {
                             player1.Reset();
                         }
+                        else
+                        {
+                            player1.die(); 
+                        }
                     }
 
                     // if rocket hit player  2. else if nhi hai cos explosion can affect both
@@ -738,6 +782,10 @@ void game::update(float deltaTime)
                         if (lives2 > 0)
                         {
                             player2.Reset();
+                        }
+                        else
+                        {
+                            player2.die(); 
                         }
                     }
                 }
@@ -754,6 +802,10 @@ void game::update(float deltaTime)
                         {
                             player1.Reset();
                         }
+                        else
+                        {
+                            player1.die();
+                        }
                     }
 
                     
@@ -766,6 +818,10 @@ void game::update(float deltaTime)
                         if (lives2 > 0)
                         {
                             player2.Reset();
+                        }
+                        else
+                        {
+                            player2.die();
                         }
                     }
                 }
@@ -784,12 +840,31 @@ void game::update(float deltaTime)
             Tornado* tornado = dynamic_cast<Tornado*>(enemies[i]);
             if (tornado != nullptr && tornado->canThrow())
             {
-                float targetX = player1.getBounds().position.x;
-                float targetY = player1.getBounds().position.y;
-                if (rand() % 2 == 0)
+                float targetX = 400; 
+                float targetY = 300; 
+
+                if (player1.getIsAlive() && player2.getIsAlive()) 
                 {
-                    targetX = player2.getBounds().position.x;
-                    targetY = player2.getBounds().position.y;
+                    if (rand() % 2 == 0) 
+                    {
+                        targetX = player2.getBounds().position.x; 
+                        targetY = player2.getBounds().position.y; 
+                    }
+                    else 
+                    {
+                        targetX = player1.getBounds().position.x; 
+                        targetY = player1.getBounds().position.y; 
+                    }
+                }
+                else if (player1.getIsAlive()) 
+                {
+                    targetX = player1.getBounds().position.x; 
+                    targetY = player1.getBounds().position.y; 
+                }
+                else if (player2.getIsAlive()) 
+                {
+                    targetX = player2.getBounds().position.x; 
+                    targetY = player2.getBounds().position.y; 
                 }
                 
 
@@ -834,6 +909,10 @@ void game::update(float deltaTime)
                 {
                     player1.Reset();
                 }
+                else
+                {
+                    player1.die();
+                }
             }
 
             if (enemies[i]->isAlive() && lives2 > 0 &&
@@ -845,6 +924,10 @@ void game::update(float deltaTime)
                 if (lives2 > 0)
                 {
                     player2.Reset();
+                }
+                else
+                {
+                    player2.die();
                 }
             }
         }
@@ -953,7 +1036,7 @@ void game::update(float deltaTime)
     //coins
     for (int i = 0; i < coinCount; i++)
     {
-        if (coinActive[i] &&
+        if (coinActive[i] && player1.getIsAlive() && 
             player1.getBounds().findIntersection(coins[i].getGlobalBounds()))
         {
             coinActive[i] = false;
@@ -961,7 +1044,7 @@ void game::update(float deltaTime)
             gems1.addGems(CointoGemValue);
         }
 
-        if (coinActive[i] &&
+        if (coinActive[i] && player2.getIsAlive() && 
             player2.getBounds().findIntersection(coins[i].getGlobalBounds()))
         {
             coinActive[i] = false;
@@ -1452,6 +1535,10 @@ void game::checkKnifePlayerCollisions()
             {
                 player1.Reset();
             }
+            else
+            {
+                player1.die();
+            }
         }
 
         //  knife hit player2 . we check active again ke knife player 1 go hit na kiya ho and deactive hogai ho
@@ -1465,6 +1552,10 @@ void game::checkKnifePlayerCollisions()
             if (lives2 > 0)
             {
                 player2.Reset();
+            }
+            else
+            {
+                player2.die();
             }
         }
     }

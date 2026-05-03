@@ -14,7 +14,7 @@ static const float PLAYER_FRAME_HEIGHT = 75;  //  height of one frame in sheet
 Player::Player() : texture(), sprite(texture) {
 
 
-
+	isAlive = true;
 
 
 	x = 100;
@@ -79,6 +79,11 @@ void Player::loadTexture(const string& file)
 }
 void Player::update(Input& input, platform platforms[], int count) {
 
+
+	if (!isAlive)
+	{
+		return;
+	}
 	vx = 0;
 
 	//left movement
@@ -202,30 +207,51 @@ void Player::update(Input& input, platform platforms[], int count) {
 //character draw
 void Player::draw(sf::RenderWindow& window) 
 {
-	
-	window.draw(sprite);
+	if (isAlive)
+	{
+		window.draw(sprite);
+
+	}
+	//sf::RectangleShape debugRect;
+	//debugRect.setSize(sf::Vector2f(PLAYER_FRAME_WIDTH, PLAYER_FRAME_HEIGHT));
+	//debugRect.setOutlineColor(sf::Color::Red);
+	//debugRect.setOutlineThickness(2);
+	//debugRect.setFillColor(sf::Color::Transparent);
+	//// Position it where your sprite would be drawing the texture
+	//window.draw(debugRect);
 }
 
 
 
 //Hit boxes
-void Player::drawHitbox(sf::RenderWindow& window) {
-	sf::RectangleShape box;
-	box.setSize(Body.getSize());
-	box.setPosition(Body.getPosition());
-	box.setFillColor(sf::Color::Transparent);
-	box.setOutlineColor(sf::Color::Green);
-	box.setOutlineThickness(3);
+void Player::drawHitbox(sf::RenderWindow& window) 
+{
+	if (isAlive)
+	{
 
-	window.draw(box);
+		sf::RectangleShape box;
+		box.setSize(Body.getSize());
+		box.setPosition(Body.getPosition());
+		box.setFillColor(sf::Color::Transparent);
+		box.setOutlineColor(sf::Color::Green);
+		box.setOutlineThickness(3);
+
+		window.draw(box);
+	}
 }
 
 
 sf::FloatRect Player::getBounds() {
+	if (!isAlive)
+	{
+		//enemy projectile woont hit
+		return sf::FloatRect({ 0, 0 }, { 0, 0 });
+	}
 	return Body.getGlobalBounds();
 }
 
 void Player::Reset() {
+	
 	x = 100;
 	y = 300;
 	vx = 0;
@@ -246,3 +272,15 @@ int Player::getDirection() {
 	return direction;
 }
 
+void Player::die() {
+	isAlive = false;
+}
+
+void Player::revive() {
+	isAlive = true;
+	Reset();
+}
+
+bool Player::getIsAlive() const {
+	return isAlive;
+}

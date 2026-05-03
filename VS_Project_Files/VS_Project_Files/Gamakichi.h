@@ -24,6 +24,9 @@ private:
 
     bool alive;
 
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::IntRect frameRect;
 
 public:
 
