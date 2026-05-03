@@ -8,7 +8,7 @@ Enemies::Enemies() : GameObject(0, 0, false, 0, 0)
 {
     health = 6;
     damage = 1;
-    movespeed = 31;
+    movespeed = 30;
     scoreValue = 100;
     gemChance = 0.2f;
     isSnowballed = false;

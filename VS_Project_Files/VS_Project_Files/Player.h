@@ -1,7 +1,10 @@
 #pragma once
 #include"Input.h"
+#include<string>
 #include"Platform.h"
 #include<SFML/Graphics.hpp>
+using namespace std;
+
 class Player {
 
 private:
@@ -16,11 +19,13 @@ private:
 	bool onground;
 
 	
-	//sf::RectangleShape Body;
+	
 
 	sf::Texture texture;
 	sf::Sprite sprite;
-	sf::RectangleShape Body;
+	sf::IntRect frameRect;
+
+	sf::RectangleShape Body;	// collision logic
 public:
 	Player();
 	//Inputmanager remaining
@@ -31,4 +36,6 @@ public:
 	void Reset();
 	void setPosition(float x, float y);
 	int getDirection();
+	void loadTexture(const string& file);
+
 };

@@ -534,7 +534,7 @@ void game::update(float deltaTime)
         }
 
         // if level is 5 then we start updating mogera
-        // modify understand this
+        
         if (currentLevel == 5)
         {
             for (int i = 0; i < enemyCount; i++)
