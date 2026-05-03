@@ -170,7 +170,7 @@ void Player::update(Input& input, platform platforms[], int count) {
 void Player::draw(sf::RenderWindow& window) {
 	
 	window.draw(Body);
-	window.draw(sprite);
+	//window.draw(sprite);
 }
 
 

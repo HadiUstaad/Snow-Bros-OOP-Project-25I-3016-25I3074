@@ -5,12 +5,14 @@
 //Modify add texture
 
 
-Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 6, 50, 100) 
+Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 300, 50, 100) 
 {
 
     froze = false;
     alive = true;
     moveDirection = 1;
+
+    movespeed = 150;
 
     shape.setSize(sf::Vector2f(getWidth(), getHeight()));
     shape.setFillColor(sf::Color::Yellow); // Make the Boton yellow for visibility until graphics is added
@@ -20,17 +22,11 @@ Boton::Boton(float x, float y) : GroundEnemy(x, y, 40, 40, 6, 50, 100)
 void Boton::updateMovement(float deltaTime, platform platforms[], int count)
 {
 
-    if (getSnowball())
+    if (getSnowball() || froze || !alive)
         return;
 
-    //check frozen
-    if (froze) {
-        return;
-    }
-    //check dead
-    if (!alive){
-        return;
-        }
+
+  
     // checks if it is in air and then pulls it down until it reaches a ground
     applyGravity(deltaTime, platforms, count);
 
@@ -67,16 +63,9 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
             sf::Vector2f pPos = platforms[i].getBody().getPosition();
             sf::Vector2f pSize = platforms[i].getBody().getSize();
 
-            bool inX = false;
-            bool inY = false;
-            if (probeX >= pPos.x && probeX <= pPos.x + pSize.x)
-            {
-                inX = true;
-            }
-            if (probeY >= pPos.y && probeY <= pPos.y + pSize.y)
-            {
-                inY = 1;
-            }
+           
+            bool inX = (probeX >= pPos.x && probeX <= pPos.x + pSize.x);
+            bool inY = (probeY >= pPos.y && probeY <= pPos.y + pSize.y);
            
             if (inX && inY)
             {
@@ -92,20 +81,9 @@ void Boton::updateMovement(float deltaTime, platform platforms[], int count)
         else
         {
             
-            srand(time(0));
-
-            // no ground ahead then reverse direction and try that way instead
-            // or you can fall of. this is random
-            if (rand() % 2 == 0)
-            {
-                moveDirection *= -1;
-                float reverseX = getX() + (moveDirection * getSpeed() * deltaTime);
-                setPosition(reverseX, getY());
-            }
-            else
-            {
-                setPosition(newX, getY());
-            }
+            
+            setPosition(newX, getY());
+            isGrounded = false;   // important
             
         }
 
