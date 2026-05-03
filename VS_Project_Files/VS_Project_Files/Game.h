@@ -16,11 +16,14 @@
 #include "Gamakichi.h"
 #include "Gamakichi_rocket.h"
 #include<SFML/Graphics.hpp>
+#include"Login.h"
+#include"Authenticate.h"
 using namespace std;
 
 
 //enum variables
 enum GameState {
+    LOGIN,
     MENU,
     PLAYING,
     PAUSED,
@@ -137,7 +140,11 @@ private:
 
              
     void spawnMogeraChildren();     
-    void updateBossHealthBar();    
+    void updateBossHealthBar();   
+
+    //login system
+    Authenticate* authManager;
+    LoginScreen* loginScreen;
 
 public:
     game();
