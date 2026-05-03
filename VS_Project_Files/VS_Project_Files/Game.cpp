@@ -709,14 +709,32 @@ void game::update(float deltaTime)
         if (currentLevel == 10 && BossGamakichi != nullptr && BossGamakichi->isAlive())
         {
 
-            float p1x = player1.getBounds().position.x;
-            float p1y = player1.getBounds().position.y;
-            if (rand() % 2 == 0)
+            float p1x = 400; 
+            float p1y = 300; 
+
+            if (player1.getIsAlive() && player2.getIsAlive()) 
             {
-                p1x = player2.getBounds().position.x;
-                p1y = player2.getBounds().position.y;
+                if (rand() % 2 == 0) 
+                {
+                    p1x = player2.getBounds().position.x;
+                    p1y = player2.getBounds().position.y; 
+                }
+                else 
+                {
+                    p1x = player1.getBounds().position.x; 
+                    p1y = player1.getBounds().position.y; 
+                }
             }
-            
+            else if (player1.getIsAlive()) 
+            {
+                p1x = player1.getBounds().position.x; 
+                p1y = player1.getBounds().position.y; 
+            }
+            else if (player2.getIsAlive()) 
+            {
+                p1x = player2.getBounds().position.x; 
+                p1y = player2.getBounds().position.y; 
+            }
 
             //  pass player position so rockets aim correctly like knives of tornado
             BossGamakichi->lastPlayerX = p1x;
@@ -822,12 +840,31 @@ void game::update(float deltaTime)
             Tornado* tornado = dynamic_cast<Tornado*>(enemies[i]);
             if (tornado != nullptr && tornado->canThrow())
             {
-                float targetX = player1.getBounds().position.x;
-                float targetY = player1.getBounds().position.y;
-                if (rand() % 2 == 0)
+                float targetX = 400; 
+                float targetY = 300; 
+
+                if (player1.getIsAlive() && player2.getIsAlive()) 
                 {
-                    targetX = player2.getBounds().position.x;
-                    targetY = player2.getBounds().position.y;
+                    if (rand() % 2 == 0) 
+                    {
+                        targetX = player2.getBounds().position.x; 
+                        targetY = player2.getBounds().position.y; 
+                    }
+                    else 
+                    {
+                        targetX = player1.getBounds().position.x; 
+                        targetY = player1.getBounds().position.y; 
+                    }
+                }
+                else if (player1.getIsAlive()) 
+                {
+                    targetX = player1.getBounds().position.x; 
+                    targetY = player1.getBounds().position.y; 
+                }
+                else if (player2.getIsAlive()) 
+                {
+                    targetX = player2.getBounds().position.x; 
+                    targetY = player2.getBounds().position.y; 
                 }
                 
 
@@ -999,7 +1036,7 @@ void game::update(float deltaTime)
     //coins
     for (int i = 0; i < coinCount; i++)
     {
-        if (coinActive[i] &&
+        if (coinActive[i] && player1.getIsAlive() && 
             player1.getBounds().findIntersection(coins[i].getGlobalBounds()))
         {
             coinActive[i] = false;
@@ -1007,7 +1044,7 @@ void game::update(float deltaTime)
             gems1.addGems(CointoGemValue);
         }
 
-        if (coinActive[i] &&
+        if (coinActive[i] && player2.getIsAlive() && 
             player2.getBounds().findIntersection(coins[i].getGlobalBounds()))
         {
             coinActive[i] = false;
