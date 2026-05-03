@@ -137,6 +137,16 @@ game::game()
     activePlayer = 0;
     shopScreen = new ShopScreen(window, &gems1, &gems2, &powerUpState);
     shopScreen->setActivePlayer(0);
+    // knife for tornado
+    knifeCount = 0;
+    for (int i = 0; i < MAX_KNIVES; i++)
+    {
+        knives[i] = nullptr;
+    }
+
+    BossGamakichi = nullptr;
+
+
 }
 
 game::~game()
@@ -153,6 +163,15 @@ game::~game()
         }
     }
     enemyCount = 0;
+
+    for (int i = 0; i < MAX_KNIVES; i++)
+    {
+        if (knives[i] != nullptr)
+        {
+            delete knives[i];
+            knives[i] = nullptr;
+        }
+    }
 
     if (leaderboard != 0)   
     {
@@ -424,6 +443,16 @@ void game::Run()
             B1.draw(window);
             B2.draw(window);
 
+
+            // draw the knives that are thrown. or active
+            for (int i = 0; i < MAX_KNIVES; i++)
+            {
+                if (knives[i] != nullptr && knives[i]->getActive())
+                {
+                    knives[i]->draw(window);
+                }
+            }
+
             window.draw(scoreText1);
             window.draw(scoreText2);
             window.draw(gemText1);
@@ -654,6 +683,49 @@ void game::update(float deltaTime)
                 
         }
 
+        // make the enemies who are tornado throw knife
+        for (int i = 0; i < enemyCount; i++)
+        {
+            if (enemies[i] == nullptr || !enemies[i]->isAlive())
+            {
+                continue;
+            }
+
+            
+            Tornado* tornado = dynamic_cast<Tornado*>(enemies[i]);
+            if (tornado != nullptr && tornado->canThrow())
+            {
+                float targetX = player1.getBounds().position.x;
+                float targetY = player1.getBounds().position.y;
+                if (rand() % 2 == 0)
+                {
+                    targetX = player2.getBounds().position.x;
+                    targetY = player2.getBounds().position.y;
+                }
+                
+
+                // check if knife slot is empty
+                for (int k = 0; k < MAX_KNIVES; k++)
+                {
+                    if (knives[k] == nullptr || !knives[k]->getActive())
+                    {
+                        /// delete old knife to avoid memory leaks
+                        if (knives[k] != nullptr)
+                        {
+                            delete knives[k];
+                        }
+                        
+                        //create knife in tornado class
+                        knives[k] = tornado->createKnife(targetX, targetY);
+                        break;
+                    }
+                }
+            }
+        }
+        //eachfram knife updated
+        updateKnives(deltaTime);
+        checkKnifePlayerCollisions();
+
        
         for (int i = 0; i < enemyCount; i++)
         {
@@ -819,6 +891,14 @@ void game::loadLevel(int level)
     isBossLevel = false;
     coinCount = 0;
 
+    for (int i = 0; i < MAX_KNIVES; i++)
+    {
+        if (knives[i] != nullptr)
+        {
+            delete knives[i];
+            knives[i] = nullptr;
+        }
+    }
     
 
     if (level == 1)
@@ -834,12 +914,15 @@ void game::loadLevel(int level)
 
         enemyCount = 2;
         enemies[0] = new Boton(520, 100);
-        enemies[1] = new Fooga(20, 180);
+        enemies[1] = new Fooga(20, 280);
+        
 
-        platformCount = 3;
+        platformCount = 5;
         platforms[0] = platform(0, 550, 800, 50);
-        platforms[1] = platform(100, 400, 200, 20);
+        platforms[1] = platform(50, 400, 200, 20);
         platforms[2] = platform(400, 300, 200, 20);
+        platforms[3] = platform(300, 200, 200, 20);
+        platforms[4] = platform(400, 420, 200, 20);
 
         levelText.setString("Level 1");
         levelDisplayTimer = 2.0f;
@@ -854,11 +937,13 @@ void game::loadLevel(int level)
         enemies[1] = new Boton(400, 200);
         enemies[2] = new Fooga(200, 100);
 
-        platformCount = 4;
+        platformCount = 5;
         platforms[0] = platform(0, 550, 800, 50);
         platforms[1] = platform(0, 450, 300, 20);
         platforms[2] = platform(500, 350, 300, 20);
         platforms[3] = platform(200, 250, 200, 20);
+        platforms[4] = platform(400, 420, 200, 20);
+  
 
         levelText.setString("Level 2");
         levelDisplayTimer = 2.0f;
@@ -869,10 +954,10 @@ void game::loadLevel(int level)
     if (level == 3)
     {
         enemyCount = 4;
-        enemies[0] = new Boton(100, 300);
-        enemies[1] = new Boton(300, 300);
+        enemies[0] = new Boton(100, 400);
+        enemies[1] = new Boton(300, 460);
         enemies[2] = new Fooga(200, 150);
-        enemies[3] = new Fooga(500, 150);
+        enemies[3] = new Tornado(500, 350);
 
         platformCount = 5;
         platforms[0] = platform(0, 550, 800, 50);
@@ -901,7 +986,7 @@ void game::loadLevel(int level)
         platforms[2] = platform(450, 380, 300, 20);
 
         levelText.setString("LEVEL 5: MOGERA BOSS!");
-        levelDisplayTimer = 2.0f;
+        levelDisplayTimer = 2;
         showLevelText = true;
         return;
     }
@@ -952,7 +1037,11 @@ void game::loadLevel(int level)
         float x = pPos.x + (i * 40) % int(pSize.x - 40);
         float y = pPos.y - 40;
 
-        if (i % 2 == 0)
+        if (i % 3 == 2 && level >= 6)
+        {
+            enemies[i] = new Tornado(x, y);
+        }
+        else if (i % 2 == 0)
             enemies[i] = new Boton(x, y);
         else
             enemies[i] = new Fooga(x, y);
@@ -1114,5 +1203,134 @@ void game::updateBossHealthBar()
     {
         // boss dead then no health
         bossHealthBarFill.setSize(sf::Vector2f(0, 18));
+    }
+}
+
+
+void game::spawnGamakichiChildren()
+{
+    if (BossGamakichi != nullptr && BossGamakichi->getCanSpawnChild() && BossGamakichi->isAlive())
+    {
+        BossGamakichi->setCanSpawnChild(false);
+
+        // alter - find a free slot in the enemy array for the child (slots 8-14)
+        for (int slot = 8; slot < 15; slot++)
+        {
+            if (enemies[slot] == nullptr || !enemies[slot]->isAlive())
+            {
+                if (enemies[slot] != nullptr)
+                {
+                    delete enemies[slot];
+                }
+
+                // alter - spawn a Boton as Gamakichi's minion near the boss position
+                float cx = BossGamakichi->getX() + (rand() % 200) - 100;
+                float cy = BossGamakichi->getY();
+
+                // alter - clamp spawn x so minion does not spawn off screen
+                if (cx < 10) cx = 10;
+                if (cx > 750) cx = 750;
+
+                enemies[slot] = new Boton(cx, cy);
+
+                if (slot >= enemyCount)
+                {
+                    enemyCount = slot + 1;
+                }
+
+                break;
+            }
+        }
+    }
+}
+
+// alter - Gamakichi health bar update (uses 60 hp which is Gamakichi's max)
+void game::updateGamakichiBossHealthBar()
+{
+    if (!isBossLevel || BossGamakichi == nullptr)
+    {
+        bossHealthBarFill.setSize(sf::Vector2f(0, 18));
+        return;
+    }
+
+    if (BossGamakichi->isAlive())
+    {
+        int maxHp = 60;    // alter - Gamakichi has 60 hp as set in its constructor
+        float fraction = (float)BossGamakichi->getHealth() / (float)maxHp;
+
+        if (fraction < 0)
+        {
+            fraction = 0;
+        }
+
+        bossHealthBarFill.setSize(sf::Vector2f(300.f * fraction, 18));
+    }
+    else
+    {
+        bossHealthBarFill.setSize(sf::Vector2f(0, 18));
+    }
+}
+
+// alter - update all active knife positions and clean up inactive ones
+void game::updateKnives(float deltaTime)
+{
+    for (int i = 0; i < MAX_KNIVES; i++)
+    {
+        if (knives[i] == nullptr)
+        {
+            continue;
+        }
+
+        if (knives[i]->getActive())
+        {
+            knives[i]->updatePosition(deltaTime);
+        }
+        else
+        {
+            // alter - knife went off screen or hit something, free the memory
+            delete knives[i];
+            knives[i] = nullptr;
+        }
+    }
+}
+
+// alter - check if any active knife has hit player1 or player2
+void game::checkKnifePlayerCollisions()
+{
+    for (int i = 0; i < MAX_KNIVES; i++)
+    {
+        if (knives[i] == nullptr || !knives[i]->getActive())
+        {
+            continue;
+        }
+
+        // alter - knife hit player1
+        if (lives1 > 0 && invincibleTimer1 <= 0 &&
+            player1.getBounds().findIntersection(knives[i]->getBounds()))
+        {
+            lives1--;
+            invincibleTimer1 = 1.0f;
+            knives[i]->markAsHit();   // alter - deactivate knife on hit
+
+            if (lives1 > 0)
+            {
+                player1.Reset();
+            }
+        }
+
+        // alter - knife hit player2 (re-check active in case player1 already consumed it)
+        if (knives[i] != nullptr && knives[i]->getActive() &&
+            lives2 > 0 && invincibleTimer2 <= 0 &&
+            player2.getBounds().findIntersection(knives[i]->getBounds()))
+        {
+            lives2--;
+            invincibleTimer2 = 1.0f;
+            knives[i]->markAsHit();   // alter - deactivate knife on hit
+
+            if (lives2 > 0)
+            {
+                player2.Reset();
+            }
+        }
     }
 }

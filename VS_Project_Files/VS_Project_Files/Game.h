@@ -17,6 +17,8 @@
 #include "Gamakichi_rocket.h"
 #include<SFML/Graphics.hpp>
 #include"Login.h"
+#include "Knife.h"
+#include "Tornado.h"
 #include"Authenticate.h"
 #include"Shop.h"
 using namespace std;
@@ -140,7 +142,7 @@ private:
     sf::Text bossHealthText;
     bool isBossLevel;       
 
-             
+    Gamakichi* BossGamakichi = nullptr;
     void spawnMogeraChildren();     
     void updateBossHealthBar();   
 
@@ -153,6 +155,15 @@ private:
     ShopScreen* shopScreen;
     PowerUpState powerUpState;
     int activePlayer;
+    void spawnGamakichiChildren();
+    void updateGamakichiBossHealthBar();
+
+    // knife array. max 12 knives on screen. static variable so that it can be changed from one place in code but not inside code
+    static const int MAX_KNIVES = 12;
+    Knife* knives[MAX_KNIVES];
+    int knifeCount;
+
+
 public:
     game();
     void Run();
@@ -164,6 +175,9 @@ public:
     void submitScores();      
     void showLeaderboard();    
     void hideLeaderboard(); 
+
+    void updateKnives(float deltaTime);
+    void checkKnifePlayerCollisions();
 };
 
 

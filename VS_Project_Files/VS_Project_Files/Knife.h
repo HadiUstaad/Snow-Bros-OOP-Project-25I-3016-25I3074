@@ -9,7 +9,11 @@ class Knife : public Projectile
 private:
     sf::RectangleShape shape;   
     float rotation;             // rotation angle
-    float rotationSpeed;        
+    float rotationSpeed;     
+
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::IntRect frameRect;
 
 public:
    

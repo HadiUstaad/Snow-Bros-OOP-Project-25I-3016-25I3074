@@ -1,9 +1,17 @@
 #include "Knife.h"
 #include <cmath>
+#include <iostream>
 
+using namespace std;
+
+static const float ENEMY_FRAME_X = 496;
+static const float ENEMY_FRAME_Y = 892;
+static const float ENEMY_FRAME_WIDTH = 65;
+static const float ENEMY_FRAME_HEIGHT = 28;
 
 Knife::Knife(float x, float y, float targetX, float targetY)
     : Projectile(x, y, 0, 0, 1)  // velocity is calculated below and damage is 1
+    ,texture(), sprite(texture)
 {
     // direction to target (player)
     float dx = targetX - x; 
@@ -29,9 +37,30 @@ Knife::Knife(float x, float y, float targetX, float targetY)
 
 
     shape.setSize(sf::Vector2f(15, 5));         
-    shape.setFillColor(sf::Color::White);
+    shape.setFillColor(sf::Color::Red);
     shape.setOrigin(sf::Vector2f(7.5f, 2.5f));   // origin for rotation or center is middle of knife
     shape.setPosition(sf::Vector2f(x, y));
+
+    /*if (!texture.loadFromFile("SnowBrosAssets/Images/Tornado_Red.png"))
+    {
+        cout << "Tornado texture failed to load\n";
+        shape.setFillColor(sf::Color::Yellow);
+    }
+    else {
+        cout << "Tornado texture loaded\n";
+    }
+
+
+    frameRect = sf::IntRect(sf::Vector2i(ENEMY_FRAME_X, ENEMY_FRAME_Y),
+        sf::Vector2i(ENEMY_FRAME_WIDTH, ENEMY_FRAME_HEIGHT));
+
+    sprite = sf::Sprite(texture, frameRect);
+
+
+    float scaleX = getWidth() / ENEMY_FRAME_WIDTH;
+    float scaleY = getHeight() / ENEMY_FRAME_HEIGHT;
+    sprite.setScale({ scaleX, scaleY });
+    sprite.setPosition(sf::Vector2f(getX(), getY()));*/
 }
 
 
@@ -42,10 +71,10 @@ void Knife::updatePosition(float deltaTime)
 
     rotation += rotationSpeed * deltaTime;
 
-    // Keep rotation in 0-360 range otherwise we wont see rotation as it will be very fast
+    // Keep rotation in 0-360 range otherwise we wont see rotation as it will be very very fast
     if (rotation >= 360)
     {
-        rotation = rotation- 360;
+        rotation = rotation - 360;
     }
 
     shape.setPosition(sf::Vector2f(getX(), getY()));
@@ -58,11 +87,13 @@ void Knife::draw(sf::RenderWindow& window)
 {
     if (getActive())
     {
+        //window.draw(sprite);
         window.draw(shape);
     }
 }
 
 sf::FloatRect Knife::getBounds()
 {
+    /*return sprite.getGlobalBounds();*/
     return shape.getGlobalBounds();
 }
