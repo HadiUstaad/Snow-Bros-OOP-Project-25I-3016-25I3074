@@ -2,7 +2,23 @@
 #include"Input.h"
 #include"Platform.h"
 #include<SFML/Graphics.hpp>
-Player::Player() {
+#include<iostream>
+using namespace std;
+Player::Player() : texture(), sprite(texture) {
+
+
+	if (!texture.loadFromFile("./player.png.png")) {
+		cout << "Image failed";
+	}
+	else {
+		cout << "image loaded";
+		//sprite.setTexture(texture);
+		sprite = sf::Sprite(texture);
+
+	}
+
+
+
 	x = 100;
 	y = 300;
 
@@ -20,6 +36,8 @@ Player::Player() {
 
 	Body.setSize({ 50,50 });
 	Body.setFillColor(sf::Color::Blue);
+
+	sprite.setScale({ 0.2f,0.2f});
 }
 
 void Player::update(Input& input, platform platforms[], int count) {
@@ -87,6 +105,7 @@ void Player::update(Input& input, platform platforms[], int count) {
 
 	// apply corrected position
 	Body.setPosition({ x, y });
+	sprite.setPosition({ x,y });
 
 	sf::FloatRect playerBounds = Body.getGlobalBounds();
 
@@ -149,7 +168,9 @@ void Player::update(Input& input, platform platforms[], int count) {
 
 //character draw
 void Player::draw(sf::RenderWindow& window) {
+	
 	window.draw(Body);
+	window.draw(sprite);
 }
 
 

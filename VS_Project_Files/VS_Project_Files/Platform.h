@@ -5,6 +5,9 @@ class platform {
 private:
 	sf::RectangleShape body;
 
+	//sf::Texture groundtexture;
+	//sf::Sprite groundsprite;
+
 public:
 	platform();
 
