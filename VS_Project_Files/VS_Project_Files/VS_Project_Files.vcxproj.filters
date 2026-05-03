@@ -77,4 +77,7 @@
   <ItemGroup>
     <Font Include="RussoOne-Regular.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="bin\Player_Red.png" />
+  </ItemGroup>
 </Project>
