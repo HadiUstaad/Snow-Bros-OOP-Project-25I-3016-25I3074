@@ -31,6 +31,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>true</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -38,12 +39,14 @@
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>true</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>true</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -51,6 +54,7 @@
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>true</EnableASAN>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -139,19 +143,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bottom.cpp" />
+    <ClCompile Include="Authenticate.cpp" />
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="Botom.cpp" />
     <ClCompile Include="code.cpp" />
+    <ClCompile Include="Currency.cpp" />
+    <ClCompile Include="DataBaseManagement.cpp" />
+    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="Enemy_factory.cpp" />
+    <ClCompile Include="Extra_Life.cpp" />
+    <ClCompile Include="Flying_Enemy.cpp" />
+    <ClCompile Include="Fooga.cpp" />
+    <ClCompile Include="GamaKichi.cpp" />
+    <ClCompile Include="Gamakichi_rocket.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObjects.cpp" />
+    <ClCompile Include="GroundEnemy.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Knife.cpp" />
+    <ClCompile Include="LeaderBoard.cpp" />
+    <ClCompile Include="Login.cpp" />
+    <ClCompile Include="MenuDisplay.cpp" />
+    <ClCompile Include="Mogera.cpp" />
+    <ClCompile Include="Mogera_child.cpp" />
+    <ClCompile Include="Password.cpp" />
+    <ClCompile Include="Password.h" />
+    <ClCompile Include="Pause.cpp" />
+    <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="SpeedPower.cpp" />
+    <ClCompile Include="Tornado.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Authenticate.h" />
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Boss.h" />
-    <ClInclude Include="Bottom.h" />
+    <ClInclude Include="Botom.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Currency.h" />
+    <ClInclude Include="DatabaseManagement.h" />
     <ClInclude Include="Display.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_factory.h" />
+    <ClInclude Include="Extra_life.h" />
     <ClInclude Include="FlyingEnemy.h" />
     <ClInclude Include="Flying_Enemy.h" />
     <ClInclude Include="Fooga.h" />
@@ -162,13 +201,27 @@
     <ClInclude Include="GroundEnemy.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Knife.h" />
+    <ClInclude Include="LeaderBoard.h" />
     <ClInclude Include="LevelConfig.h" />
     <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="Login.h" />
     <ClInclude Include="MenuDisplay.h" />
     <ClInclude Include="Mogera.h" />
     <ClInclude Include="Mogera_child.h" />
+    <ClInclude Include="Pause.h" />
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerUp.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Shop.h" />
+    <ClInclude Include="SpeedPower.h" />
     <ClInclude Include="Tornado.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="RussoOne-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bin\Player_Red.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,13 +15,17 @@ class Menu : public Display
     static const int item = 5;
     sf::Text menuItems[item];
 
+    sf::Texture bgTexture;
+    sf::Sprite bgSprite;
+    sf::Text selector;
+    sf::RectangleShape optionBoxes[item];
     
 public:
-
+    // no default constructora as when u have (sf::RenderWindow&). if no window then noway for SFML output
     Menu(sf::RenderWindow& gameWindow, bool pausesGame = true);
 
     int getSelectedIndex() const;
-    Menu();
+    
 
     virtual ~Menu();
 
@@ -29,9 +33,6 @@ public:
 
     virtual void handleInput();
 
-    // Helper methods for internal navigation
-    void moveUp();
-    void moveDown();
     void updateMenuColors();
  
 };
